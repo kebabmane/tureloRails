@@ -1,0 +1,96 @@
+<br><br><br>
+<div class="col-lg-12">
+<h2 class="roboto-font">beta invitation requests</h2>
+
+<div class="container">
+
+    <div class="row"><br>
+        <div class="col-xs-6 col-md-3">
+
+						 		<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center">
+                    <% if @users_requesting_access.any? %>
+                       <%= @users_requesting_access.count %>
+                    <% else %>
+                      no users waiting for access
+                    <% end %>
+                    </h1>
+                <div class="panel-body text-center">
+                    <strong>total users waiting for access</strong>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-6 col-md-3">
+
+								<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center">
+                      <% if @users_not_accept_invite.any? %>
+                        <%= @users_not_accept_invite.count %>
+                      <% else %>
+                        no invitations sent
+                      <% end %>
+                    </h1>
+                <div class="panel-body text-center">
+                    <strong>total invitations sent</strong>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-6 col-md-3">
+
+					<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center">
+                    <% if @all_requests.any? %>
+                      <%= @all_requests.count %>
+                    <% else %>
+                      no requests in queue
+                    <% end %>
+                    </h1>
+                <div class="panel-body text-center">
+                    <strong>total users awaiting invitation</strong>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-xs-6 col-md-3">
+
+					<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center"><%= @users_inv_accepted.count %></h1>
+                <div class="panel-body text-center">
+                    <strong>users who have accepted invitation</strong>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+<br><br>
+
+<table class="table table-bordered">
+  <thead>
+     <tr>
+      <th>requestor email</th>
+      <th>date requested</th>
+      <th>action</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @requests.each do |request| %>
+      	<tr>
+            <td><%= request.email %></td>
+            <td><%= request.created_at.strftime("%A, %d %b %Y %l:%M %p") %></td>
+            <td><%= button_to 'invite user', invite_users_request_path(request), :class => 'btn btn-primary btn-sm', :method => :put %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    </div>
+
+<%= will_paginate @request, :renderer => BootstrapPagination::Rails  %>
+</div>

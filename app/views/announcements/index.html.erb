@@ -1,0 +1,54 @@
+<div class="container-fluid">
+<br>
+<h1 class="roboto-font">announcmenets admin
+	<%= link_to 'new announcement type', new_announcement_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_announcement_modal", :class=>"btn btn-primary pull-right"  %>
+</h1>
+
+<br><br>
+
+<table class="table table-bordered" id='sleep_table'>
+  <thead>
+    <tr>
+      <th>message</th>
+      <th>starts at</th>
+      <th>ends at</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @announcements.each do |announcement| %>
+       <%= render partial: 'table_row', locals: {announcement: announcement} %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class="modal fade" id="new_announcement_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">add new announcement</h4>
+      </div>
+      <div class="modal-body">
+   <% modal ||= false %>
+   <% remote = modal ? true : false %>
+   <%= simple_form_for(@announcement, remote: remote, html: {role: :form, 'data-model' => 'announcement'}) do |f| %>
+
+   <div class="form-inputs">
+     <%= f.text_field :message %>
+     <%= f.input :starts_at, :as => :datetime_picker, :label => "starts at", validate: true %>
+     <%= f.input :ends_at, :as => :datetime_picker, :label => "starts at", validate: true %>
+   </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, { :class=>"btn btn-primary"} %>
+  </div>
+<% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

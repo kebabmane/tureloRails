@@ -1,0 +1,38 @@
+    <br><br><br>
+    <br><br><br>
+
+    <h2 class="text-center">so hey you want to try out munch</h2>
+    <h3 class="text-center">thats awesome but we are still in closed beta...</h2>
+
+    <br><br><br>
+
+
+    <div class="container">
+        <div class="omb_login">
+    <%= bootstrap_form_for(@request, url: users_requests_path, html: { method: :post }) do |f| %>
+
+    <div class="row omb_row-sm-offset-3">
+    <% if @request.errors.any? %>
+      <div id="error_explanation" class="text-center">
+        <h4>look thanks for signing up once, thats all thats requried</h4>
+      </div>
+    <% end %>
+    </div>
+
+
+    		<div class="row omb_row-sm-offset-3">
+    			<div class="col-xs-12 col-sm-6">
+    			    <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+    					<div class="input-group">
+    						<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+    						<%= f.email_field :email, hide_label: :true, class: "input-lg", autofocus: true, placeholder:  "email" %>
+    					</div>
+    					<span class="help-block"></span>
+    <br>
+    					<%= f.button "request invite", class: "btn btn-lg btn-primary btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> hold tight...."}  %>
+    				</form>
+    			</div>
+        </div>
+    	</div>
+     <% end %>
+    </div>

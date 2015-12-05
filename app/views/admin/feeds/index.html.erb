@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+<h1 class="page-header">your feeds
+	 <% if user_signed_in? %>
+	 <div class="pull-right">
+		<%= link_to 'new feed', new_admin_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
+	</div>
+	</h1>
+	<% end %>
+
+<table class="table table-striped" id='feeds_table'>
+  <thead>
+    <tr>
+      <th>feed title</th>
+      <th>feed url</th>
+      <th>created at</th>
+      <th>entries</th>
+      <th colspan="2">actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feeds.each do |feed| %>
+      		<%= render partial: 'table_row', locals: {feed: feed} %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="text-center">
+	<%= will_paginate @feeds, renderer: BootstrapPagination::Rails %>
+</div>
+
+<div class="modal fade" id="new_feed_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">add new feed</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'form', modal: true %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

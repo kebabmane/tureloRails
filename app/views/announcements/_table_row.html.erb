@@ -1,0 +1,10 @@
+<tr>
+        <td><%= announcement.message %></td>
+        <td><%= announcement.starts_at %></td>
+        <td><%= announcement.ends_at %></td>
+        <td>
+        	<%= link_to 'Show', announcement, :class=>"btn btn-primary" %>
+        	<%= link_to 'Edit', edit_announcement_path(announcement), :class=>"btn btn-primary" %>
+         	<%= link_to 'Destroy', announcement, :class=>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+</tr>

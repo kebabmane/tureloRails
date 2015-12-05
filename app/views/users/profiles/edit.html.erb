@@ -1,0 +1,98 @@
+<div class="col-lg-12"><br><br>
+
+<br>
+  <h3 class="roboto-font">hey <%= @user.nickname %> - change your account details if needed</h3>
+<br>
+
+<div class="col-lg-1">
+</div>
+
+<div class="col-md-5">
+<ul class="nav nav-pills">
+  <li class="active"><a href="#default" data-toggle="tab">info</a></li>
+  <li><a href="#password" data-toggle="tab">change password</a></li>
+</ul>
+
+<br>
+
+
+<div id="my-tab-content" class="tab-content">
+
+<div class="tab-pane active" id="default">
+<%= bootstrap_form_for(current_user, as: current_user, url: registration_path(resource_name), html: { method: :put }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+  <%= devise_error_messages! %>
+
+    <%= f.static_control :nickname %>
+    <%= f.text_field :email %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.form_group :is_female, label: { text: "gender" }, help: "select your sex" do %>
+          <%= f.radio_button :is_female, true, label: "female" %>
+          <%= f.radio_button :is_female, false, label: "male" %>
+    <% end %>
+      <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
+    <%= f.number_field :user_height %>
+    <%= f.text_field :description %>
+    <%= f.time_zone_select :time_zone %>
+
+
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+    <%= f.button "update", class: "btn btn-primary" %>
+<% end %>
+
+</div>
+
+ <div class="tab-pane" id="password">
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+      <%= devise_error_messages! %>
+    <%= f.password_field :current_password %>
+    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit "change password", class: "btn btn-primary" %>
+    <% end %>
+ </div>
+
+</div>
+</div>
+
+<div class="col-md-4">
+  <h4 class="text-center">change or upload your avatar</h4><br><br>
+  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+    <%= devise_error_messages! %>
+  <div class="text-center">
+  <%= f.file_field :avatar, :id => "imgInp" %>
+  <%= f.hidden_field :avatar_cache %>
+  <br><br>
+
+   <img id="blah" src="#" alt="your avatar" class="round-image-50 imgborder image-shadow" />
+ </div><br><br>
+  <%= f.submit "change password", class: "btn btn-primary" %>
+<% end %>
+</div>
+<div class="col-lg-2">
+</div>
+
+
+<script>
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+</script>
+
+</div>

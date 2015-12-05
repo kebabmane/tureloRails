@@ -1,20 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Turelo" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Turelo" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
-  </body>
+<head>
+  <title>turelo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= metamagic %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= google_webfonts_init({
+    google: ['Roboto Slab', 'Roboto']
+  }) %>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand">turelo</a>
+      </div>
+      <nav class="collapse navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to 'overviews', overviews_path %>
+          </li>
+          <li>
+            <%= link_to 'feeds', feeds_path %>
+          </li>
+          <li>
+            <%= link_to 'admin', admin_feeds_path %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </nav>
+
+
+
+              <div class="message in" id="flash">
+                  <%= render 'layouts/messages' %>
+              </div>
+              <br>
+
+              <div class="container">
+              	<div class="row">
+
+	                 <%= yield %>
+
+                </div>
+              </div>     
+
+
+<!-- add weight modal -->
+
+
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      setTimeout(function(){
+        $('#flash').remove();
+      }, 1000);
+    });
+    </script>
+
+
+<br>
+</div>
+</div>
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">
+          munch health pty ltd |
+          <a href="https://munch.fit/pages/terms_and_cond">terms and conditions</a>
+          <a href="https://www.facebook.com/pages/MUNCH/481574792019261" target="_blank"><i class="fa fa-facebook fa-fw fa-2x pull-right"></i></a>
+          <a href="https://twitter.com/munch_health" target="_blank"><i class="fa fa-twitter fa-fw fa-2x pull-right"></i></a>
+        </p>
+      </div>
+    </div>
+
+
+</body>
 </html>

@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+<% if @feed.errors.any? %>
+  <% @feed.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#new_feed_modal").modal("hide")
+  $('#feeds_table').append("<%= j render partial: 'table_row', locals: {feed: @feed } %>");
+<% end %>
