@@ -4,6 +4,6 @@ class Feed < ActiveRecord::Base
   acts_as_paranoid
   acts_as_taggable
 
-  has_many :feed_entries
+  has_many :feed_entries, dependent: :destroy
 
 end

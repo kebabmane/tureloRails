@@ -27,11 +27,10 @@ class Admin::FeedsController < ApplicationController
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
-
     respond_to do |format|
       if @feed.save
         FeedWorker.perform_async(@feed.id)
-        format.html { redirect_to @admin_feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to admin_feeds_path, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
@@ -72,6 +71,6 @@ class Admin::FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:user_id, :feed_name, :feed_url, :number_feed_entries)
+      params.require(:feed).permit(:user_id, :feed_name, :feed_url, :number_feed_entries, :feed_icon)
     end
 end

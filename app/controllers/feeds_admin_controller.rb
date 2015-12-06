@@ -1,4 +1,0 @@
-class FeedsAdminController  < ApplicationController
-
-
-end

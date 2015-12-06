@@ -21,7 +21,7 @@
 							<div class="content">
 									<h3 class="post-title"><%= link_to feed.title, feed_feed_entry_path(@feed.id, feed.id) %></h3>
 										<div class="post-entry">
-											<p><%= feed.feed_entry_content.truncate(100) %></p>
+											<p><%= feed.feed_entry_content.truncate(100).html_safe rescue nil %></p>
 											<%= link_to 'read more', feed_feed_entry_path(@feed.id, feed.id) %>
 									</div>
 									<div class="meta">

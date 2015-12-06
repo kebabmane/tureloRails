@@ -1,4 +1,4 @@
-class FeedEntryWorker
+class FeedEntryFirstRunWorker
   include Sidekiq::Worker
 
   def perform(feed_id)
@@ -6,7 +6,7 @@ class FeedEntryWorker
     url = @feed.feed_url
     @get_feed = Feedjira::Feed.fetch_and_parse url
 
-    @get_feed.new_entries.each do |little_feed|
+    @get_feed.entries.each do |little_feed|
         @feed_entry = @feed.feed_entries.new
         @feed_entry.title = little_feed.title
         @feed_entry.author = little_feed.author

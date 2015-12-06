@@ -27,7 +27,7 @@
 
 <p>
   <strong>Feed entry content:</strong>
-  <%= @feed_entry.feed_entry_content %>
+  <%= @feed_entry.feed_entry_content.html_safe rescue nil %>
 </p>
 
 
