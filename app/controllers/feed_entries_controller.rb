@@ -10,6 +10,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries/1
   # GET /feed_entries/1.json
   def show
+    @feed = Feed.find(params[:feed_id])
   end
 
   # GET /feed_entries/new

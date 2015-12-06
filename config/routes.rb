@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :feeds do
     resources :feed_entries
-    post 'refresh_feed'  
+    post 'refresh_feed', :to=>"feeds#refresh_feed"
   end
   resources :overviews
 

@@ -26,6 +26,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
+      format.js { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
     end
 
   end

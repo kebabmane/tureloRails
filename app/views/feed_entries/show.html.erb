@@ -2,7 +2,7 @@
 
 <p>
   <strong>Feed:</strong>
-  <%= @feed_entry.feed %>
+  <%= @feed_entry.feed.feed_name %>
 </p>
 
 <p>
@@ -30,5 +30,5 @@
   <%= @feed_entry.feed_entry_content %>
 </p>
 
-<%= link_to 'Edit', edit_feed_entry_path(@feed_entry) %> |
-<%= link_to 'Back', feed_entries_path %>
+
+<%= link_to 'Back', feed_feed_entries_path %>

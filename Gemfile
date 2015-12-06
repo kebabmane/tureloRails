@@ -58,8 +58,6 @@ gem 'newrelic_rpm'
 gem "paranoia", "~> 2.0"
 gem 'feedjira'
 gem 'paper_trail', '~> 4.0.0'
-gem "paranoia", "~> 2.0"
-gem 'masonry-rails'
 
 
 group :development do
