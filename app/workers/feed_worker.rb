@@ -2,12 +2,15 @@ class FeedWorker
   include Sidekiq::Worker
 
   def perform(feed_id)
-    feed = Feed.find(feed_id)
-    url = feed.feed_url
-    get_feed = Feedjira::Feed.fetch_and_parse url
-    feed.update_attribute(:feed_name, get_feed.title)
-    feed.update_attribute(:number_feed_entries, get_feed.entries.count)
-    FeedEntryFirstRunWorker.perform_async(feed.id)
+    @feed = Feed.find(feed_id)
+    url = @feed.feed_url
+    @new_url = Feedbag.find url
+    @feed.feed_url = @new_url.first
+    @feed.save
+    get_feed = Feedjira::Feed.fetch_and_parse @new_url.first
+    @feed.update_attribute(:feed_name, get_feed.title)
+    @feed.update_attribute(:number_feed_entries, get_feed.entries.count)
+    FeedEntryFirstRunWorker.perform_async(@feed.id)
   end
 
 end

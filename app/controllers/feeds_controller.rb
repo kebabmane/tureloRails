@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all.paginate(:page => params[:page], :per_page => 10)
+    @feeds = Feed.all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /feeds/1
@@ -21,21 +21,10 @@ class FeedsController < ApplicationController
   def edit
   end
 
-  def refresh_feed
-    FeedEntryWorker.perform_async(params[:feed_id])
-
-    respond_to do |format|
-      format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
-      format.js { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
-    end
-
-  end
-
   # POST /feeds
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
-
     respond_to do |format|
       if @feed.save
         FeedWorker.perform_async(@feed.id)
@@ -71,6 +60,16 @@ class FeedsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def refresh_feed
+    FeedEntryWorker.perform_async(params[:feed_id])
+
+    respond_to do |format|
+      format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
+      format.js { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

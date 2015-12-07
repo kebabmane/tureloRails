@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 0efbcb1b3e9dea3ddcdfb22c8478f7e7efd9a3bd
+  revision: c6893c3db02108bcdee7f8f333531b99806779ac
   branch: master
   specs:
     twitter-bootstrap-rails (3.2.2)
@@ -173,6 +173,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.10.0)
       faraday (>= 0.7.4, < 0.10)
+    feedbag (0.9.5)
+      nokogiri (~> 1.0)
     feedjira (2.0.0)
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
@@ -518,6 +520,7 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails
   faker
+  feedbag
   feedjira
   figaro
   friendly_id

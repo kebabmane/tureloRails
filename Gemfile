@@ -59,6 +59,8 @@ gem "paranoia", "~> 2.0"
 gem 'feedjira'
 gem 'paper_trail', '~> 4.0.0'
 gem "sidekiq-cron"
+gem 'gravatarify'
+gem 'feedbag'
 
 
 group :development do

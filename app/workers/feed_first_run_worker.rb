@@ -5,7 +5,6 @@ class FeedEntryFirstRunWorker
     @feed = Feed.find(feed_id)
     url = @feed.feed_url
     @get_feed = Feedjira::Feed.fetch_and_parse url
-
     @get_feed.entries.each do |little_feed|
         @feed_entry = @feed.feed_entries.new
         @feed_entry.title = little_feed.title

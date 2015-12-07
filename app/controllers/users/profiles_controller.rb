@@ -9,7 +9,6 @@ class Users::ProfilesController < ApplicationController
 
   def show
     @current_age = current_age
-    @last_weight = Weight.where(user_id: current_user.id).last
     @user = User.friendly.find(params[:id])
     authorize @user
   end
@@ -44,7 +43,7 @@ class Users::ProfilesController < ApplicationController
 
   def current_age
     now = Time.now.utc.to_date
-    now.year - current_user.date_of_birth.year - (current_user.date_of_birth.to_date.change(:year => now.year) > now ? 1 : 0)
+    now.year rescue nil - current_user.date_of_birth.year - (current_user.date_of_birth.to_date.change(:year => now.year) > now ? 1 : 0)
   end
 
 end

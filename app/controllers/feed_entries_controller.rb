@@ -5,6 +5,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries.json
   def index
     @feed = Feed.find(params[:feed_id])
+    @feed_entry = FeedEntry.where(feed_id: params[:feed_id]).order("published DESC")
   end
 
   # GET /feed_entries/1

@@ -31,8 +31,6 @@
           <%= f.radio_button :is_female, false, label: "male" %>
     <% end %>
       <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
-    <%= f.number_field :user_height %>
-    <%= f.text_field :description %>
     <%= f.time_zone_select :time_zone %>
 
 
@@ -60,39 +58,11 @@
 
 <div class="col-md-4">
   <h4 class="text-center">change or upload your avatar</h4><br><br>
-  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
-    <%= devise_error_messages! %>
   <div class="text-center">
-  <%= f.file_field :avatar, :id => "imgInp" %>
-  <%= f.hidden_field :avatar_cache %>
+    <%= gravatar_tag @user.email, :size => "150x150", :html => { :class => "img-circle" } %>
   <br><br>
-
-   <img id="blah" src="#" alt="your avatar" class="round-image-50 imgborder image-shadow" />
- </div><br><br>
-  <%= f.submit "change password", class: "btn btn-primary" %>
-<% end %>
+ </div>
 </div>
 <div class="col-lg-2">
 </div>
-
-
-<script>
-function readURL(input) {
-
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#imgInp").change(function(){
-    readURL(this);
-});
-</script>
-
 </div>

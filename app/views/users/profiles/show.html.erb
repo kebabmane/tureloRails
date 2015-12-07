@@ -10,21 +10,16 @@
 <div class="col-lg-1">
 </div>
 <% if user_signed_in? %>
-	<%= link_to 'edit profile', edit_user_registration_path(current_user), :class=>"btn btn-success pull-right"  %>
+	<%= link_to 'edit profile', edit_users_profile_path(@user), :class=>"btn btn-success pull-right"  %>
 <% end %>
 
 	<div id="post_content">
 			<div class="media">
 				 <a class="pull-left" href="#">
-					 <% if @user.avatar.url.present? %>
-						 <%= image_tag(@user.avatar.thumb.url, :size => "150x150", :class => "img-circle") %>
-					 <% else %>
-						 <%= image_tag("munch-logo.jpg", :size => "150x150", :class => "img-circle") %>
-					 <% end %>
+			   		 <%= gravatar_tag @user.email, :size => "150x150", :html => { :class => "img-circle" } %>
 				 </a>
 				 <div class="media-body">
 							<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-						  <h5><%= @user.description %></h5>
 							<h5>
 								<% if @user.is_female == true %>
 									female
@@ -32,11 +27,6 @@
 									male
 								<% end %>
 								| <%= @current_age %> years old</h5>
-							<h5>
- 							  bmr - <%= number_with_precision @last_weight.calc_bmr, :precision => 0 %> |
-								bmi - <%= @last_weight.calc_bmi %> |
-								weight - <%= @last_weight.current_weight %> kg
-							</h5>
 				 </div>
 			</div>
 	<br><br>
