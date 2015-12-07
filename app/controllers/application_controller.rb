@@ -11,6 +11,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+
+  def after_sign_in_path_for(resource)
+       overviews_path
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
   protected
 
     def configure_permitted_parameters
@@ -38,10 +47,5 @@ class ApplicationController < ActionController::Base
       flash[:error] = "well that was naughty, dont worry we wont tell anyone"
       redirect_to request.headers["Referer"] || overviews_path
     end
-
-    def after_sign_out_path_for(resource_or_scope)
-      root_path
-    end
-
 
 end

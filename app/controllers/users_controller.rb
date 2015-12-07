@@ -1,19 +1,23 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :authenticate_user!
   after_action :verify_authorized
 
   def index
-    @users = User.all
-    authorize User
+		@users = User.all.paginate(:page => params[:page], :per_page => 10)
+		authorize User
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
   end
 
+  def edit
+      @user = current_user
+  end
+
   def update
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
@@ -32,7 +36,8 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :nickname, :time_zone)
   end
+
 
 end

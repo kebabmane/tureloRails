@@ -27,6 +27,7 @@
         </button>
         <a href="/" class="navbar-brand">turelo</a>
       </div>
+      <% if user_signed_in? %>
       <nav class="collapse navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
           <li>
@@ -42,19 +43,20 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">profile<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><%= link_to 'profile', users_profile_path(current_user) %></li>
-          <li><%= link_to 'logout', destroy_user_session_path, :method=>'delete' %></li>
+          <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
         </ul>
       </li>
         </ul>
+        <% end %>
       </nav>
     </div>
   </nav>
 
 
 
-              <div class="message in" id="flash">
-                  <%= render 'layouts/messages' %>
-              </div>
+  <div class="message in" id="flash">
+      <%= flash_messages %>
+  </div>
               <br>
 
               <div class="container">

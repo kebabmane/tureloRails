@@ -12,7 +12,11 @@ class FeedEntryWorker
         @feed_entry.author = little_feed.author
         @feed_entry.feed_entry_url = little_feed.id
         @feed_entry.published = little_feed.published
-        @feed_entry.feed_entry_content = little_feed.content
+        if little_feed.content
+          @feed_entry.feed_entry_content = little_feed.content
+        elsif litte_feed.summary
+          @feed_entry.feed_entry_content = little_feed.summary
+        end
         @feed_entry.save
     end
   end

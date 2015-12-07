@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'overviews#index'
+  root to: 'landings#index'
 
-  resources :users
   resources :feeds do
     resources :feed_entries
     post 'refresh_feed', :to=>"feeds#refresh_feed"
