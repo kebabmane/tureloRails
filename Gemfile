@@ -45,7 +45,6 @@ gem 'devise-async'
 gem 'lazy_high_charts'
 gem 'delayed_paperclip'
 gem 'ionicons-rails'
-gem 'masonry-rails'
 gem "searchjoy"
 gem 'blazer'
 gem 'pghero'
@@ -61,7 +60,6 @@ gem 'paper_trail', '~> 4.0.0'
 gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
-
 
 group :development do
   gem 'better_errors'

@@ -14,6 +14,5 @@
 //= require ahoy
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree .
