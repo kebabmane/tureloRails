@@ -15,18 +15,18 @@
 								<div class="post-inner">
 										<figure class="post-thumb">
 											<div class="item">
-												<%= image_tag("munch-eat.jpg", :size => "400x300", :class => "img-responsive") %>
+												<%= image_tag(feed.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
 											</div>
 									</figure>
 							<div class="content">
-									<h3 class="post-title"><%= link_to feed.title, feed_feed_entry_path(@feed.id, feed.id) %></h3>
+									<h3 class="post-title"><%= link_to feed.title, feed_feed_entry_path(@feed.id, feed.id) %></h3> 
 										<div class="post-entry">
 											<p><%= feed.feed_entry_content.truncate(100).html_safe rescue nil %></p>
 											<%= link_to 'read more', feed_feed_entry_path(@feed.id, feed.id) %>
 									</div>
 									<div class="meta">
 											<ul class="meta-list list-inline">
-												<li class="post-time post_date date updated">created <%= time_ago_in_words(feed.created_at) %> ago in <%= link_to @feed.feed_name, feed_path(@feed.id) %></li>
+												<li class="post-time post_date date updated">created <%= time_ago_in_words(feed.published) %> ago in <%= link_to @feed.feed_name, feed_path(@feed.id) %></li>
 										</ul><!--//meta-list-->
 									</div><!--meta-->
 							</div><!--//content-->

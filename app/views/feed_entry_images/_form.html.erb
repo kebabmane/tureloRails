@@ -1,11 +1,10 @@
-<%= simple_form_for(@feed, :url => feeds_path) do |f| %>
+<%= simple_form_for(@feed_entry_image) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :feed_url %>
+    <%= f.association :feed_entry %>
+    <%= f.input :img_url %>
   </div>
-
-  <%= f.hidden_field :user_id %>
 
   <div class="form-actions">
     <%= f.button :submit %>

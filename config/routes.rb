@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
   root to: 'landings#index'
 
   resources :feeds do
-    resources :feed_entries
+    resources :feed_entries do
+      resources :feed_entry_images
+    end
     post 'refresh_feed', :to=>"feeds#refresh_feed"
   end
   resources :overviews
@@ -34,7 +37,9 @@ Rails.application.routes.draw do
     authenticate :user, lambda { |u| u.admin? } do
      require 'sidekiq/web'
      require 'sidekiq/cron/web'
-     mount Blazer::Engine,  at: "admins/blazer"
-     mount Sidekiq::Web,    at: 'admins/sidekiq'
+     mount Blazer::Engine,    at: "admins/blazer"
+     mount Sidekiq::Web,      at: 'admins/sidekiq'
+     mount Searchjoy::Engine, at: "admins/searchjoy"
+     mount PgHero::Engine,    at: "admins/pghero"
     end
 end

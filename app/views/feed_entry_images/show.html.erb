@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Feed entry:</strong>
+  <%= @feed_entry_image.feed_entry %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @feed_entry_image.img_url %>
+</p>
+
+<%= link_to 'Edit', edit_feed_entry_image_path(@feed_entry_image) %> |
+<%= link_to 'Back', feed_entry_images_path %>

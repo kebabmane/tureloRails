@@ -2,7 +2,7 @@
        <td> <%= link_to feed.feed_name, feed %></td>
        <td><%= feed.feed_url.truncate(40) %></td>
        <td><%= feed.created_at.strftime("%d %b. %Y") %></td>
-       <td><%= feed.number_feed_entries %></td>
+       <td><%= feed.feed_entries_count %></td>
        <td><%= link_to 'edit', edit_feed_path(feed), { :class=>"btn btn-primary" } %>
        <%= link_to 'destroy', feed, :class => 'btn btn-danger', method: :delete, data: { confirm: 'are you sure?' } %></td>
 </tr>

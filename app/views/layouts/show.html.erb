@@ -1,0 +1,36 @@
+<div class="profile-header">
+
+</div>
+
+
+<div class="col-lg-12">
+	<br><br><br>
+
+<div class="row">
+<div class="col-lg-1">
+</div>
+<% if user_signed_in? %>
+	<%= link_to 'edit profile', edit_users_profile_path(@user), :class=>"btn btn-success pull-right"  %>
+<% end %>
+
+	<div id="post_content">
+			<div class="media">
+				 <a class="pull-left" href="#">
+			   		 <%= gravatar_tag @user.email, :size => "150x150", :html => { :class => "img-circle" } %>
+				 </a>
+				 <div class="media-body">
+							<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+							<h5>
+								<% if @user.is_female == true %>
+									female
+								<% else %>
+									male
+								<% end %>
+								| <%= @current_age %> years old</h5>
+				 </div>
+			</div>
+	<br><br>
+</div>
+
+</div>
+</div>

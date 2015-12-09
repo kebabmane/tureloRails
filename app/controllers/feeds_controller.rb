@@ -5,6 +5,7 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @feed  = Feed.new
   end
 
   # GET /feeds/1
@@ -28,7 +29,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed.save
         FeedWorker.perform_async(@feed.id)
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to feeds_path, notice: 'Feed was successfully created, please wait whilst we populate data' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
@@ -62,7 +63,7 @@ class FeedsController < ApplicationController
   end
 
   def refresh_feed
-    FeedEntryWorker.perform_async(params[:feed_id])
+    FeedEntryFirstRunWorker.perform_async(params[:feed_id])
 
     respond_to do |format|
       format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }

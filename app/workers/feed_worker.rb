@@ -9,7 +9,6 @@ class FeedWorker
     @feed.save
     get_feed = Feedjira::Feed.fetch_and_parse @new_url.first
     @feed.update_attribute(:feed_name, get_feed.title)
-    @feed.update_attribute(:number_feed_entries, get_feed.entries.count)
     FeedEntryFirstRunWorker.perform_async(@feed.id)
   end
 

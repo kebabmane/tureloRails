@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Feed Entry Images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feed entry</th>
+      <th>Img url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feed_entry_images.each do |feed_entry_image| %>
+      <tr>
+        <td><%= feed_entry_image.feed_entry %></td>
+        <td><%= feed_entry_image.img_url %></td>
+        <td><%= link_to 'Show', feed_entry_image %></td>
+        <td><%= link_to 'Edit', edit_feed_entry_image_path(feed_entry_image) %></td>
+        <td><%= link_to 'Destroy', feed_entry_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feed entry image', new_feed_entry_image_path %>
