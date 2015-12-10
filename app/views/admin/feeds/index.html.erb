@@ -1,12 +1,16 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>admin - all feed
+			<div class="pull-right">
+ 				<%= link_to 'new feed', new_admin_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
+      </div>
+		  </h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
+
 <div class="container">
-	<div class="row">
-<h1 class="page-header">all feeds
-	 <% if user_signed_in? %>
-	 <div class="pull-right">
-		<%= link_to 'new feed', new_admin_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
-	</div>
-	</h1>
-	<% end %>
 
 <table class="table table-striped" id='feeds_table'>
   <thead>
@@ -32,6 +36,8 @@
 	<%= will_paginate @feeds, renderer: BootstrapPagination::Rails %>
 </div>
 
+</div>
+
 <div class="modal fade" id="new_feed_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -45,6 +51,4 @@
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>

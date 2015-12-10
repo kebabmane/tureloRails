@@ -1,6 +1,12 @@
-<br><br>
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>home feed</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
 <div class="blog container">
-
+<div id="container">
 		<div class="row">
 				<div id="blog-mansonry" class="blog-list">
 			  <% @feed_entry.each do |feed_entry| %>
@@ -10,5 +16,6 @@
     </div>
 <div class="text-center">
 		<%= will_paginate @feed_entry, renderer: BootstrapPagination::Rails %>
+</div>
 </div>
 </div>

@@ -1,10 +1,15 @@
-<h1 class="page-header"><%= current_user.first_name %> feeds
-	 <% if user_signed_in? %>
-	 <div class="pull-right">
-		<%= link_to 'new feed', new_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
-	</div>
-	</h1>
-  <% end %>
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>your feeds
+				<div class="pull-right">
+	 				<%= link_to 'new feed', new_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
+	      </div>
+			</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue -->
+
 
 <% if @feeds.any? %>
 
@@ -25,11 +30,10 @@
 									<h3 class="post-title"><%= link_to feed.feed_name, feed_feed_entries_path(feed.id) %></h3>
 										<div class="post-entry">
 											<p>this feed has <%= feed.feed_entries_count %> entries</p>
-
-									</div>
+						   			</div>
 									<div class="meta">
 											<ul class="meta-list list-inline">
-												<li class="post-time post_date date updated">created <%= time_ago_in_words(feed.created_at) %> ago</li>
+												<li class="post-time post_date date updated">Updated <%= time_ago_in_words(feed.feed_entries.last.published) %> ago</li>
 										</ul><!--//meta-list-->
 									</div><!--meta-->
 							</div><!--//content-->

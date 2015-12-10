@@ -60,6 +60,7 @@ gem 'paper_trail', '~> 4.0.0'
 gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
+#gem 'imagesLoaded_rails'
 
 
 group :development do

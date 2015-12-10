@@ -2,72 +2,101 @@
 <html>
 <head>
   <title>turelo</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= metamagic %>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= metamagic %>
+
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= google_webfonts_init({
     google: ['Roboto Slab', 'Roboto']
   }) %>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-bright navbar-fixed-top" role="banner">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="/" class="navbar-brand">turelo</a>
-      </div>
-      <% if user_signed_in? %>
-      <nav class="collapse navbar-collapse" role="navigation">
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to 'overviews', overviews_path %>
-          </li>
-          <li>
-            <%= link_to 'feeds', feeds_path %>
-          </li>
-          <li>
-            <%= link_to 'admin', admin_feeds_path %>
-          </li>
-          <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">profile<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to 'profile', users_profile_path(current_user) %></li>
-          <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </li>
-        </ul>
+
+      <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">turelo</a>
+        </div>
+        <% if user_signed_in? %>
+        <div class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'overviews', overviews_path %></li>
+            <li><%= link_to 'feeds', feeds_path %></li>
+            <li><%= link_to 'admin', admin_feeds_path %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">profile <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+         		 <li><%= link_to 'profile', users_profile_path(current_user) %></li>
+       		     <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
         <% end %>
-      </nav>
+      </div>
     </div>
-  </nav>
 
 
 
   <div class="message in" id="flash">
       <%= flash_messages %>
   </div>
-              <br>
 
-              <div class="container">
-              	<div class="row">
+	 <%= yield %>
 
-	                 <%= yield %>
 
-                </div>
-              </div>
+   <!-- *****************************************************************************************************************
+    FOOTER
+    ***************************************************************************************************************** -->
+    <div id="footerwrap">
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-4">
+           <h4>About</h4>
+           <div class="hline-w"></div>
+           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+         </div>
+         <div class="col-lg-4">
+           <h4>Social Links</h4>
+           <div class="hline-w"></div>
+           <p>
+             <a href="#"><i class="fa fa-dribbble"></i></a>
+             <a href="#"><i class="fa fa-facebook"></i></a>
+             <a href="#"><i class="fa fa-twitter"></i></a>
+             <a href="#"><i class="fa fa-instagram"></i></a>
+             <a href="#"><i class="fa fa-tumblr"></i></a>
+           </p>
+         </div>
+         <div class="col-lg-4">
+           <h4>Our Bunker</h4>
+           <div class="hline-w"></div>
+           <p>
+             Some Ave, 987,<br/>
+             23890, New York,<br/>
+             United States.<br/>
+           </p>
+         </div>
+
+       </div><! --/row -->
+     </div><! --/container -->
+    </div><! --/footerwrap -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
 
     <script type="text/javascript">
     $(document).ready(function(){
@@ -76,22 +105,6 @@
       }, 1000);
     });
     </script>
-
-
-<br>
-</div>
-</div>
-    <div id="footer">
-      <div class="container">
-        <p class="text-muted credit">
-          turelo |
-          <a href="https://munch.fit/pages/terms_and_cond">terms and conditions</a>
-          <a href="https://www.facebook.com/pages/MUNCH/481574792019261" target="_blank"><i class="fa fa-facebook fa-fw fa-2x pull-right"></i></a>
-          <a href="https://twitter.com/munch_health" target="_blank"><i class="fa fa-twitter fa-fw fa-2x pull-right"></i></a>
-        </p>
-      </div>
-    </div>
-
 
 </body>
 </html>

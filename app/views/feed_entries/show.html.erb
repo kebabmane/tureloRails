@@ -1,29 +1,90 @@
-<h3 class="page-header"><%= @feed_entry.title %>
-	 <div class="pull-right">
-		<%= link_to 'back', feed_feed_entries_path, :class=>"btn btn-primary" %>
-   </div>
-</h3>
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3><%= @feed_entry.title %></h3>
+			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> | By: <%= @feed_entry.author %></h5>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue -->
 
 
-<p>
-  <strong>Feed entry url:</strong>
-  <%= @feed_entry.feed_entry_url %>
-</p>
+<div class="container mtb">
+ <div class="row">
 
-<p>
-  <strong>Published:</strong>
-  <%= @feed_entry.published %>
-</p>
+	 <! -- SINGLE POST -->
+	 <div class="col-lg-8">
+		 <p>
+			 <% if @feed_entry.feed_entry_images.any? %>
+				 <%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
+			 <% else %>
+				 <%= image_tag("folder.png", :size => "400x300", :class => "img-responsive") %>
+			 <% end %>
+		 </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @feed_entry.author %>
-</p>
-
-<p>
   <% if @feed_entry.summary.blank? %>
-    <p><%= @feed_entry.feed_entry_content.html_safe %></p>
+    <p><%= strip_tags(@feed_entry.feed_entry_content) %></p>
   <% else %>
-    <p><%= @feed_entry.summary.html_safe %></p>
+    <p><%= strip_tags(@feed_entry.summary) %></p>
   <% end %>
+
+
+<div class="spacing"></div>
+<h6>SHARE:</h6>
+<p class="share">
+	<a href="#"><i class="fa fa-twitter"></i></a>
+	<a href="#"><i class="fa fa-facebook"></i></a>
+	<a href="#"><i class="fa fa-tumblr"></i></a>
+	<a href="#"><i class="fa fa-google-plus"></i></a>
 </p>
+
+</div><! --/col-lg-8 -->
+
+<! -- SIDEBAR -->
+		<div class="col-lg-4">
+				<h4>Recent Posts</h4>
+			<div class="hline"></div>
+				<ul class="popular-posts">
+									<li>
+											<a href="#"><img src="assets/img/thumb01.jpg" alt="Popular Post"></a>
+											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+											<em>Posted on 02/21/14</em>
+									</li>
+									<li>
+											<a href="#"><img src="assets/img/thumb02.jpg" alt="Popular Post"></a>
+											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+											<em>Posted on 03/01/14</em>
+									<li>
+											<a href="#"><img src="assets/img/thumb03.jpg" alt="Popular Post"></a>
+											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+											<em>Posted on 05/16/14</em>
+									</li>
+									<li>
+											<a href="#"><img src="assets/img/thumb04.jpg" alt="Popular Post"></a>
+											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+											<em>Posted on 05/16/14</em>
+									</li>
+							</ul>
+
+			<div class="spacing"></div>
+
+			<h4>Popular Tags</h4>
+			<div class="hline"></div>
+				<p>
+								<a class="btn btn-theme" href="#" role="button">Design</a>
+								<a class="btn btn-theme" href="#" role="button">Wordpress</a>
+								<a class="btn btn-theme" href="#" role="button">Flat</a>
+								<a class="btn btn-theme" href="#" role="button">Modern</a>
+								<a class="btn btn-theme" href="#" role="button">Wallpaper</a>
+								<a class="btn btn-theme" href="#" role="button">HTML5</a>
+								<a class="btn btn-theme" href="#" role="button">Pre-processor</a>
+								<a class="btn btn-theme" href="#" role="button">Developer</a>
+								<a class="btn btn-theme" href="#" role="button">Windows</a>
+								<a class="btn btn-theme" href="#" role="button">Phothosop</a>
+								<a class="btn btn-theme" href="#" role="button">UX</a>
+								<a class="btn btn-theme" href="#" role="button">Interface</a>
+								<a class="btn btn-theme" href="#" role="button">UI</a>
+								<a class="btn btn-theme" href="#" role="button">Blog</a>
+				</p>
+		</div>
+	</div><! --/row -->
+ </div><! --/container -->

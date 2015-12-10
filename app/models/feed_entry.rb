@@ -19,8 +19,7 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.feed_entry_url     = entry.url
          feed_entry.title              = entry.title
          feed_entry.summary            = entry.summary
-         feed_entry.author             = entry.author--all
-
+         feed_entry.author             = entry.author
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
          feed_entry.save

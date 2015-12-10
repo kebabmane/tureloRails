@@ -1,240 +1,458 @@
-/*
-A Bootstrap 3.1 affix sidebar template
-from http://bootply.com
+/*	################################################################
 
-This CSS code should follow the 'bootstrap.css'
-in your HTML file.
+	Author: Carlos Alvarez
+	URL: http://alvarez.is
 
-license: MIT
-author: bootply.com
-*/
+	Project Name: SOLID - Bootstrap 3 Theme
+	Version: 1.0
+	URL: http://alvarez.is
+
+################################################################# */
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+
+
+/*	################################################################
+	1. GENERAL STRUCTURES
+################################################################# */
+	* {
+		margin: 0;
+		padding: 0px;
+	}
 
 body {
- padding-top:50px;
- color:#646464;
- background-color:#efefef;
+	background: #ffffff;
+	margin: 0;
+	height: 100%;
+	color: #384452;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
 }
 
-#masthead {
- min-height:250px;
+p {
+	padding: 0;
+	margin-bottom: 12px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	color: #384452;
+	margin-top: 10px;
 }
 
-#masthead h1 {
- font-size: 30px;
- line-height: 1;
- padding-top:20px;
+img {
+	height: auto;
+	max-width: 100%;
 }
 
-#masthead .well {
- margin-top:8%;
+a {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	-webkit-transition: background-color .4s linear, color .4s linear;
+	-moz-transition: background-color .4s linear, color .4s linear;
+	-o-transition: background-color .4s linear, color .4s linear;
+	-ms-transition: background-color .4s linear, color .4s linear;
+	transition: background-color .4s linear, color .4s linear;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color:#01b2fe;
 }
 
-@media screen and (min-width: 768px) {
-  #masthead h1 {
-    font-size: 50px;
-  }
+::-moz-selection  {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+::selection {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
 }
 
-.navbar-bright {
- background-color:#111155;
- color:#fff;
+.centered {
+	text-align: center
 }
 
-.affix-top,.affix{
- position: static;
+/*	################################################################
+	BOOTSTRAP MODIFICATIONS & TWEAKS
+################################################################# */
+.navbar {
+	min-height: 70px;
+	padding-top: 10px;
+	margin-bottom: 0px;
 }
 
-@media (min-width: 979px) {
-  #sidebar.affix-top {
-    position: static;
-  	margin-top:30px;
-  	width:228px;
-  }
-
-  #sidebar.affix {
-    position: fixed;
-    top:70px;
-    width:228px;
-  }
+.navbar-brand {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 900;
 }
 
-#sidebar li.active {
-  border:0 #eee solid;
-  border-right-width:5px;
+.navbar-header .navbar-brand {
+	color: white;
 }
 
-/* ======= Footer ======= */
-.footer {
-  background: #253340;
+.navbar-default .navbar-nav > li > a {
+	color: white;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #00b3fe;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #00b3fe;
+	background-color: transparent;
+}
+
+.navbar-default {
+	background-color: #384452;
+	border-color: transparent;
+}
+
+.dropdown-menu {
+	background: #384452;
+}
+
+.dropdown-menu > li > a {
+	color: white;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.btn-theme {
   color: #fff;
-  padding-top: 40px;
-  font-size: 14px;
-  position: relative;
-  z-index: 20;
-  width: 100%;
+  background-color: #384452;
+  border-color: #384452;
+  margin: 4px;
 }
-.footer p {
-  -webkit-opacity: 0.5;
-  -moz-opacity: 0.5;
-  opacity: 0.5;
-}
-.footer .btn-cta,
-.footer a.btn-cta {
-  padding: 9px 10px;
-}
-.footer .footer-col.links .fa {
-  margin-right: 5px;
-}
-.footer .footer-col.links li {
-  margin-bottom: 10px;
-}
-.footer .footer-col.connect .social {
-  margin-bottom: 15px;
-  overflow: hidden;
-}
-.footer .footer-col.connect .social li {
-  margin-right: 10px;
-}
-.footer .footer-col.connect .social li a .fa {
-  color: #b3b3b3;
-  font-size: 22px;
-}
-.footer .footer-col.connect .social li a:hover .fa {
-  color: #28a5a8;
-}
-.footer .footer-col.connect .btn-cta-primary {
-  background: #5d80a1;
-  border-color: #5d80a1;
-}
-.footer .footer-col.connect .btn-cta-primary:hover {
-  background: #4a6781;
-  border-color: #4a6781;
-}
-.footer .footer-col .title {
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
   color: #fff;
-  font-weight: normal;
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 20px;
-  -webkit-opacity: 0.9;
-  -moz-opacity: 0.9;
-  opacity: 0.9;
-}
-.footer .footer-col p {
-  color: #fff;
-}
-.footer .footer-col a {
-  color: #6d8dab;
-}
-.footer .footer-col a:hover {
-  color: #8da6bd;
-}
-.footer .footer-col .navbar-form {
-  padding-left: 0;
-  padding-right: 0;
-}
-.footer .footer-col .navbar-form .form-control {
-  -webkit-opacity: 0.9;
-  -moz-opacity: 0.9;
-  opacity: 0.9;
-}
-.footer .footer-col .navbar-form .form-control:focus {
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
-}
-.footer .has-divider {
-  border-top: 1px solid #2b3b4a;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-.footer .download .download-list li {
-  margin-bottom: 15px;
-}
-.footer .download .download-list li .btn-ghost {
-  text-align: left;
-  -webkit-opacity: 0.6;
-  -moz-opacity: 0.6;
-  opacity: 0.6;
-  width: 230px;
-}
-.footer .download .download-list li .btn-ghost:hover {
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
-}
-.footer .contact p {
-  -webkit-opacity: 0.5;
-  -moz-opacity: 0.5;
-  opacity: 0.5;
-}
-.footer .contact p a {
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
-}
-.footer .contact .fa {
-  margin-right: 10px;
-  font-size: 20px;
-}
-.footer .contact .email .fa {
-  font-size: 16px;
-}
-.footer .bottom-bar {
-  background: #1e1e1e;
-  color: #b3b3b3;
-  font-size: 14px;
-  padding: 10px 0;
-}
-.footer .bottom-bar .copyright {
-  line-height: 1.6;
+  background-color: #00b3fe;
+  border-color: #00b3fe;
 }
 
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  padding-top: 20px;
-  background-color: #f5f5f5;
+.dmbutton:hover,
+.dmbutton:active,
+.dmbutton:focus{
+	color: #ffffff;
+	background-color: #222222;
+	border-color: #ffffff;
+}
+.dmbutton {
+	background:rgba(0, 0, 0, 0);
+	border: 1px solid #ffffff;
+	color: #ffffff;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	padding-top: 1.025rem;
+	padding-right: 2.25rem;
+	letter-spacing:0.85px;
+	padding-bottom: 1.0875rem;
+	padding-left: 2.25rem;
+	font-size: 1.55rem;
+	cursor: pointer;
+	font-weight: normal;
+	line-height: normal;
+	margin: 0 0 1.25rem;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	-webkit-transition: background-color 300ms ease-out;
+	-moz-transition: background-color 300ms ease-out;
+	transition: background-color 300ms ease-out;
+	-webkit-appearance: none;
+	font-weight: normal !important;
 }
 
-#footer > .container {
-  padding-left: 15px;
-  padding-right: 15px;
+.mtb {
+	margin-top: 80px;
+	margin-bottom: 80px;
 }
 
-#masthead {
-  min-height:199px;
-  background-color:#000044;
-  color:#aaaacc;
+.mb {
+	margin-bottom: 60px;
 }
 
-#masthead h1 {
-  font-size: 55px;
-  line-height: 1;
-  color:#fefeff;
-  margin-top:50px;
+.mt {
+	margin-top: 60px;
 }
 
-#masthead .well {
-  margin-top:31px;
-  background-color:#111166;
-  border-color:#000022;
-  color:#efefff;
-  min-height:127px;
+.hline {
+	border-bottom: 2px solid #384452;
 }
 
-#topPanel {
-  padding-top:0px;
-  padding-left:22px;
-  padding-right:22px;
+.hline-w {
+	border-bottom: 2px solid #ffffff;
+	margin-bottom: 25px;
 }
-#topPanel .panel-body {
-  padding-top:0px;
+/*	################################################################
+	SITE WRAPS
+################################################################# */
+
+#headerwrap {
+	background-color: #00b3fe;
+	min-height: 550px;
+	padding-top: 100px;
+	padding-bottom: 0px;
+	text-align: center;
 }
 
-.text-center {
-  text-align: center;
+#headerwrap h3, h5 {
+	color: white;
+	font-weight: 400;
+}
+
+#headerwrap h1 {
+	color: white;
+	margin-bottom: 25px;
+}
+
+#headerwrap .img-responsive {
+	margin: 0 auto;
+}
+
+/* Services Wrap */
+#service {
+	margin-top: 100px;
+	margin-bottom: 80px;
+}
+
+#service i {
+	color: #00b3fe;
+	font-size: 60px;
+	padding: 15px;
+}
+
+/* Portfolio Wrap */
+#portfoliowrap {
+	padding-top: 60px;
+	margin-bottom: 60px;
+	display: block;
+	text-align: center
+}
+
+#portfoliowrap h3 {
+	margin-bottom: 25px;
+}
+
+.portfolio {
+	padding:0 !important;
+	margin:0 !important;
+	display:block;
+}
+
+
+.portfolio-item .title:before {border-radius:0; display:none}
+.portfolio-item p {margin:0px 0 30px;}
+.portfolio-item h3 {margin:-10px 0 10px; font-size:16px; text-transform:uppercase;}
+
+
+.tpl6 h3
+{
+	color:#fff;
+	margin:0;
+	padding:40px 5px 0;
+	font-size:16px;
+	text-transform:uppercase;
+}
+.tpl6 .dmbutton
+{
+	display:inline-block;
+	margin:30px 5px 20px 5px;
+	font-size:13px;
+}
+
+.tpl6 .bg
+{
+	height:100%;
+	width:100%;
+	background-color:#00b3fe;
+	background-color:rgba(0,179,254,.9);
+	text-align:center;
+}
+
+/* Testimonials Wrap */
+#twrap {
+	background: url(../img/t-back.jpg) no-repeat center top;
+	margin-top: 0px;
+	padding-top:60px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 450px;
+	width: 100%;
+
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#twrap i {
+	font-size: 50px;
+	color: white;
+	margin-bottom: 25px;
+}
+
+#twrap p {
+	color: white;
+	font-size: 15px;
+	line-height: 30px;
+}
+
+/* clients logo */
+#cwrap {
+	background: #f7f7f7;
+	margin-top: 0px;
+	padding-top: 80px;
+	padding-bottom: 100px;
+}
+
+#cwrap h3 {
+	margin-bottom: 60px;
+}
+
+/* Footer */
+#footerwrap {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background: #384452;
+}
+
+#footerwrap p {
+	color: #bfc9d3;
+}
+
+#footerwrap h4 {
+	color: white;
+}
+
+#footerwrap i {
+	font-size: 30px;
+	color: #bfc9d3;
+	padding-right: 25px;
+}
+
+#footerwrap i:hover {
+	color: #00b3fe
+}
+
+/*	################################################################
+	PAGE CONFIGURATIONS
+################################################################# */
+/* General Tweaks */
+
+#blue {
+	background: #00b3fe;
+	margin-top: 60px;
+	margin-bottom: 60px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+#blue h3 {
+	color: white;
+}
+
+.ctitle {
+	color: #00b3fe;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+csmall {
+	font-size: 12px;
+	color: #b3b3b3;
+}
+csmall2 {
+	font-size: 12px;
+	color: #f39c12
+}
+
+.spacing {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.badge-theme {
+	background: #00b3fe;
+}
+
+/* Contact Page */
+#contactwrap {
+	background: url(../img/contact.jpg) no-repeat center top;
+	margin-top: -60px;
+	padding-top:0px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 400px;
+	width: 100%;
+
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Blog Page */
+.popular-posts {
+	margin: 0px;
+	padding-left: 0px;
+	}
+
+.popular-posts li {
+	list-style: none;
+	margin-bottom: 20px;
+	min-height: 70px;
+}
+.popular-posts li a,
+.popular-posts li a:hover {
+	color:#2f2f2f;
+	text-decoration: none;
+	}
+
+.popular-posts li img {
+	float: left;
+	margin-right: 20px;
+	}
+
+.popular-posts li em {
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #b3b3b3
+	}
+
+.popular-posts p {
+	line-height: normal;
+	margin-bottom: auto;
+}
+
+.share i {
+	padding-right: 15px;
+	font-size: 18px;
 }
