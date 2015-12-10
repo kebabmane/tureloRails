@@ -1,8 +1,13 @@
 <div id="blue">
 		<div class="container">
 		<div class="row">
-			<h3><%= @feed_entry.title %></h3>
-			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> | By: <%= @feed_entry.author %></h5>
+			<h3>
+				<%= @feed_entry.title %>
+				<div class="pull-right">
+	 				<%= link_to 'origional article', @feed_entry.feed_entry_url, :class=>"btn btn-primary", :target => "_blank" %>
+	      </div>
+			</h3>
+			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago | By: <%= @feed_entry.author %> | In: <%= @feed_entry.feed.feed_name %></h5>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue -->
@@ -44,26 +49,14 @@
 				<h4>Recent Posts</h4>
 			<div class="hline"></div>
 				<ul class="popular-posts">
-									<li>
-											<a href="#"><img src="assets/img/thumb01.jpg" alt="Popular Post"></a>
-											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-											<em>Posted on 02/21/14</em>
-									</li>
-									<li>
-											<a href="#"><img src="assets/img/thumb02.jpg" alt="Popular Post"></a>
-											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-											<em>Posted on 03/01/14</em>
-									<li>
-											<a href="#"><img src="assets/img/thumb03.jpg" alt="Popular Post"></a>
-											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-											<em>Posted on 05/16/14</em>
-									</li>
-									<li>
-											<a href="#"><img src="assets/img/thumb04.jpg" alt="Popular Post"></a>
-											<p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-											<em>Posted on 05/16/14</em>
-									</li>
-							</ul>
+					<% @recent_feed.each do |recent_feed| %>
+						<li>
+								<a href="#"><img src="assets/img/thumb01.jpg" alt="Popular Post"></a>
+								<p><a href="#"><%= link_to recent_feed.title, feed_feed_entry_path(@feed.id, recent_feed.id) %></a></p>
+								<em>Posted on <%= time_ago_in_words(recent_feed.published) %></em>
+						</li>
+					<% end %>
+					</ul>
 
 			<div class="spacing"></div>
 

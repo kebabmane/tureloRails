@@ -12,6 +12,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries/1.json
   def show
     @feed = Feed.find(params[:feed_id])
+    @recent_feed = FeedEntry.all.order("published DESC").limit(5)
   end
 
   # GET /feed_entries/new

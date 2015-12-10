@@ -4,7 +4,11 @@ class OverviewsController < ApplicationController
 
 
  def index
-   @feed_entry = FeedEntry.all.order("published DESC").paginate(:page => params[:page], :per_page => 9)
+   if params[:search].present?
+     @feed_entry = FeedEntry.all.order("published DESC").search(params[:search], suggest: true, track: true, page: params[:page], per_page: 9)
+  else
+     @feed_entry = FeedEntry.all.order("published DESC").paginate(:page => params[:page], :per_page => 9)
+  end
  end
 
 end
