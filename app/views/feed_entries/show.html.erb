@@ -7,7 +7,7 @@
 	 				<%= link_to 'origional article', @feed_entry.feed_entry_url, :class=>"btn btn-primary", :target => "_blank" %>
 	      </div>
 			</h3>
-			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago | By: <%= @feed_entry.author %> | In: <%= @feed_entry.feed.feed_name %></h5>
+			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago | By: <%= @feed_entry.author %> | In: <%= link_to @feed_entry.feed.feed_name, feed_feed_entries_path(@feed_entry.feed.id) %></h5>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue -->
@@ -51,7 +51,7 @@
 				<ul class="popular-posts">
 					<% @recent_feed.each do |recent_feed| %>
 						<li>
-								<a href="#"><img src="assets/img/thumb01.jpg" alt="Popular Post"></a>
+								<%= image_tag(recent_feed.feed_entry_images.first.img_url, :size => "100x100", :class => "img-responsive") %>
 								<p><a href="#"><%= link_to recent_feed.title, feed_feed_entry_path(@feed.id, recent_feed.id) %></a></p>
 								<em>Posted on <%= time_ago_in_words(recent_feed.published) %></em>
 						</li>

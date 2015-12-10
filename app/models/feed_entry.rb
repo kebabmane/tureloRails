@@ -10,10 +10,7 @@ class FeedEntry < ActiveRecord::Base
 
   def self.add_entries(entries, feed)
      entries.each do |entry|
-       if FeedEntry.exists?(entry_id: entry.id, feed_id: feed.id)
-          break
-       else
-         feed_entry = FeedEntry.new
+         feed_entry = FeedEntry.where(title: entry.title).first_or_initialize
          feed_entry.entry_id           = entry.id
          feed_entry.feed_id            = feed.id
          feed_entry.feed_entry_url     = entry.url
@@ -44,14 +41,8 @@ class FeedEntry < ActiveRecord::Base
              )
           end
 
-
-
-        end
        end
      end
 
-     def extract_images()
-
-     end
 
 end
