@@ -1,0 +1,30 @@
+<article class="post col-md-4 col-sm-6 col-xs-12">
+              <div class="post-inner">
+                  <figure class="post-thumb">
+                    <div class="item">
+                      <%= link_to feed_feed_entry_path(feed_entry.feed_id, feed_entry.id) do %>
+                        <% if feed_entry.feed_entry_images.any? %>
+                          <%= image_tag(feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
+                        <% else %>
+                          <%= image_tag("meow.jpg", :size => "400x300", :class => "img-responsive") %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                </figure>
+            <div class="content">
+                <h3 class="post-title"><%= link_to feed_entry.title, feed_feed_entry_path(feed_entry.feed.id, feed_entry.id) %></h3>
+                  <div class="post-entry">
+                      <% if feed_entry.summary.blank? %>
+                        <p><%= strip_tags(feed_entry.feed_entry_content).truncate(300) %></p>
+                      <% else %>
+                        <p><%= strip_tags(feed_entry.summary).truncate(300) %></p>
+                      <% end %>
+                 </div>
+                <div class="meta">
+                    <ul class="meta-list list-inline">
+                        <li class="post-time post_date date updated">created <%= time_ago_in_words(feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, feed_path(feed_entry.feed.id) %> by <%= feed_entry.author %></li>
+                    </ul><!--//meta-list-->
+                </div><!--meta-->
+            </div><!--//content-->
+        </div><!--//post-inner-->
+</article>

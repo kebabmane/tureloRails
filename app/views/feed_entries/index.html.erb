@@ -13,8 +13,8 @@
 			  <% @feed_entry.each do |feed| %>
 						<%= render partial: 'feed_entry', locals: {feed: feed} %>
         <% end %>
-</div>
-</div>
+        </div>
+    </div>
 <div class="text-center">
 		<%= will_paginate @feed_entry, renderer: BootstrapPagination::Rails %>
 </div>

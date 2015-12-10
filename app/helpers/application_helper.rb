@@ -29,4 +29,10 @@ module ApplicationHelper
     nil
   end
 
+  def remove_images(string)
+    f = Nokogiri::XML.fragment(string)
+    f.search('.//img').remove
+    return sanatize f
+  end
+
 end

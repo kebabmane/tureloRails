@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h3 class="page-header"><%= @feed_entry.title %>
+	 <div class="pull-right">
+		<%= link_to 'back', feed_feed_entries_path, :class=>"btn btn-primary" %>
+   </div>
+</h3>
 
-<p>
-  <strong>Feed:</strong>
-  <%= @feed_entry.feed.feed_name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @feed_entry.title %>
-</p>
 
 <p>
   <strong>Feed entry url:</strong>
@@ -26,9 +21,9 @@
 </p>
 
 <p>
-  <strong>Feed entry content:</strong>
-  <%= @feed_entry.feed_entry_content.html_safe rescue nil %>
+  <% if @feed_entry.summary.blank? %>
+    <p><%= @feed_entry.feed_entry_content.html_safe %></p>
+  <% else %>
+    <p><%= @feed_entry.summary.html_safe %></p>
+  <% end %>
 </p>
-
-
-<%= link_to 'Back', feed_feed_entries_path %>
