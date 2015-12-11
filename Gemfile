@@ -60,7 +60,7 @@ gem 'paper_trail', '~> 4.0.0'
 gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
-#gem 'imagesLoaded_rails'
+gem 'simple_form_auto_select2'
 
 
 group :development do

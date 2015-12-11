@@ -6,7 +6,7 @@ class FeedEntry < ActiveRecord::Base
   belongs_to :feed, :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
 
-
+  validates :title, presence: true, uniqueness: true
 
   def self.add_entries(entries, feed)
      entries.each do |entry|

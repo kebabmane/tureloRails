@@ -1,0 +1,36 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>admin - <%= @feed.feed_name%></h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue -->
+
+
+<div class="container mtb">
+ <div class="row">
+
+	 <! -- SINGLE POST -->
+	 <div class="col-lg-8">
+
+     hey here is stuff hey
+
+
+   </div>
+
+
+   <div class="col-lg-4">
+     <h4>tags</h4>
+     <div class="hline"></div>
+       <p>
+         <% @feed.tag_list.each do |tag| %>
+            <a class="btn btn-theme" href="#" role="button"><%= tag %></a>
+         <% end %>
+       </p>
+   </div>
+
+   </div>
+
+
+ </div>
+ </div>

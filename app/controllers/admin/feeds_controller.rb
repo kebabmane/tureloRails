@@ -12,15 +12,12 @@ class Admin::FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+
   end
 
   # GET /feeds/new
   def new
     @feed = Feed.new
-  end
-
-  # GET /feeds/1/edit
-  def edit
   end
 
   # POST /feeds

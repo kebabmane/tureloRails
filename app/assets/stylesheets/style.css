@@ -456,3 +456,9 @@ csmall2 {
 	padding-right: 15px;
 	font-size: 18px;
 }
+
+.footer {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}

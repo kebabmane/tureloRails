@@ -15,14 +15,24 @@
  *= require_self
  */
 
-/* Sticky footer styles
--------------------------------------------------- */
 
-/*
-    Note: It is best to use a less version of this file ( see http://css2less.cc
-    For the media queries use @screen-sm-min instead of 768px.
-    For .omb_spanOr use @body-bg instead of white.
-*/
+html,
+body {
+	background: #ffffff;
+	margin: 0;
+	height: 100%;
+	color: #384452;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+  padding-bottom: 60px;
+}
 
 @media (min-width: 768px) {
     .omb_row-sm-offset-3 div:first-child[class*="col-"] {
