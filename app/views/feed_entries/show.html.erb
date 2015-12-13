@@ -7,7 +7,11 @@
 	 				<%= link_to 'origional article', @feed_entry.feed_entry_url, :class=>"btn btn-primary", :target => "_blank" %>
 	      </div>
 			</h3>
-			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago | By: <%= @feed_entry.author %> | In: <%= link_to @feed_entry.feed.feed_name, feed_feed_entries_path(@feed_entry.feed.id) %></h5>
+			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago
+					<% if @feed_entry.author? %>
+	     		| By:	<%= @feed_entry.author %>
+					<% end %>
+						 | In: <%= link_to @feed_entry.feed.feed_name, feed_feed_entries_path(@feed_entry.feed.id) %></h5>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue -->
@@ -36,10 +40,7 @@
 <div class="spacing"></div>
 <h6>SHARE:</h6>
 <p class="share">
-	<a href="#"><i class="fa fa-twitter"></i></a>
-	<a href="#"><i class="fa fa-facebook"></i></a>
-	<a href="#"><i class="fa fa-tumblr"></i></a>
-	<a href="#"><i class="fa fa-google-plus"></i></a>
+	<%= social_share_button_tag(@feed_entry.title, :url => @feed_entry.feed_entry_url) %>
 </p>
 
 </div><! --/col-lg-8 -->

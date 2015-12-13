@@ -14,16 +14,20 @@
 //= require ahoy
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
+//= require social-share-button
 //= require_tree .
 
 
-
-$(function() {
-  var $container = $('#blog-mansonry');
-  $container.imagesLoaded(function(){
-      $container.masonry({
-          itemSelector : '.post'
-      });
+$(document).ready( function() {
+  // init Masonry
+  var $grid = $('#blog-mansonry').delay(1000).packery({
+    itemSelector: '.post',
+    percentPosition: true
   });
+  // layout Isotope after each image loads
+  $grid.imagesLoaded().progress( function() {
+    $grid.packery();
+    $grid.delay(1000).packery('reloadItems')
+  });
+
 });

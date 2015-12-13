@@ -7,22 +7,25 @@ class Admin::FeedsController < ApplicationController
   def index
     @feeds = Feed.all.paginate(:page => params[:page], :per_page => 10)
     @feed  = Feed.new
+    authorize current_user
   end
 
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-
+      authorize current_user
   end
 
   # GET /feeds/new
   def new
     @feed = Feed.new
+    authorize current_user
   end
 
   # POST /feeds
   # POST /feeds.json
   def create
+    authorize current_user
     @feed = Feed.new(feed_params)
     respond_to do |format|
       if @feed.save

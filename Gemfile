@@ -33,7 +33,6 @@ gem "chartkick"
 gem 'groupdate'
 gem 'redis'
 gem 'sidekiq'
-gem 'sidekiq_send_mail'
 gem 'google-webfonts-rails'
 gem "searchkick"
 gem 'twitter-typeahead-rails'
@@ -61,6 +60,7 @@ gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
 gem 'simple_form_auto_select2'
+gem 'social-share-button'
 
 
 group :development do
@@ -79,7 +79,6 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
