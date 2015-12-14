@@ -9,13 +9,11 @@
 <div id="container">
 		<div class="row">
 				<div id="blog-mansonry" class="blog-list">
-			  <% @feed_entry.each do |feed_entry| %>
-						<%= render partial: 'feed_entry', locals: {feed_entry: feed_entry} %>
-        <% end %>
-        </div>
+						<%= render @feed_entries %>
+       	</div>
     </div>
 <div class="text-center">
-		<%= will_paginate @feed_entry, renderer: BootstrapPagination::Rails %>
+		<%= will_paginate @feed_entries %>
 </div>
 </div>
 </div>

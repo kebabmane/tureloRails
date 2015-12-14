@@ -39,9 +39,21 @@
 
 <div class="spacing"></div>
 <h6>SHARE:</h6>
-<p class="share">
-	<%= social_share_button_tag(@feed_entry.title, :url => @feed_entry.feed_entry_url) %>
-</p>
+<div class="social__container">
+	<div class="social__item">
+            <a target="_blank" href="http://twitter.com/home?status=<%= @feed_entry.title %>+<%= @feed_entry.feed_entry_url %>" class="social__icon--twitter"><i class="icon--twitter"></i></a>
+  </div>
+
+	<div class="social__item">
+             <a target="_blank" href="https://plus.google.com/share?url=<%= @feed_entry.feed_entry_url %>" class="social__icon--googleplus"><i class="icon--googleplus"></i></a>
+  </div>
+
+	<div class="social__item">
+             <a target="_blank" href="http://www.facebook.com/share.php?u=<%= @feed_entry.feed_entry_url %>&title=<%= @feed_entry.title %>" class="social__icon--facebook"><i class="icon--facebook"></i></a>
+  </div>
+
+</div>
+
 
 </div><! --/col-lg-8 -->
 

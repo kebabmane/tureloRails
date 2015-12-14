@@ -60,7 +60,6 @@ gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
 gem 'simple_form_auto_select2'
-gem 'social-share-button'
 
 
 group :development do
