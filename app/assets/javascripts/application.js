@@ -19,14 +19,14 @@
 
 $(document).ready( function() {
   // init Masonry
-  var $grid = $('#blog-mansonry').delay(1000).packery({
+  var $grid = $('#blog-mansonry').packery({
     itemSelector: '.post',
     percentPosition: true
   });
   // layout Isotope after each image loads
   $grid.imagesLoaded().progress( function() {
     $grid.packery();
-    $grid.delay(1000).packery('reloadItems')
+    $grid.packery('reloadItems')
   });
 
 });

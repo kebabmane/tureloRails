@@ -6,6 +6,12 @@ class FeedEntriesController < ApplicationController
   def index
     @feed = Feed.find(params[:feed_id])
     @feed_entries = FeedEntry.where(feed_id: params[:feed_id]).order("published DESC").paginate(:page => params[:page], :per_page => 9)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   # GET /feed_entries/1

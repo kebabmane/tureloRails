@@ -1,2 +1,10 @@
-$('#posts').append('<%= escape_javascript render(@posts) %>');
-$('.pagination').replaceWith('<%= escape_javascript will_paginate(@posts) %>');
+$post = $('<%= j render(@feed_entries) %>)');
+
+$('#blog-mansonry').append( $post );
+$('#blog-mansonry').packery( 'appended', $post );
+
+<% if @feed_entries.next_page %>
+$('.pagination').replaceWith('<%= j will_paginate(@feed_entries) %>');
+<% else %>
+$('.pagination').remove();
+<% end %>
