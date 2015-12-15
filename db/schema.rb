@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215100104) do
+ActiveRecord::Schema.define(version: 20151215114809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,13 +75,14 @@ ActiveRecord::Schema.define(version: 20151215100104) do
     t.datetime "published"
     t.string   "author"
     t.text     "feed_entry_content"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.boolean  "is_read"
     t.boolean  "keep_unread"
     t.boolean  "is_starred"
     t.text     "entry_id"
     t.text     "summary"
+    t.integer  "likees_count",       default: 0
   end
 
   add_index "feed_entries", ["feed_id"], name: "index_feed_entries_on_feed_id", using: :btree
@@ -100,13 +101,14 @@ ActiveRecord::Schema.define(version: 20151215100104) do
     t.string   "feed_name"
     t.string   "feed_url"
     t.integer  "number_feed_entries"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.datetime "deleted_at"
     t.string   "feed_icon"
     t.datetime "last_fetched"
     t.integer  "status"
     t.integer  "feed_entries_count"
+    t.integer  "followers_count",     default: 0
   end
 
   add_index "feeds", ["deleted_at"], name: "index_feeds_on_deleted_at", using: :btree

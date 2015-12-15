@@ -11,6 +11,26 @@
 </div><!-- /blue -->
 
 
+<div class="row">
+	<div class="col-lg-3">
+	</div>
+<div class="col-lg-6">
+<div id="custom-search-input">
+	<%= form_tag feeds_path, method: :get do %>
+		<div class="input-group col-md-12">
+<%= text_field_tag :search, params[:query], class: "form-control input-lg", :placeholder => "search for feeds", id: "query-recipe", autocomplete: "off" %>
+	<span class="input-group-btn">
+		<%= button_tag(html: {class: "btn btn-default"}) do %>
+			<i class="icon ion-ios-search nav-icon"></i>
+		<% end %>
+	</span>
+<% end %>
+		</div>
+
+</div>
+</div>
+</div>
+
 <% if @feeds.any? %>
 
 <br><br>

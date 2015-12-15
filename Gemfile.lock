@@ -150,7 +150,6 @@ GEM
     elasticsearch-transport (1.0.15)
       faraday
       multi_json
-    engtagger (0.2.0)
     errbase (0.0.3)
     erubis (2.7.0)
     eventmachine (1.0.8)
@@ -512,7 +511,6 @@ DEPENDENCIES
   devise
   devise-async
   devise_invitable
-  engtagger
   exception_notification
   factory_girl_rails
   feedbag

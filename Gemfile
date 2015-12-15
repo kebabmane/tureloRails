@@ -61,7 +61,6 @@ gem 'feedbag'
 gem 'ahoy_matey'
 gem 'font-awesome-rails'
 gem "socialization"
-gem 'engtagger'
 
 
 group :development do
