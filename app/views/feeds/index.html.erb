@@ -34,7 +34,14 @@
 									<div class="meta">
 											<ul class="meta-list list-inline">
 												<li class="post-time post_date date updated">Updated <%= time_ago_in_words(feed.feed_entries.last.published) rescue nil %> ago</li>
-										</ul><!--//meta-list-->
+							   			</ul><!--//meta-list-->
+											<div class="feed-<%= feed.id %>">
+											<% if current_user.follows?(feed) %>
+												<%= button_to "unfollow", unfollow_path(feed: feed) , remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
+											<% else %>
+												<%= button_to "follow", follow_path(feed: feed) , remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
+											<% end %>
+									  	</div>
 									</div><!--meta-->
 							</div><!--//content-->
 					</div><!--//post-inner-->

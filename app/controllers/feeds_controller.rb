@@ -22,6 +22,16 @@ class FeedsController < ApplicationController
   def edit
   end
 
+  def follow
+    @feed = Feed.find(params[:feed])
+    current_user.follow!(@feed)
+  end
+
+  def unfollow
+    @feed = Feed.find(params[:feed])
+    current_user.unfollow!(@feed)
+  end
+
   # POST /feeds
   # POST /feeds.json
   def create

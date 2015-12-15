@@ -14,6 +14,16 @@ class FeedEntriesController < ApplicationController
 
   end
 
+  def like
+      @likeable = FeedEntry.find(params[:feed_entry_id])
+	    current_user.like!(@likeable)
+  end
+
+  def unlike
+       @likeable = FeedEntry.find(params[:feed_entry_id])
+	     current_user.unlike!(@likeable)
+  end
+
   # GET /feed_entries/1
   # GET /feed_entries/1.json
   def show

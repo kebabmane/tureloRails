@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   has_many :notifications, foreign_key: :recipient_id
 
+  acts_as_follower
+  acts_as_liker
+
   attr_accessor :login
 
   validates :email, :presence => true, :uniqueness => true

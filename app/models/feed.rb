@@ -3,6 +3,7 @@ class Feed < ActiveRecord::Base
   has_paper_trail
   acts_as_paranoid
   acts_as_taggable
+  acts_as_followable
 
   has_many :feed_entries, dependent: :destroy
 

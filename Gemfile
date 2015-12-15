@@ -59,8 +59,9 @@ gem 'paper_trail', '~> 4.0.0'
 gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
-gem 'simple_form_auto_select2'
 gem 'font-awesome-rails'
+gem "socialization"
+gem 'engtagger'
 
 
 group :development do

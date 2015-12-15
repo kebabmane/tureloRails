@@ -2,6 +2,7 @@ class FeedEntry < ActiveRecord::Base
   searchkick  callbacks: :async, track: true, conversions: "conversions"
   has_paper_trail
   acts_as_taggable
+  acts_as_likeable
 
   belongs_to :feed, :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
@@ -40,7 +41,6 @@ class FeedEntry < ActiveRecord::Base
                 :feed_entry_id        => feed_entry.id,
              )
           end
-         Notification.create(recipient: user, actor: current_user, action: "new feed", notifiable: feed_entry)  
        end
      end
 
