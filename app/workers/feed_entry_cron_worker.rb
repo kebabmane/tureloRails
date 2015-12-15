@@ -1,7 +1,6 @@
 class FeedEntryCronWorker
   include Sidekiq::Worker
 
-
   def perform
     @feeds = Feed.all
     @feeds.each do |feed|

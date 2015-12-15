@@ -40,7 +40,7 @@ class FeedEntry < ActiveRecord::Base
                 :feed_entry_id        => feed_entry.id,
              )
           end
-
+         Notification.create(recipient: user, actor: current_user, action: "new feed", notifiable: feed_entry)  
        end
      end
 

@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     resources :feeds
   end
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
    devise_scope :user do
     	get '/login' => 'devise/sessions#new'
     	get '/logout' => 'devise/sessions#destroy'

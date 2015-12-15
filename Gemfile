@@ -60,6 +60,7 @@ gem "sidekiq-cron"
 gem 'feedbag'
 gem 'ahoy_matey'
 gem 'simple_form_auto_select2'
+gem 'font-awesome-rails'
 
 
 group :development do

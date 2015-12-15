@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   #has_many :feeds
   after_create :send_admin_mail
 
+  has_many :notifications, foreign_key: :recipient_id
+
   attr_accessor :login
 
   validates :email, :presence => true, :uniqueness => true
