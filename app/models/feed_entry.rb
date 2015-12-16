@@ -41,6 +41,9 @@ class FeedEntry < ActiveRecord::Base
                 :feed_entry_id        => feed_entry.id,
              )
           end
+          feed_entry.feed.followers(User).each do |user|
+            Notification.create(recipient: user, actor: user, action: "new entry", notifiable: feed_entry)
+          end
        end
      end
 

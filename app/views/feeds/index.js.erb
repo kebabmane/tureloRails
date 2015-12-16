@@ -1,0 +1,13 @@
+$post = $('<%= j render(@feeds) %>)');
+
+$('#blog-mansonry').append( $post );
+$('#blog-mansonry').imagesLoaded( function() {
+  $('#blog-mansonry').packery( 'appended', $post );
+ });
+
+
+<% if @feeds.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@feeds) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>

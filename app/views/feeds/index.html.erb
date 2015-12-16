@@ -1,7 +1,7 @@
 <div id="blue">
 		<div class="container">
 		<div class="row">
-			<h3>your subscribed feeds
+			<h3>all feeds
 				<div class="pull-right">
 	 				<%= link_to 'new feed', new_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
 	      </div>
@@ -38,40 +38,13 @@
 
 		<div class="row">
 				<div id="blog-mansonry" class="blog-list">
-			  <% @feeds.each do |feed| %>
-	<article class="post col-md-4 col-sm-6 col-xs-12">
-								<div class="post-inner">
-										<figure class="post-thumb">
-											<div class="item">
-												<%= image_tag(feed.feed_entries.order('published desc').first.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") rescue nil %>
-											</div>
-									</figure>
-							<div class="content">
-									<h3 class="post-title"><%= link_to feed.feed_name, feed_feed_entries_path(feed.id) %></h3>
-										<div class="post-entry">
-											<p>this feed has <%= feed.feed_entries_count %> entries</p>
-						   			</div>
-									<div class="meta">
-											<ul class="meta-list list-inline">
-												<li class="post-time post_date date updated">Updated <%= time_ago_in_words(feed.feed_entries.last.published) rescue nil %> ago</li>
-							   			</ul><!--//meta-list-->
-											<div class="feed-<%= feed.id %>">
-											<% if current_user.follows?(feed) %>
-												<%= button_to "unfollow", unfollow_path(feed: feed) , remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
-											<% else %>
-												<%= button_to "follow", follow_path(feed: feed) , remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
-											<% end %>
-									  	</div>
-									</div><!--meta-->
-							</div><!--//content-->
-					</div><!--//post-inner-->
-					</article>
+						<%= render @feeds %>
+        </div>
+    </div>
 
-  <% end %>
+<div class="text-center">
+	<%= will_paginate @feeds %>
 </div>
-</div>
-
-<%= will_paginate @feeds, renderer: BootstrapPagination::Rails %>
 </div>
 
 <% else %>

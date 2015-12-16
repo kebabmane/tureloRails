@@ -4,13 +4,15 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-
     @feed  = Feed.new
-
     if params[:search].present?
       @feeds = Feed.all.order("updated_at DESC").search(params[:search], suggest: true, track: true, page: params[:page], per_page: 9)
    else
       @feeds = Feed.all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 9)
+   end
+   respond_to do |format|
+     format.html
+     format.js
    end
   end
 

@@ -12,18 +12,18 @@ class Notifications
       success: @handleSuccess
     )
 
-  handleClick: (e) =>
-    $.ajax(
-      url: "/notifications/mark_as_read"
-      dataType: "JSON"
-      method: "POST"
-      success: ->
-        $("[data-behavior='unread-count']").text(0)
-    )
-
   handleSuccess: (data) =>
     items = $.map data, (notification) ->
-      "<li><a href='#{notification.url}'>#{notification.actor} #{notification.action} #{notification.notifiable.type}</a></li>"
+      "<li>
+        <span class='item'>
+          <span class='item-left'>
+            <img src='http://lorempixel.com/50/50/'' alt='' />
+              <span class='item-info'>
+                  <span><%= FeedEntry.find(notification.notifiable_id).title %></span>
+              </span>
+          </span>
+        </span>
+       </li>"
 
     $("[data-behavior='unread-count']").text(items.length)
     $("[data-behavior='notification-items']").html(items)
