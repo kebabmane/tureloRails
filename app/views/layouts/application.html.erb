@@ -40,16 +40,10 @@
             <li><%= link_to 'timeline', overviews_path %></li>
             <li><%= link_to 'feeds', feeds_path %></li>
             <li><%= link_to 'admin', admin_feeds_path %></li>
-            <li class="nav-item btn-group" data-behavior="notifications">
-                <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
 
-                </div>
-            </li>
-          <li class="dropdown">
-            <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <%= fa_icon "bell" %> <span data-behavior="unread-count"></span> <span class="caret"></span></a>
+          <li class="nav-item btn-group" data-behavior="notifications">
+            <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= fa_icon "bell" %> <span data-behavior="unread-count"></span> <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-cart" role="menu" data-behavior="notification-items">
               <li>
                   <span class="item">

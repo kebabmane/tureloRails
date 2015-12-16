@@ -8,10 +8,11 @@ class FeedEntry < ActiveRecord::Base
   has_many :feed_entry_images, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true
+  validates :entry_id, presence: true, uniqueness: true
 
   def self.add_entries(entries, feed)
      entries.each do |entry|
-         feed_entry = FeedEntry.where(title: entry.title).first_or_initialize
+         FeedEntry.where(entry_id: entry.id).first_or_create do |feed_entry|
          feed_entry.entry_id           = entry.id
          feed_entry.feed_id            = feed.id
          feed_entry.feed_entry_url     = entry.url
@@ -20,8 +21,10 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.author             = entry.author
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
-         feed_entry.save
 
+         feed_entry.feed.followers(User).each do |user|
+           Notification.create(recipient: user, actor: user, action: "new entry", notifiable: feed_entry)
+         end
 
            doc = Nokogiri::HTML(entry.summary)
            img_srcs = doc.css('img').map{ |i| i['src'] }
@@ -32,7 +35,6 @@ class FeedEntry < ActiveRecord::Base
              )
            end
 
-
            doc = Nokogiri::HTML(entry.content)
            img_srcs = doc.css('img').map{ |i| i['src'] }
            img_srcs.each do |url|
@@ -41,9 +43,7 @@ class FeedEntry < ActiveRecord::Base
                 :feed_entry_id        => feed_entry.id,
              )
           end
-          feed_entry.feed.followers(User).each do |user|
-            Notification.create(recipient: user, actor: user, action: "new entry", notifiable: feed_entry)
-          end
+        end
        end
      end
 

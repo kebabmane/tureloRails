@@ -64,7 +64,7 @@
 				<ul class="popular-posts">
 					<% @recent_feed.each do |recent_feed| %>
 						<li>
-								<%= image_tag(recent_feed.feed_entry_images.first.img_url, :size => "100x100", :class => "img-responsive") %>
+								<%= image_tag(recent_feed.feed_entry_images.first.img_url, :size => "100x100", :class => "img-responsive") rescue nil %>
 								<p><a href="#"><%= link_to recent_feed.title, feed_feed_entry_path(@feed.id, recent_feed.id) %></a></p>
 								<em>Posted on <%= time_ago_in_words(recent_feed.published) %></em>
 						</li>
