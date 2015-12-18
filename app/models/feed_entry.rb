@@ -12,7 +12,7 @@ class FeedEntry < ActiveRecord::Base
 
   def self.add_entries(entries, feed)
      entries.each do |entry|
-         FeedEntry.where(entry_id: entry.id).first_or_create do |feed_entry|
+         FeedEntry.where(entry_id: entry.id).first_or_create! do |feed_entry|
          feed_entry.entry_id           = entry.id
          feed_entry.feed_id            = feed.id
          feed_entry.feed_entry_url     = entry.url
@@ -21,28 +21,14 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.author             = entry.author
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
+         feed_entry.save
+
+         FeedEntryImageWorker.perform_async(feed_entry.id)
 
          feed_entry.feed.followers(User).each do |user|
            Notification.create(recipient: user, actor: user, action: "new entry", notifiable: feed_entry)
          end
 
-           doc = Nokogiri::HTML(entry.summary)
-           img_srcs = doc.css('img').map{ |i| i['src'] }
-           img_srcs.each do |url|
-             FeedEntryImage.create!(
-                :img_url              => url,
-                :feed_entry_id        => feed_entry.id,
-             )
-           end
-
-           doc = Nokogiri::HTML(entry.content)
-           img_srcs = doc.css('img').map{ |i| i['src'] }
-           img_srcs.each do |url|
-             FeedEntryImage.create!(
-                :img_url              => url,
-                :feed_entry_id        => feed_entry.id,
-             )
-          end
         end
        end
      end
