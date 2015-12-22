@@ -10,6 +10,7 @@ class OverviewsController < ApplicationController
      @feed_entries = FeedEntry.where(feed_id: current_user.followees(Feed)).order("published DESC").page(params[:page]).per_page(9)
   end
 
+
   respond_to do |format|
     format.html
     format.js

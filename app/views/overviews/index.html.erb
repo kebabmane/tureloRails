@@ -5,6 +5,10 @@
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue --><br><br>
+
+
+<% if @feed_entries.any? %>
+
 <div class="blog container">
 <div id="container">
 		<div class="row">
@@ -17,3 +21,9 @@
 </div>
 </div>
 </div>
+
+<% else %>
+
+ <%= render 'layouts/no_data' %>
+
+<% end %>

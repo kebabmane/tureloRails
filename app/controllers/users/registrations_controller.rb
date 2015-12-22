@@ -43,11 +43,11 @@ before_filter :configure_permitted_parameters
   end
 
   def after_sign_up_path_for(resource)
-    first_signup_path(:first_sign_up_detail)
+    overviews_path
   end
 
   def after_inactive_sign_up_path_for(resource)
-    first_signup_path(:first_sign_up_detail)
+    overviews_path
   end
 
 end

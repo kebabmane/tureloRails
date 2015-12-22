@@ -52,13 +52,13 @@ class User < ActiveRecord::Base
   end
 
   def send_admin_mail
-    AdminMailer.delay.new_user_waiting_for_approval(self).deliver_later
+    AdminMailer.delay.new_user_waiting_for_approval(self)
   end
 
  def update_with_password(params, *options)
     if super
       # TODO schedule this in the background
-      UserMailer.delay.password_changed(self.id).deliver_later
+      UserMailer.delay.password_changed(self.id)
     end
   end
 
