@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <% if user.nickname? %>
+      <%= link_to user.nickname, users_profile_path(user) %>
+    <% else %>
+      <%= link_to user.email, users_profile_path(user) %>
+    <% end %>
+  </td>
+  <td><%= user.created_at.to_date %></td>
+  <td><%= user.sign_in_count if user.sign_in_count %></td>
+  <td><%= user.last_sign_in_at.to_date if user.last_sign_in_at %> & <%= user.current_sign_in_ip if user.current_sign_in_ip %> </td>
+  <td>
+    <div class="col-lg-6">
+      <%= bootstrap_form_for(user, url: users_profile_path(user)) do |f| %>
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, hide_label: true) %>
+      <%= f.submit 'change Role', :class => 'btn btn-primary btn-sm' %>
+      <%= link_to("delete user", users_profile_path(user), :data => { :confirm => "are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-sm') unless user == current_user %>
+    <% end %>
+    </div>
+
+  </td>
+</tr>

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :feeds
+    resources :users
   end
 
   resources :notifications do

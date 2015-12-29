@@ -1,0 +1,34 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>admin - all users
+        <div class="pull-right">
+   				<%= pluralize(@users.count, 'user') %>
+        </div>
+      </h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
+
+<div class="container">
+
+<table class="table table-striped" id='feeds_table'>
+<thead>
+ <tr>
+  <th>username or email</th>
+  <th>Joined</th>
+  <th>Visits</th>
+  <th>Most Recent / IP</th>
+  <th colspan="2">Actions</th>
+ </tr>
+</thead>
+<tbody>
+  <% @users.each do |user| %>
+  	<%= render partial: 'table_row', locals: {user: user} %>
+  <% end %>
+</tbody>
+</table>
+</div>
+<div class="text-center">
+	<%= will_paginate @users, :renderer => BootstrapPagination::Rails  %>
+</div>
