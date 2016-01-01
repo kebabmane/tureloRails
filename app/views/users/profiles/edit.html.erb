@@ -1,46 +1,46 @@
-<div class="col-lg-12"><br><br>
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>editing <%= @user.nickname %>'s profile
+      </h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue -->
 
-<br>
-  <h3 class="roboto-font">hey <%= @user.nickname %> - change your account details if needed</h3>
-<br>
 
-<div class="col-lg-1">
-</div>
+<div class="container">
 
-<div class="col-md-5">
 <ul class="nav nav-pills">
   <li class="active"><a href="#default" data-toggle="tab">info</a></li>
   <li><a href="#password" data-toggle="tab">change password</a></li>
 </ul>
 
-<br>
-
 
 <div id="my-tab-content" class="tab-content">
 
-<div class="tab-pane active" id="default">
+<div class="tab-pane active" id="default"><br><br>
 <%= bootstrap_form_for(current_user, as: current_user, url: registration_path(resource_name), html: { method: :put }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
   <%= devise_error_messages! %>
 
-    <%= f.static_control :nickname %>
-    <%= f.text_field :email %>
+    <%= f.text_field :nickname, disabled: true, hint: 'You cannot change your nickname.' %>
+    <%= f.text_field :email, disabled: true, hint: 'You cannot change your email.' %>
     <%= f.text_field :first_name %>
     <%= f.text_field :last_name %>
     <%= f.form_group :is_female, label: { text: "gender" }, help: "select your sex" do %>
           <%= f.radio_button :is_female, true, label: "female" %>
           <%= f.radio_button :is_female, false, label: "male" %>
     <% end %>
-      <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
+    <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
     <%= f.time_zone_select :time_zone %>
 
-
+<br><br>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
     <%= f.button "update", class: "btn btn-primary" %>
 <% end %>
-
+<br><br><br>
 </div>
 
  <div class="tab-pane" id="password">
@@ -56,13 +56,4 @@
 </div>
 </div>
 
-<div class="col-md-4">
-  <h4 class="text-center">change or upload your avatar</h4><br><br>
-  <div class="text-center">
-    <%= gravatar_tag @user.email, :size => "150x150", :html => { :class => "img-circle" } %>
-  <br><br>
- </div>
-</div>
-<div class="col-lg-2">
-</div>
 </div>

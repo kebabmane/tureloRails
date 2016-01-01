@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
       :presence => true,
       :uniqueness => {
       :case_sensitive => false
-  } # etc.
+  } 
 
   extend FriendlyId
   friendly_id :nickname, use: :slugged
