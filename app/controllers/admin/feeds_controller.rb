@@ -25,7 +25,7 @@ class Admin::FeedsController < ApplicationController
   # POST /feeds
   # POST /feeds.json
   def create
-    authorize current_user
+
     @feed = Feed.new(feed_params)
     respond_to do |format|
       if @feed.save

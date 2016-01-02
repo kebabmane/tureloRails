@@ -22,17 +22,21 @@
 
 	 <! -- SINGLE POST -->
 	 <div class="col-lg-8">
-		 <p>
-			 <% if @feed_entry.feed_entry_images.any? %>
-				 <%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
-			 <% else %>
-				 <%= image_tag("folder.png", :size => "400x300", :class => "img-responsive") %>
-			 <% end %>
-		 </p>
+
 
   <% if @feed_entry.summary.blank? %>
-    <p><%= strip_tags(@feed_entry.feed_entry_content) %></p>
+    <p><%= @feed_entry.feed_entry_content.html_safe %></p>
   <% else %>
+
+	<p>
+	<% if @feed_entry.feed_entry_images.any? %>
+		<%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
+	<% else %>
+		<%= image_tag("folder.png", :size => "400x300", :class => "img-responsive") %>
+	<% end %>
+</p>
+
+<br>
     <p><%= strip_tags(@feed_entry.summary) %></p>
   <% end %>
 

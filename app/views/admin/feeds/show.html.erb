@@ -1,7 +1,11 @@
 <div id="blue">
 		<div class="container">
 		<div class="row">
-			<h3>admin - <%= @feed.feed_name%></h3>
+			<h3>admin - <%= @feed.feed_name%>
+				<div class="pull-right">
+					<%= pluralize(@feed.followees_count, 'follower') %>
+				</div>
+			</h3>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue -->
