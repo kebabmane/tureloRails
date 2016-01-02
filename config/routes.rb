@@ -26,8 +26,8 @@ Rails.application.routes.draw do
 
   get '/follow'     => 'feeds#follow'
   get '/unfollow'   => 'feeds#unfollow'
-  get '/like'       => 'feed_entries#unfollow'
-  get '/unlike'     => 'feed_entries#unfollow'
+  get '/like'       => 'feed_entries#like'
+  get '/unlike'     => 'feed_entries#unlike'
 
 
   namespace :admin do

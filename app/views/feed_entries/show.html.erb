@@ -62,7 +62,20 @@
 </div><! --/col-lg-8 -->
 
 <! -- SIDEBAR -->
-		<div class="col-lg-4">
+<div class="col-lg-4">
+
+<h4>Social</h4>
+<div class="hline"></div>
+<br>
+<div class="feed_entry">
+<% if current_user.likes?(@feed_entry) %>
+	<%= button_to "unlike", unlike_path(feed_entry: @feed_entry), remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
+<% else %>
+	<%= button_to "like", like_path(feed_entry: @feed_entry), remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
+<% end %>
+</div>
+<br>
+
 				<h4>Recent Posts</h4>
 			<div class="hline"></div>
 				<ul class="popular-posts">

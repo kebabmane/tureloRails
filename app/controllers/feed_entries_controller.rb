@@ -15,12 +15,12 @@ class FeedEntriesController < ApplicationController
   end
 
   def like
-      @likeable = FeedEntry.find(params[:feed_entry_id])
+      @likeable = FeedEntry.find(params[:feed_entry])
 	    current_user.like!(@likeable)
   end
 
   def unlike
-       @likeable = FeedEntry.find(params[:feed_entry_id])
+       @likeable = FeedEntry.find(params[:feed_entry])
 	     current_user.unlike!(@likeable)
   end
 
