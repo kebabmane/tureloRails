@@ -61,7 +61,7 @@ gem 'ahoy_matey'
 gem 'font-awesome-rails'
 gem "socialization"
 gem 'puma'
-
+gem 'newrelic_rpm'
 
 group :development do
   gem 'better_errors'
