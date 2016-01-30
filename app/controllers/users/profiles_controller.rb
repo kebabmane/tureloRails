@@ -38,7 +38,7 @@ class Users::ProfilesController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role, :nickname, :time_zone, :nut_plan_id)
+    params.require(:user).permit(:role, :nickname, :time_zone, :approved)
   end
 
   def current_age
