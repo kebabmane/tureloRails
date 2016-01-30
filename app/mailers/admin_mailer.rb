@@ -9,8 +9,4 @@ class AdminMailer < ActionMailer::Base
   	mail(:to => "rhys@hannah-co.com", :subject => " New User Registered", :from => "app@turelo.me")
   end
 
-  def fact_entry_created(fact)
-    @fact = fact
-    mail(:to => "rhys@hannah-co.com", :subject => "nut fact has been created",)
-  end
 end
