@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
-gem 'rails', '4.2.5'
+ruby '2.3.0'
+gem 'rails', '4.2.5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'devise_invitable'
@@ -57,11 +56,11 @@ gem 'feedjira'
 gem 'paper_trail', '~> 4.0.0'
 gem "sidekiq-cron"
 gem 'feedbag'
-gem 'ahoy_matey'
 gem 'font-awesome-rails'
 gem "socialization"
 gem 'puma'
 gem 'newrelic_rpm'
+gem 'turbolinks', '~> 5.0.0.beta'
 
 group :development do
   gem 'better_errors'

@@ -1,10 +1,5 @@
 $post = $('<%= j render(@feeds) %>)');
 
-$('#blog-mansonry').append( $post );
-$('#blog-mansonry').imagesLoaded( function() {
-   $('#blog-mansonry').packery( 'appended', $post );
-   $('#blog-mansonry').packery()
-});
 
 
 <% if @feeds.next_page %>
