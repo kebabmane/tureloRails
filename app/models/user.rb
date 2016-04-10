@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
   enum role: [:user, :mod, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
-  #has_many :feeds
-  after_create :send_admin_mail
 
   has_many :notifications, foreign_key: :recipient_id
 
@@ -17,7 +15,7 @@ class User < ActiveRecord::Base
       :presence => true,
       :uniqueness => {
       :case_sensitive => false
-  } 
+  }
 
   extend FriendlyId
   friendly_id :nickname, use: :slugged
@@ -51,9 +49,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_admin_mail
-    AdminMailer.delay.new_user_waiting_for_approval(self)
-  end
 
  def update_with_password(params, *options)
     if super

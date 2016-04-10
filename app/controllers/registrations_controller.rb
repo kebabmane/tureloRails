@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
       # update_without_password doesn't know how to ignore it
       params[:user].delete(:current_password)
       @user.update_without_password(devise_parameter_sanitizer.sanitize(:account_update))
+      AdminMailer.new_user_waiting_for_approval(@user).deliver_later
     end
 
     if successfully_updated
