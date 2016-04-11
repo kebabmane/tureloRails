@@ -130,12 +130,12 @@ GEM
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
     diff-lcs (1.2.5)
-    elasticsearch (1.0.15)
-      elasticsearch-api (= 1.0.15)
-      elasticsearch-transport (= 1.0.15)
-    elasticsearch-api (1.0.15)
+    elasticsearch (1.0.16)
+      elasticsearch-api (= 1.0.16)
+      elasticsearch-transport (= 1.0.16)
+    elasticsearch-api (1.0.16)
       multi_json
-    elasticsearch-transport (1.0.15)
+    elasticsearch-transport (1.0.16)
       faraday
       multi_json
     erubis (2.7.0)
@@ -428,7 +428,7 @@ GEM
     slop (3.6.0)
     socialization (1.2.0)
       activerecord
-    spring (1.6.4)
+    spring (1.7.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.6.0)
