@@ -31,7 +31,6 @@ gem "chartkick"
 gem 'groupdate'
 gem 'redis'
 gem 'sidekiq'
-gem 'google-webfonts-rails'
 gem "searchkick"
 gem 'twitter-typeahead-rails'
 gem 'aws-sdk'
@@ -61,6 +60,7 @@ gem 'puma'
 gem 'newrelic_rpm'
 gem 'turbolinks', '~> 5.0.0.beta'
 gem 'rollbar', '~> 2.8.3'
+gem 'whenever', :require => false
 
 group :development do
   gem 'better_errors'
