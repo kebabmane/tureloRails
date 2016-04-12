@@ -18,8 +18,8 @@ class Users::RequestsController < ApplicationController
 
    respond_to do |format|
     if @request.save
-      AdminMailer.new_user_waiting_for_approval(@request).deliver_later
-      InvitationMailer.request_invite(@request).deliver_later
+      AdminMailer.delay.new_user_waiting_for_approval(@request)
+      InvitationMailer.delay.request_invite(@request)
       format.html { redirect_to root_url }
       format.js
     else

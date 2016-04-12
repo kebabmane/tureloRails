@@ -8,4 +8,4 @@ test:
 production:
   host: 'hannah-co.nzpac7.0001.use1.cache.amazonaws.com'
   port: '6379'
-#  namespace: appname_prod
+  namespace: turelo_prod
