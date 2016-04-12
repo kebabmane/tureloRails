@@ -6,6 +6,6 @@ test:
   db: 1
 #  namespace: appname_test
 production:
-  host: 'munch-redis.0nmg0h.0001.apse2.cache.amazonaws.com'
+  host: 'hannah-co.nzpac7.0001.use1.cache.amazonaws.com'
   port: '6379'
 #  namespace: appname_prod
