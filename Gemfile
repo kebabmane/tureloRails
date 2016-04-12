@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.2.4'
 gem 'rails', '~> 4.2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -23,7 +23,6 @@ gem 'bootstrap_form', :git => 'git://github.com/bootstrap-ruby/rails-bootstrap-f
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem "therubyracer"
-#gem "less-rails"
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch =>'master'
 gem 'acts-as-taggable-on'
 gem 'gravatarify'
