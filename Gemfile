@@ -61,6 +61,7 @@ gem "socialization"
 gem 'puma'
 gem 'newrelic_rpm'
 gem 'turbolinks', '~> 5.0.0.beta'
+gem 'rollbar', '~> 2.8.3'
 
 group :development do
   gem 'better_errors'
