@@ -61,6 +61,9 @@ gem 'newrelic_rpm'
 gem 'turbolinks', '~> 5.0.0.beta'
 gem 'rollbar', '~> 2.8.3'
 gem 'whenever', :require => false
+gem 'gaffe'
+gem 'impressionist'
+gem 'apipie-rails'
 
 group :development do
   gem 'better_errors'

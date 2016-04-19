@@ -41,6 +41,14 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+   namespace :v1 do
+     devise_for :users, skip: :omniauth_callbacks, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registration"}
+       resources :feeds
+       resources :users
+   end
+end
+
    devise_scope :user do
     	get '/login' => 'devise/sessions#new'
     	get '/logout' => 'devise/sessions#destroy'
