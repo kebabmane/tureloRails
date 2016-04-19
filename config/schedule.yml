@@ -2,3 +2,8 @@ update_feed_entries_job:
   cron: "*/5 * * * *"
   class: "FeedEntryCronWorker"
   queue: default
+
+update_feed_entries_job:
+  cron: "*/5 * * * *"
+  class: "FeedImageCronWorker"
+  queue: default
