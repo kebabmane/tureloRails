@@ -61,9 +61,9 @@ test: &test
 
 production:
   adapter: postgresql
-  database: <%= ENV['RDS_DB_NAME'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
+  database: <%= Settings.rds_db_name %>
+  host: <%= Settings.rds_hostname %>
+  port: 5432
+  username: <%= Settings.rds_username %>
+  password: <%= Settings.rds_password %>
   min_messages: ERROR

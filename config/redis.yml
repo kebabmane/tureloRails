@@ -6,6 +6,6 @@ test:
   db: 1
 #  namespace: appname_test
 production:
-  host: 'hannah-co.nzpac7.0001.use1.cache.amazonaws.com'
+  host: 10.128.39.49
   port: '6379'
   namespace: turelo_prod

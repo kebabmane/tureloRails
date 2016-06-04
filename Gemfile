@@ -12,7 +12,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-gplus'
-gem 'figaro'
+gem 'config'
 gem 'high_voltage'
 gem 'pg'
 gem 'pundit'
@@ -64,6 +64,7 @@ gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
 gem 'apipie-rails'
+gem 'rpush'
 
 group :development do
   gem 'better_errors'
@@ -78,6 +79,12 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-sidekiq' , require: false
 end
 group :development, :test do
   gem 'factory_girl_rails'

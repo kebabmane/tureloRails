@@ -6,4 +6,4 @@ update_feed_entries_job:
 update_feed_images_job:
   cron: "*/5 * * * *"
   class: "FeedImageCronWorker"
-  queue: default
+  queue: default_images

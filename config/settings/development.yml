@@ -1,0 +1,7 @@
+  elasticsearch_url: "http://localhost:9200"
+  smtp_host: "email-smtp.us-east-1.amazonaws.com"
+  smtp_username: "AKIAJ56GFTGSJS2TPYGQ"
+  smtp_password: Am1SaNb1s9HyucfKQRuuKndNnSMXHz0mg42+lAtRUHXY
+  smtp_domain: "turelo.me"
+  app_name: "turelo"
+  rails_secret_key: 2530e71a4786fb384b302de1d409b6a5c65ac63efb36d37321f24587d38df8f86ef51d5775c7452b6c722190036c7ede9242242c9dc62410399021934f311bcf

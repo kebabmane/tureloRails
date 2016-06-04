@@ -1,0 +1,12 @@
+  elasticsearch_url: "http://10.128.39.47:9200"
+  smtp_host: "email-smtp.us-east-1.amazonaws.com"
+  smtp_username: "AKIAJ56GFTGSJS2TPYGQ"
+  smtp_password: Am1SaNb1s9HyucfKQRuuKndNnSMXHz0mg42+lAtRUHXY
+  smtp_domain: "turelo.me"
+  app_name: "turelo"
+  rails_secret_key: 2530e71a4786fb384b302de1d409b6a5c65ac63efb36d37321f24587d38df8f86ef51d5775c7452b6c722190036c7ede9242242c9dc62410399021934f311bcf
+  fog_directory: "turelo-assets"
+  rds_db_name: "turelo_prod"
+  rds_username: "turelo_db"
+  rds_password: "ZaFR55DOYf6n"
+  rds_hostname: "10.128.36.188"
