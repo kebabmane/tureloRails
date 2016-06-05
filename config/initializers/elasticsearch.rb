@@ -1,1 +1,1 @@
-Searchkick.client = Elasticsearch::Client.new url: ENV['elasticsearch_url']
+Searchkick.client = Elasticsearch::Client.new url: Settings.elasticsearch_url
