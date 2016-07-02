@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
-gem 'rails', '~> 4.2.6'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'rails', '4.2.6'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 gem 'devise'
 gem 'devise_invitable'
 gem 'omniauth'
@@ -49,17 +49,17 @@ gem 'carrierwave-aws'
 gem "mini_magick"
 gem 'rack-ssl-enforcer'
 gem 'metamagic'
-gem "paranoia", "~> 2.0"
+gem "paranoia"
 gem 'feedjira'
-gem 'paper_trail', '~> 4.0.0'
+gem 'paper_trail'
 gem "sidekiq-cron"
 gem 'feedbag'
 gem 'font-awesome-rails'
 gem "socialization"
 gem 'puma'
 gem 'newrelic_rpm'
-gem 'turbolinks', '~> 5.0.0.beta'
-gem 'rollbar', '~> 2.8.3'
+gem 'turbolinks', '~> 5.0.0'
+gem 'rollbar'
 gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
