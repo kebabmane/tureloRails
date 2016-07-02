@@ -10,6 +10,12 @@ class FeedsController < Api::BaseController
       @feeds = Feed.all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 9)
   end
 
+  def autocomplete
+   render json: Feed.search(params[:query], fields: [{ feed_name: :word_start }], track: true, limit: 10).map do |feed|
+      { feed_name: feed.feed_name, feed_id: feed.id }
+   end
+  end
+
   # GET /feeds/1
   # GET /feeds/1.json
   def show

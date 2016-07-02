@@ -44,7 +44,11 @@ Rails.application.routes.draw do
   namespace :api do
    namespace :v1 do
      devise_for :users, skip: :omniauth_callbacks, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registration"}
-       resources :feeds
+       resources :feeds do
+        collection do
+         get :autocomplete
+        end
+       end
        resources :users
    end
 end

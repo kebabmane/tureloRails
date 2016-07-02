@@ -9,18 +9,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require nprogress
+//= require nprogress-turbolinks
+//= require bootstrap-typeahead-rails
 //= require_tree .
 
-
-$(document).ready( function() {
-  // init Masonry
-  var $grid = $('#blog-mansonry').packery({
-    itemSelector: '.post',
-    percentPosition: true
-  });
-  // layout Isotope after each image loads
-  $grid.imagesLoaded().progress( function() {
-    $grid.packery();
-  });
-
+$(function () {
+  NProgress.configure({ showSpinner: false });
 });

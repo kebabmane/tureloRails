@@ -1,5 +1,5 @@
 class FeedEntry < ActiveRecord::Base
-  searchkick  callbacks: :async, track: true, conversions: "conversions"
+  searchkick match: :word_start, searchable: [:title], callbacks: :async, track: true, conversions: "conversions"
   has_paper_trail
   acts_as_taggable
   acts_as_likeable

@@ -12,7 +12,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= metamagic %>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 </head>
 <body>
@@ -23,10 +23,6 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
           <%= link_to 'turelo', overviews_path, :class=>"navbar-brand" %>
         </div>
@@ -38,9 +34,10 @@
             <% if user_signed_in? and current_user.admin? %>
               <li><%= link_to 'admin', admin_feeds_path %></li>
             <% end %>
+
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">profile <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
+              <ul class="dropdown-menu arrow">
          	   	 <li><%= link_to 'profile', users_profile_path(current_user) %></li>
        		     <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
               </ul>
@@ -90,9 +87,7 @@
  	 	</div><! --/container -->
  	 </div><! --/footerwrap -->
 
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.0/imagesloaded.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/2.1.1/packery.pkgd.js"></script>
+
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 

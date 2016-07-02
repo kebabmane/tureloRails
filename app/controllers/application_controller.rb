@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_paper_trail_whodunnit
 
 
   def after_sign_in_path_for(resource)

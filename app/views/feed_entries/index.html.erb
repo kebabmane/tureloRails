@@ -6,15 +6,21 @@
 		</div> <!-- /container -->
 </div><!-- /blue --><br><br>
 
-<div class="blog container">
 
-		<div class="row">
-				<div id="blog-mansonry" class="blog-list">
+<% if @feed_entries.any? %>
+
+<div class="container">
+   <ul class="timeline">
 						<%= render @feed_entries %>
-      	</div>
-    </div>
-<div class="text-center">
+   </ul>
+  <div class="text-center">
 		<%= will_paginate @feed_entries %>
+  </div>
 </div>
 
-</div>
+
+<% else %>
+
+ <%= render 'layouts/no_data' %>
+
+<% end %>
