@@ -59,12 +59,15 @@ gem "socialization"
 gem 'puma'
 gem 'newrelic_rpm'
 gem 'turbolinks', '~> 5.0.0'
-gem 'rollbar'
 gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
 gem 'apipie-rails'
 gem 'rpush'
+gem 'api-pagination'
+gem 'rpush'
+gem 'nprogress-rails'
+gem 'bootstrap-typeahead-rails'
 
 group :development do
   gem 'better_errors'
