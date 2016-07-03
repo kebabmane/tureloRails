@@ -10,3 +10,4 @@ production:
   - mailers
   - searchkick
   - rollbar
+:timeout: 400
