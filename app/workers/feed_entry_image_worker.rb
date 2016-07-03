@@ -3,6 +3,7 @@ class FeedEntryImageWorker
 
   def perform(feed_entry_id)
 
+    if feed_entry_id
      @feed_entry = FeedEntry.find(feed_entry_id)
 
       doc = Nokogiri::HTML(@feed_entry.summary)
@@ -23,6 +24,7 @@ class FeedEntryImageWorker
            :feed_entry_id        => @feed_entry.id,
         )
      end
+   end
   end
 
 

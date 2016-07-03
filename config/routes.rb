@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         end
        end
        resources :users
+       resources :feed_search
    end
 end
 

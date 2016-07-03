@@ -5,7 +5,8 @@ class FeedImageCronWorker
 
 FeedEntry.find_each do |feed_entry|
 
-@feed_entry = FeedEntry.find(feed_entry.id)
+if @feed_entry
+  @feed_entry = FeedEntry.find(feed_entry.id)
 
  doc = Nokogiri::HTML(@feed_entry.summary)
  img_srcs = doc.css('img').map{ |i| i['src'] }
@@ -24,6 +25,7 @@ FeedEntry.find_each do |feed_entry|
       :img_url              => url,
       :feed_entry_id        => @feed_entry.id,
    )
+end
 end
 end
 

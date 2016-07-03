@@ -12,7 +12,7 @@ class FeedEntry < ActiveRecord::Base
 
   def self.add_entries(entries, feed)
      entries.each do |entry|
-         FeedEntry.where(entry_id: entry.id).first_or_create! do |feed_entry|
+         FeedEntry.where(entry_id: entry.id).first_or_create do |feed_entry|
          feed_entry.entry_id           = entry.id
          feed_entry.feed_id            = feed.id
          feed_entry.feed_entry_url     = entry.url
