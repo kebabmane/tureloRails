@@ -11,6 +11,9 @@
  * file per style scope.
  *
  *= require rails_bootstrap_forms
+ *= require bootstrap-typeahead-rails
+ *= require nprogress
+ *= require nprogress-bootstrap
  *= require_tree .
  *= require_self
  */
@@ -532,4 +535,34 @@ img
 
 .white, .white a {
   color: #fff;
+}
+
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.tt-dropdown-menu {
+  background: white;
+  width: 100%;
+  padding: 10px;
+  color: #404d5b;
+  border: 1px solid #eee;
+}
+
+.tt-suggestion {
+  margin: 0;
+  padding: 5px 0 5px 10px;
+  font-size: 16px;
+  line-height: 24px;
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: #7a0019;
+    color: white;
+    cursor: pointer;
+  }
 }
