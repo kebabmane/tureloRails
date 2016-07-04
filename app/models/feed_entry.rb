@@ -22,7 +22,7 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
 
-         blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp;}
+         blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp; www. com/ content 2016/ https: href= }
          text = Highscore::Content.new feed_entry.feed_entry_content, blacklist
          text.configure do
             set :multiplier, 2
