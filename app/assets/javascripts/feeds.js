@@ -1,5 +1,15 @@
 $(document).ready( function() {
 
+  // init Masonry
+  var $grid = $('#blog-mansonry').packery({
+    itemSelector: '.post',
+    percentPosition: true
+  });
+  // layout Isotope after each image loads
+  $grid.imagesLoaded().progress( function() {
+    $grid.packery();
+  });
+
   var ready;
   ready = function() {
       var engine = new Bloodhound({

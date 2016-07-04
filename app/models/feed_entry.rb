@@ -22,7 +22,7 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
 
-         blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real}
+         blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp;}
          text = Highscore::Content.new feed_entry.feed_entry_content, blacklist
          text.configure do
             set :multiplier, 2
@@ -56,10 +56,6 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.save
 
          FeedEntryImageWorker.perform_async(feed_entry.id)
-
-         feed_entry.feed.followers(User).each do |user|
-           Notification.create(recipient: user, actor: user, action: "new entry", notifiable: feed_entry)
-         end
 
         end
        end

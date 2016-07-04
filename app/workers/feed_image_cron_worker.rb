@@ -1,7 +1,7 @@
 class FeedImageCronWorker
   include Sidekiq::Worker
 
-  def perform
+  def perform()
 
 FeedEntry.find_each do |feed_entry|
 
