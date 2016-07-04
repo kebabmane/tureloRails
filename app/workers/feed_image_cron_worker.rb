@@ -5,7 +5,7 @@ class FeedImageCronWorker
 
 FeedEntry.find_each do |feed_entry|
 
-if @feed_entry
+if feed_entry.present?
   @feed_entry = FeedEntry.find(feed_entry.id)
 
  doc = Nokogiri::HTML(@feed_entry.summary)

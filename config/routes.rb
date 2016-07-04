@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'landings#index'
 
+  get 'tags/:tag', to: 'overviews#index', as: :tag
+
   resources :feeds do
     resources :feed_entries do
       resources :feed_entry_images

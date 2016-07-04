@@ -63,10 +63,11 @@ gem 'impressionist'
 gem 'apipie-rails'
 gem 'rpush'
 gem 'api-pagination'
-gem 'rpush'
 gem 'nprogress-rails'
 gem 'bootstrap-typeahead-rails'
 gem 'twitter-typeahead-rails'
+gem 'highscore'
+gem 'stemmer'
 
 group :development do
   gem 'better_errors'

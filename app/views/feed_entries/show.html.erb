@@ -58,6 +58,18 @@
 </div>
 <br>
 
+
+<h4>Tags</h4>
+<div class="hline"></div>
+<br>
+<div class="feed_entry">
+	<% @feed_entry.tag_list.each do |tag| %>
+		<%= link_to tag, tag_path(tag), :class => 'btn btn-primary btn-sm' %>
+	<% end %>
+</div>
+<br>
+
+
 				<h4>Recent Posts</h4>
 			<div class="hline"></div>
 				<ul class="popular-posts">

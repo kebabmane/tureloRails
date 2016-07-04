@@ -1,7 +1,12 @@
 <div id="blue">
 		<div class="container">
 		<div class="row">
-			<h3>home feed</h3>
+			<h3>home feed
+				<% if params[:tag].present? %>
+				|	<%= params[:tag] %>
+				<% end %>
+
+			</h3>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue --><br>

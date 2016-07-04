@@ -84,6 +84,8 @@ GEM
       chartkick
       rails
       safely_block (>= 0.1.1)
+    bloomfilter-rb (2.1.1)
+      redis
     bootstrap-typeahead-rails (0.10.5.1)
       railties (>= 3.0)
     builder (3.2.2)
@@ -188,8 +190,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.10.0)
       faraday (>= 0.7.4, < 0.10)
-    feedbag (0.9.5)
+    feedbag (0.9.6)
       nokogiri (~> 1.0)
+      open_uri_redirections (~> 0.2)
     feedjira (2.0.0)
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
@@ -232,6 +235,9 @@ GEM
     hash-deep-merge (0.1.1)
     hashie (3.4.4)
     high_voltage (3.0.0)
+    highscore (1.2.0)
+      bloomfilter-rb (>= 2.1.1)
+      whatlanguage (>= 1.0.0)
     httpclient (2.8.0)
     i18n (0.7.0)
     impressionist (1.5.1)
@@ -326,6 +332,7 @@ GEM
     omniauth-twitter (1.2.1)
       json (~> 1.3)
       omniauth-oauth (~> 1.1)
+    open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
     paper_trail (5.2.0)
       activerecord (>= 3.0, < 6.0)
@@ -498,6 +505,7 @@ GEM
     sshkit (1.11.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stemmer (1.0.1)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -528,6 +536,7 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     websocket (1.2.3)
+    whatlanguage (1.0.6)
     whenever (0.9.7)
       chronic (>= 0.6.3)
     will_paginate (3.1.0)
@@ -578,6 +587,7 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   high_voltage
+  highscore
   impressionist
   ionicons-rails
   jbuilder (~> 2.5)
@@ -624,6 +634,7 @@ DEPENDENCIES
   socialization
   spring
   spring-commands-rspec
+  stemmer
   therubyracer
   thin
   turbolinks (~> 5.0.0)
