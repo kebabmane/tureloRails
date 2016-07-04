@@ -6,6 +6,7 @@ production:
   :concurrency: 20
 :queues:
   - default
+  - ahoy
   - emails
   - mailers
   - searchkick
