@@ -1,8 +1,8 @@
 <tr>
-       <td> <%= link_to feed.feed_name, admin_feed_path(feed) %></td>
+       <td> <%= link_to feed.feed_name, turelo_admin_feed_path(feed) %></td>
        <td><%= feed.feed_url.truncate(40) %></td>
        <td><%= feed.created_at.strftime("%d %b. %Y") %></td>
        <td><%= feed.feed_entries_count %></td>
-       <td><%= link_to 'edit', edit_admin_feed_path(feed), { :class=>"btn btn-primary" } %>
+       <td><%= link_to 'edit', edit_turelo_admin_feed_path(feed), { :class=>"btn btn-primary" } %>
        <%= link_to 'destroy', feed, :class => 'btn btn-danger', method: :delete, data: { confirm: 'are you sure?' } %></td>
 </tr>

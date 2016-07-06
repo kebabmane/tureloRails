@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417054654) do
+ActiveRecord::Schema.define(version: 20160706093141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20160417054654) do
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "announcements", force: :cascade do |t|
+    t.text     "message"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blazer_audits", force: :cascade do |t|
     t.integer  "user_id"

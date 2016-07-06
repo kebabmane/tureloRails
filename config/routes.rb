@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :announcements
   root to: 'landings#index'
 
   get 'tags/:tag', to: 'overviews#index', as: :tag
+  get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
   resources :feeds do
     resources :feed_entries do
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
     end
     post 'refresh_feed', :to=>"feeds#refresh_feed"
   end
+
   resources :overviews
+  resources :first_signup
 
   devise_for :users, :controllers => {
      :registrations =>         "users/registrations",
@@ -32,10 +36,15 @@ Rails.application.routes.draw do
   get '/unlike'     => 'feed_entries#unlike'
 
 
-  namespace :admin do
+  namespace :turelo_admin do
+    resources :admins
     resources :feeds
     resources :users
+    resources :devices
+    resources :announcements
   end
+
+
 
   resources :notifications do
     collection do

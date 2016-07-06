@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class TureloAdmin::UsersController < ApplicationController
   before_filter :authenticate_user!
 
   # GET /admins

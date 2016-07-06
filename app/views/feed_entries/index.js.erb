@@ -1,10 +1,7 @@
-$post = $('<%= j render(@feed_entries) %>)');
-
-$('#blog-mansonry').append( $post );
-$('#blog-mansonry').packery( 'appended', $post );
-
+$('#my-entries').append('<%= j render @feed_entries %>');
 <% if @feed_entries.next_page %>
-$('.pagination').replaceWith('<%= j will_paginate(@feed_entries) %>');
+  $('.pagination').replaceWith('<%= j will_paginate @feed_entries %>');
 <% else %>
-$('.pagination').remove();
+  $(window).off('scroll');
+  $('.pagination').remove();
 <% end %>

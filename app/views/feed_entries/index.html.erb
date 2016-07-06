@@ -10,10 +10,10 @@
 <% if @feed_entries.any? %>
 
 <div class="container">
-   <ul class="timeline">
+   <ul class="timeline" id="my-entries">
 						<%= render @feed_entries %>
    </ul>
-  <div class="text-center">
+  <div id="infinite-scrolling">
 		<%= will_paginate @feed_entries %>
   </div>
 </div>

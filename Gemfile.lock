@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/bootstrap-ruby/rails-bootstrap-forms
-  revision: 67e846fd0be74f39dd54e9ea774874913c2f9148
+  revision: e83b7d9a6588a83da241f12851ef126d49bf0d62
   specs:
-    bootstrap_form (2.3.0)
+    bootstrap_form (2.4.0)
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
@@ -64,15 +64,15 @@ GEM
       json
     arel (6.0.3)
     ast (2.3.0)
-    aws-sdk (2.3.19)
-      aws-sdk-resources (= 2.3.19)
-    aws-sdk-core (2.3.19)
+    aws-sdk (2.3.20)
+      aws-sdk-resources (= 2.3.20)
+    aws-sdk-core (2.3.20)
       jmespath (~> 1.0)
     aws-sdk-rails (1.0.1)
       aws-sdk-resources (~> 2)
       railties (>= 3)
-    aws-sdk-resources (2.3.19)
-      aws-sdk-core (= 2.3.19)
+    aws-sdk-resources (2.3.20)
+      aws-sdk-core (= 2.3.20)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -198,7 +198,7 @@ GEM
       faraday_middleware (~> 0.9)
       loofah (~> 2.0)
       sax-machine (~> 1.0)
-    ffi (1.9.10)
+    ffi (1.9.12)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)

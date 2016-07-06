@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+<h1>listing devices</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>device</th>
+      <th>device created at</th>
+      <th>device OS</th>
+      <th>device token</th>
+      <th colspan="3">device actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= device.id %></td>
+        <td><%= device.created_at.strftime("%b %e, %l:%M %p") %></td>
+        <td><%= device.osVersion %></td>
+        <td><%= device.sdkVersion %></td>
+        <td>
+          <%= link_to 'Show', munch_admin_device_path(device), { :class=>"btn btn-primary" } %>
+          <%= link_to 'edit', edit_munch_admin_device_path(device), { :class=>"btn btn-primary" } %>
+          <%= link_to 'Destroy', munch_admin_devices_path(device), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= will_paginate @devices, renderer: BootstrapPagination::Rails %>
+
+</div>
+</div>

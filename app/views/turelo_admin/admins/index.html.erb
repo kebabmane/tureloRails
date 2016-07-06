@@ -1,0 +1,112 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>turelo admin</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
+
+<div class="container">
+
+<div class="row">
+	<div class="col-xs-4 col-sm-1">
+
+	</div>
+  <div class="col-xs-4 col-sm-2">
+	  <%= link_to 'DB Analytics', '/admins/pghero', :class=>"btn btn-lg btn-primary btn-block", :target => "_blank" %>
+	</div>
+    <div class="col-xs-4 col-sm-2">
+			<%= link_to 'blazer - db info', '/admins/blazer', :class=>"btn btn-lg btn-primary btn-block", :target => "_blank" %>
+	</div>
+	 <div class="col-xs-4 col-sm-2">
+		 	<%= link_to 'sidekiq web', '/admins/sidekiq', :class=>"btn btn-lg btn-primary btn-block", :target => "_blank" %>
+	</div>
+	<div class="col-xs-4 col-sm-2">
+			<%= link_to 'search analytics', '/admins/searchjoy', :class=>"btn btn-lg btn-primary btn-block", :target => "_blank" %>
+	</div>
+	<div class="col-xs-4 col-sm-2">
+		<%= link_to 'devices admin', turelo_admin_devices_path, :class=>"btn btn-lg btn-primary btn-block" %>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-xs-4 col-sm-1">
+
+	</div>
+  <div class="col-xs-4 col-sm-2">
+	  <%= link_to 'announcements', turelo_admin_announcements_path, :class=>"btn btn-lg btn-primary btn-block" %>
+	</div>
+
+</div>
+<br>
+
+<br>
+
+<div class="container">
+
+    <div class="row"><br>
+        <div class="col-xs-6 col-md-4">
+
+						 		<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center"><%= @feed_count %></h1>
+
+                <div class="panel-body text-center">
+                    <strong>feeds</strong>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-6 col-md-4">
+
+								<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center"><%= @feed_entry_count %></h1>
+
+                <div class="panel-body text-center">
+                    <strong>total feed entries</strong>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-6 col-md-4">
+
+					<div class="panel-alt"><br>
+                    <h1 class="panel-title text-center"><%= @user_count %></h1>
+
+                <div class="panel-body text-center">
+                    <strong>total users</strong>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<br><br>
+
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead>
+ <tr>
+  <th>username or email</th>
+  <th>Joined</th>
+  <th>Visits</th>
+  <th>Most Recent / IP</th>
+  <th colspan="2">Actions</th>
+ </tr>
+</thead>
+<tbody>
+  <% @users.each do |user| %>
+  	<%= render partial: 'table_row', locals: {user: user} %>
+  <% end %>
+</tbody>
+</table>
+</div>
+<div class="text-center">
+	<%= will_paginate @users, :renderer => BootstrapPagination::Rails  %>
+</div>
+</div>
+
+</div>
