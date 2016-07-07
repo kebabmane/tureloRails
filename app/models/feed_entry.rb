@@ -56,6 +56,11 @@ class FeedEntry < ActiveRecord::Base
 
          feed_entry.save
 
+         feed_entry.feed.followers(User).each do |user|
+           Notification.create(recipient: user, actor: user, action: "feed_entry", notifiable: feed_entry)
+         end
+
+
          FeedEntryImageWorker.perform_async(feed_entry.id)
 
         end
