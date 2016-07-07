@@ -30,7 +30,7 @@ class TureloAdmin::FeedsController < ApplicationController
     respond_to do |format|
       if @feed.save
         FeedWorker.perform_async(@feed.id)
-        format.html { redirect_to admin_feeds_path, notice: 'Feed was successfully created.' }
+        format.html { redirect_to turelo_admin_feeds_path, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class TureloAdmin::FeedsController < ApplicationController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to admin_feeds_path, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to turelo_admin_feeds_path, notice: 'Feed was successfully updated.' }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class TureloAdmin::FeedsController < ApplicationController
   def destroy
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to admin_feeds_path, notice: 'Feed was successfully destroyed.' }
+      format.html { redirect_to turelo_admin_feeds_path, notice: 'Feed was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
