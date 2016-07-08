@@ -25,13 +25,11 @@ class TureloAdmin::FeedsController < ApplicationController
   # POST /feeds
   # POST /feeds.json
   def create
-
     @feed = Feed.new(feed_params)
     respond_to do |format|
       if @feed.save
         FeedWorker.perform_async(@feed.id)
         format.html { redirect_to turelo_admin_feeds_path, notice: 'Feed was successfully created.' }
-        format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
@@ -45,7 +43,6 @@ class TureloAdmin::FeedsController < ApplicationController
     respond_to do |format|
       if @feed.update(feed_params)
         format.html { redirect_to turelo_admin_feeds_path, notice: 'Feed was successfully updated.' }
-        format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
@@ -59,7 +56,6 @@ class TureloAdmin::FeedsController < ApplicationController
     @feed.destroy
     respond_to do |format|
       format.html { redirect_to turelo_admin_feeds_path, notice: 'Feed was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
