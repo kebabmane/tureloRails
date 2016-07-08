@@ -5,7 +5,7 @@ set :repo_url,        'git@bitbucket.org:kebabman/turelo.git'
 set :application,     'turelo'
 set :user,            'turelo-deploy'
 set :puma_threads,    [4, 16]
-set :puma_workers,    0
+set :puma_workers,    2
 
 # Don't change these unless you know what you're doing
 set :pty,             false
@@ -24,7 +24,7 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 set :sidekiq_role, :app
-set :sidekiq_env, 'production'  
+set :sidekiq_env, 'production'
 set :sidekiq_config,  "#{release_path}/config/sidekiq.yml"
 set :sidekiq_pid,     "#{shared_path}/tmp/pids/sidekiq.pid"
 
