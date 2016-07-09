@@ -13,6 +13,7 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require bootstrap-typeahead-rails
+//= require turbolinks
 //= require_tree .
 
 $(function () {

@@ -70,6 +70,8 @@ gem 'highscore'
 gem 'stemmer'
 gem 'share_meow_client'
 gem 'ahoy_matey'
+gem 'rack-mini-profiler'
+
 
 group :development do
   gem 'better_errors'
@@ -80,6 +82,9 @@ group :development do
   gem 'rails_layout'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem "bullet"
+  gem 'flamegraph'
+  gem 'stackprof'
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false

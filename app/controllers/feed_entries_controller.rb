@@ -33,7 +33,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries/1.json
   def show
     @feed_entry = FeedEntry.find(params[:id])
-    @recent_feed = FeedEntry.all.order("published DESC").limit(5)
+    @recent_feed = FeedEntry.includes(:feed_entry_images).all.order("published DESC").limit(5)
   end
 
 
