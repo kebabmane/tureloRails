@@ -33,13 +33,24 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li class="active"><%= link_to 'home', root_path %></li>
-            <li><%= link_to 'sign in', overviews_path %></li>
-            <li><%= link_to 'sign up', new_user_registration_path, :class=>"btn btn-primary" %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'head to turelo', overviews_path, :class=>"btn btn-primary" %></li>
+            <% else %>
+              <li><%= link_to 'sign in', overviews_path %></li>
+              <li><%= link_to 'sign up', new_user_registration_path, :class=>"btn btn-primary" %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
+
+
+    <% if user_signed_in? %>
+      <li><%= link_to 'Head to Munch', overviews_path, :class=>"btn btn-inverse btn-bordered navbar-btn" %></li>
+    <% else %>
+      <li><%= link_to 'Login', new_user_session_path %></li>
+      <li><%= link_to 'Signup', new_user_registration_path, :class=>"btn btn-inverse btn-bordered navbar-btn" %></li>
+    <% end %>
 
 
 	<%= yield %>
