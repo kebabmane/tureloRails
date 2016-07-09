@@ -3,7 +3,7 @@ class FeedEntry < ActiveRecord::Base
   has_paper_trail
   acts_as_taggable
   acts_as_likeable
-
+  is_impressionable :counter_cache => true
   belongs_to :feed, :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
 

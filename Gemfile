@@ -69,6 +69,7 @@ gem 'twitter-typeahead-rails'
 gem 'highscore'
 gem 'stemmer'
 gem 'share_meow_client'
+gem 'ahoy_matey'
 
 group :development do
   gem 'better_errors'

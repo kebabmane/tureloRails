@@ -50,6 +50,8 @@
 <div class="hline"></div>
 <br>
 <div class="feed_entry">
+	This post has been viewed <%= @feed_entry.impressionist_count %> times
+	<br><br>
 <% if current_user.likes?(@feed_entry) %>
 	<%= button_to "unlike", unlike_path(feed_entry: @feed_entry), remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
 <% else %>

@@ -5,6 +5,7 @@ class Feed < ActiveRecord::Base
   acts_as_paranoid
   acts_as_taggable
   acts_as_followable
+  is_impressionable :counter_cache => true, :unique => true
   friendly_id :feed_name, use: :slugged
 
   has_many :feed_entries, dependent: :destroy

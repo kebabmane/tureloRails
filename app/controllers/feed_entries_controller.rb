@@ -1,5 +1,6 @@
 class FeedEntriesController < ApplicationController
   before_action :set_feed
+  impressionist
 
   # GET /feed_entries
   # GET /feed_entries.json

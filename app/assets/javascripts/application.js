@@ -8,6 +8,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ahoy
 //= require twitter/bootstrap
 //= require nprogress
 //= require nprogress-turbolinks
@@ -17,6 +18,7 @@
 
 $(function () {
   NProgress.configure({ showSpinner: false });
+
 
   // Remove Search if user Resets Form or hits Escape!
   		$('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function(event) {
