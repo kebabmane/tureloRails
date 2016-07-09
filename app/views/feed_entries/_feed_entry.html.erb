@@ -14,7 +14,7 @@
 <div class="col-md-10">
            <div class="timeline-heading">
              <h4 class="timeline-title"><%= link_to feed_entry.title, feed_feed_entry_path(feed_entry.feed.friendly_id, feed_entry.id) %></h4>
-             <p> <%= feed_entry.impressionist_count %> views | published <%= distance_of_time_in_words(Time.now, feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, feed_feed_entries_path(feed_entry.feed.id) %> by <%= feed_entry.author %></p>
+             <p> <%= feed_entry.likers_count %> likes | <%= feed_entry.impressionist_count %> views | published <%= distance_of_time_in_words(Time.now, feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, feed_feed_entries_path(feed_entry.feed.id) %> by <%= feed_entry.author %></p>
            </div>
            <div class="timeline-body">
              <p>

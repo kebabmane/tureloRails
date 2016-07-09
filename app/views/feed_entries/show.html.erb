@@ -32,7 +32,7 @@
 	<% if @feed_entry.feed_entry_images.any? %>
 		<%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
 	<% else %>
-		<%= image_tag("folder.png", :size => "400x300", :class => "img-responsive") %>
+		<%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
 	<% end %>
 </p>
 
@@ -49,8 +49,10 @@
 <h4>Social</h4>
 <div class="hline"></div>
 <br>
-<div class="feed_entry">
+<div class="social_feed_entry">
 	This post has been viewed <%= @feed_entry.impressionist_count %> times
+	<br><br>
+	This post has been liked <%= @feed_entry.likers_count %> times
 	<br><br>
 <% if current_user.likes?(@feed_entry) %>
 	<%= button_to "unlike", unlike_path(feed_entry: @feed_entry), remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
@@ -65,12 +67,12 @@
 <h4>Tags</h4>
 <div class="hline"></div>
 <br>
-<div class="feed_entry">
+
 	<% @feed_entry.tag_list.each do |tag| %>
 		<%= link_to tag, tag_path(tag), :class => 'btn btn-primary btn-sm' %>
 	<% end %>
-</div>
-<br>
+
+<br><br><br>
 
 
 				<h4>Recent Posts</h4>

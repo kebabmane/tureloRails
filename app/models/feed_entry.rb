@@ -3,7 +3,7 @@ class FeedEntry < ActiveRecord::Base
   has_paper_trail
   acts_as_taggable
   acts_as_likeable
-  is_impressionable :counter_cache => true
+  is_impressionable :counter_cache => true, :unique => true
   belongs_to :feed, :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
 
@@ -22,8 +22,12 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
 
-         feed_entry.categories.each do |keyword|
-            feed.entry.tag_list.add(keyword)
+
+         if entry.categories.blank?
+         else
+           entry.categories.each do |keyword|
+              feed_entry.tag_list.add(keyword)
+           end
          end
 
          blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp; www. com/ content 2016/ http: https: href= }

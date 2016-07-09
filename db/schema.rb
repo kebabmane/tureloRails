@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709045354) do
+ActiveRecord::Schema.define(version: 20160709063202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20160709045354) do
     t.text     "summary"
     t.integer  "likees_count",       default: 0
     t.integer  "impressions_count"
+    t.integer  "mentioners_count",   default: 0
+    t.integer  "mentionees",         default: 0
+    t.integer  "likers_count",       default: 0
   end
 
   add_index "feed_entries", ["feed_id"], name: "index_feed_entries_on_feed_id", using: :btree
@@ -123,6 +126,9 @@ ActiveRecord::Schema.define(version: 20160709045354) do
     t.string   "favicon_url"
     t.string   "slug"
     t.integer  "impressions_count"
+    t.integer  "mentioners_count",    default: 0
+    t.integer  "mentionees",          default: 0
+    t.integer  "likers_count",        default: 0
   end
 
   add_index "feeds", ["deleted_at"], name: "index_feeds_on_deleted_at", using: :btree
