@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706093141) do
+ActiveRecord::Schema.define(version: 20160709012757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,9 +118,13 @@ ActiveRecord::Schema.define(version: 20160706093141) do
     t.integer  "feed_entries_count"
     t.integer  "followers_count",     default: 0
     t.integer  "followees_count",     default: 0
+    t.string   "description"
+    t.string   "favicon_url"
+    t.string   "slug"
   end
 
   add_index "feeds", ["deleted_at"], name: "index_feeds_on_deleted_at", using: :btree
+  add_index "feeds", ["slug"], name: "index_feeds_on_slug", using: :btree
 
   create_table "follows", force: :cascade do |t|
     t.string   "follower_type"

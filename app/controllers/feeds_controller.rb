@@ -16,8 +16,6 @@ class FeedsController < ApplicationController
    end
   end
 
-
-
   def follow
     @feed = Feed.find(params[:feed])
     current_user.follow!(@feed)
@@ -28,11 +26,14 @@ class FeedsController < ApplicationController
     current_user.unfollow!(@feed)
   end
 
+  def show
+    @feed = Feed.friendly.find(params[:id])
+    redirect_to feed_feed_entries_path(@feed.id), notice: 'here is your feed!'
+  end
 
 
   def refresh_feed
     FeedEntryFirstRunWorker.perform_async(params[:feed_id])
-
     respond_to do |format|
       format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
       format.js { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
@@ -43,7 +44,7 @@ class FeedsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
-      @feed = Feed.find(params[:id])
+      @feed = Feed.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

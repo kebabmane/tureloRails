@@ -67,6 +67,6 @@ class TureloAdmin::FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:user_id, :feed_name, :feed_url, :number_feed_entries, :feed_icon, :tag_list)
+      params.require(:feed).permit(:user_id, :feed_name, :feed_url, :number_feed_entries, :feed_icon, :tag_list, :description)
     end
 end

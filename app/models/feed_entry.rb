@@ -22,6 +22,10 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
 
+         feed_entry.categories.each do |keyword|
+            feed.entry.tag_list.add(keyword)
+         end
+
          blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp; www. com/ content 2016/ http: https: href= }
 
          text = Highscore::Content.new feed_entry.feed_entry_content, blacklist
@@ -59,10 +63,7 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.feed.followers(User).each do |user|
            Notification.create(recipient: user, actor: user, action: "feed_entry", notifiable: feed_entry)
          end
-
-
          FeedEntryImageWorker.perform_async(feed_entry.id)
-
         end
        end
      end

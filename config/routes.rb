@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :announcements
   root to: 'landings#index'
 
   get 'tags/:tag', to: 'overviews#index', as: :tag
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :overviews
   resources :first_signup
+  resources :announcements
 
   devise_for :users, :controllers => {
      :registrations =>         "users/registrations",
