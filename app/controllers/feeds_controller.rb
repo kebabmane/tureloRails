@@ -20,11 +20,13 @@ class FeedsController < ApplicationController
   def follow
     @feed = Feed.find(params[:feed])
     current_user.follow!(@feed)
+    Notification.create(recipient: current_user, actor: current_user, action: "follow", notifiable: @feed)
   end
 
   def unfollow
     @feed = Feed.find(params[:feed])
     current_user.unfollow!(@feed)
+    Notification.create(recipient: current_user, actor: current_user, action: "unfollow", notifiable: @feed)
   end
 
   def show

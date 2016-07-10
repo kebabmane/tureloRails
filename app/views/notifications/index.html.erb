@@ -1,0 +1,35 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>
+				<%= current_user.nickname %>'s notifications
+        <div class="pull-right">
+         <%= link_to 'clear all notifications', new_turelo_admin_feed_path, :remote => true, :class=>"btn btn-primary" %>
+        </div>
+			</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue -->
+
+<% if @notifications.any? %>
+
+<div class="container">
+<div id="my-entries">
+  <% @notifications.each do |notification| %>
+        <%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html] %>
+  <% end %>
+</div>
+
+<div id="infinite-scrolling">
+  <%= will_paginate @notifications %>
+</div>
+
+<br><br><br><br><br><br>
+</div>
+
+
+<% else %>
+
+<%= render 'layouts/no_data' %>
+
+<% end %>

@@ -1,5 +1,10 @@
-<%= link_to "#", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
-  <%= notification.actor.nickname %>
-  <%= notification.action %>
-  you
-<% end %>
+<div class="notification-item">
+ <h4 class="item-title"><%= notification.actor.nickname %> <%= notification.action %>'d <%= link_to FeedEntry.find(notification.notifiable_id).title, feed_feed_entry_path(FeedEntry.find(notification.notifiable_id).feed.friendly_id, FeedEntry.find(notification.notifiable_id).id) %></h4>
+ <p class="item-info">
+   <% if FeedEntry.find(notification.notifiable_id).summary.blank? %>
+     <%= strip_tags(FeedEntry.find(notification.notifiable_id).feed_entry_content).truncate(300) %>
+   <% else %>
+     <%= strip_tags(FeedEntry.find(notification.notifiable_id).summary).truncate(300) %>
+   <% end %>
+ </p>
+</div>
