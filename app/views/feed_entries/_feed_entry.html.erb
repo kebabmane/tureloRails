@@ -3,15 +3,19 @@
 
    <div class="timeline-panel">
    <div class="row">
-   <div class="col-md-2">
+   <div class="col-md-3">
      <% if feed_entry.feed_entry_images.any? %>
-       <%= image_tag(feed_entry.feed_entry_images.first.img_url, :class => "img-responsive") %>
+        <% if feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
+          <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
+        <% else %>
+          <%= image_tag(feed_entry.feed_entry_images.first.img_url, :class => "img-responsive") rescue nil %>
+        <% end %>
      <% else %>
        <%= image_tag("newspaper.png", :class => "img-responsive") %>
      <% end %>
    </div>
 
-<div class="col-md-10">
+<div class="col-md-9">
            <div class="timeline-heading">
              <h4 class="timeline-title"><%= link_to feed_entry.title, feed_feed_entry_path(feed_entry.feed.friendly_id, feed_entry.id) %></h4>
              <p> <%= feed_entry.likers_count %> likes | <%= feed_entry.impressionist_count %> views | published <%= distance_of_time_in_words(Time.now, feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, feed_feed_entries_path(feed_entry.feed.id) %> by <%= feed_entry.author %></p>

@@ -33,7 +33,7 @@
             <li><%= link_to 'feeds', feeds_path %></li>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
               <ul class="dropdown-menu arrow">
          	   	 <li><%= link_to 'profile', users_profile_path(current_user) %></li>
        		     <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>

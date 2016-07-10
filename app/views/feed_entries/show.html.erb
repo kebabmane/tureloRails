@@ -30,7 +30,11 @@
 
 	<p>
 	<% if @feed_entry.feed_entry_images.any? %>
-		<%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") %>
+		<% if @feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
+			<%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
+		<% else %>
+			<%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") rescue nil %>
+  	<% end %>
 	<% else %>
 		<%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
 	<% end %>
@@ -86,7 +90,7 @@
 								<%= image_tag("newspaper.png", :size => "100x60", :class => "img-responsive thumbnail-img") %>
 							<% end %>
 								<p><a href="#"><%= link_to recent_feed.title, feed_feed_entry_path(@feed.id, recent_feed.id) %></a></p>
-								<em>Posted on <%= time_ago_in_words(recent_feed.published) %></em>
+								<em>Posted <%= time_ago_in_words(recent_feed.published) %> ago</em>
 						</li>
 					<% end %>
 					</ul>
