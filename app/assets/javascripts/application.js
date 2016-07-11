@@ -8,7 +8,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ahoy
 //= require twitter/bootstrap
 //= require nprogress
 //= require nprogress-turbolinks

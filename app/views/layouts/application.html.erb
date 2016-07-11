@@ -31,7 +31,9 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'timeline', overviews_path %></li>
             <li><%= link_to 'feeds', feeds_path %></li>
-
+            <% if current_user.admin? %>
+              <li><%= link_to 'admins', turelo_admin_admins_path %></li>
+            <% end %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
               <ul class="dropdown-menu arrow">
@@ -58,7 +60,7 @@
   </div>
 </form>
         </div><!--/.nav-collapse -->
-        <% end %>
+
       </div>
     </div>
 
@@ -76,15 +78,11 @@
 	 <%= yield %>
 
 
-   <% if user_signed_in? and current_user.admin? %>
-   <div id="toBottom" data-toggle="tooltip" data-placement="left" title="admin page">
-     <%= link_to turelo_admin_admins_path do %>
-  <div class="btn turelo-blue btn-circle btn-lg"><i class="icon ion-ios-pulse fab-icon-header"></i></div>
-<% end %>
 </div>
 <% end %>
 
 </div>
+<a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
 
    <!-- *****************************************************************************************************************
@@ -129,6 +127,7 @@
       }, 1000);
     });
     </script>
+
 
 </body>
 </html>
