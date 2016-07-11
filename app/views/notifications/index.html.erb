@@ -2,7 +2,7 @@
 		<div class="container">
 		<div class="row">
 			<h3>
-				<%= current_user.nickname %>'s notifications
+				<%= current_user.nickname %>'s notifications | <%= @notifications.count %> unread notifications
         <div class="pull-right">
          <%= link_to 'clear all notifications', new_turelo_admin_feed_path, :remote => true, :class=>"btn btn-primary" %>
         </div>
@@ -33,3 +33,5 @@
 <%= render 'layouts/no_data' %>
 
 <% end %>
+
+<a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
