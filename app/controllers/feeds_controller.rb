@@ -1,6 +1,5 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
-  impressionist
 
   # GET /feeds
   # GET /feeds.json

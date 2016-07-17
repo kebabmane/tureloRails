@@ -1,9 +1,7 @@
 class FeedEntry < ActiveRecord::Base
   searchkick match: :word_start, searchable: [:title], callbacks: :async, track: true, conversions: "conversions"
-  has_paper_trail
   acts_as_taggable
   acts_as_likeable
-  is_impressionable :counter_cache => true, :unique => true
   belongs_to :feed, :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
 
@@ -32,7 +30,7 @@ class FeedEntry < ActiveRecord::Base
 
          blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp; www. com/ content 2016/ http: https: href= }
 
-         text = Highscore::Content.new feed_entry.feed_entry_content, blacklist
+         text = Highscore::Content.new Sanitize.fragment(feed_entry.feed_entry_content), blacklist
          text.configure do
             set :multiplier, 2
             set :upper_case, 3

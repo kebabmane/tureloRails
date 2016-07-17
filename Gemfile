@@ -49,7 +49,6 @@ gem 'rack-ssl-enforcer'
 gem 'metamagic'
 gem "paranoia"
 gem 'feedjira'
-gem 'paper_trail'
 gem "sidekiq-cron"
 gem 'feedbag'
 gem 'font-awesome-rails'
@@ -59,7 +58,7 @@ gem 'newrelic_rpm'
 gem 'turbolinks', '~> 5.0.0'
 gem 'whenever', :require => false
 gem 'gaffe'
-gem 'impressionist'
+gem 'ahoy_matey'
 gem 'apipie-rails'
 gem 'rpush'
 gem 'api-pagination'
@@ -70,6 +69,10 @@ gem 'highscore'
 gem 'stemmer'
 gem 'share_meow_client'
 gem 'rack-mini-profiler'
+gem 'sanitize'
+gem 'notable'
+gem 'notable_web'
+gem "skylight"
 
 
 group :development do

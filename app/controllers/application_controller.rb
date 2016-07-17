@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :set_paper_trail_whodunnit
+  after_filter :track_action
 
 
   def after_sign_in_path_for(resource)
@@ -47,6 +47,10 @@ class ApplicationController < ActionController::Base
     def user_not_authorized
       flash[:error] = "well that was naughty, dont worry we wont tell anyone"
       redirect_to request.headers["Referer"] || overviews_path
+    end
+
+    def track_action
+      ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
     end
 
 end

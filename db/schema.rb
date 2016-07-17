@@ -11,22 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709124504) do
+ActiveRecord::Schema.define(version: 20160717104823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
-  create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid     "visit_id"
+  create_table "ahoy_events", force: :cascade do |t|
+    t.integer  "visit_id"
     t.integer  "user_id"
     t.string   "name"
     t.json     "properties"
     t.datetime "time"
   end
 
-  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
-  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
-  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+  add_index "ahoy_events", ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
+  add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
+  add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
 
   create_table "announcements", force: :cascade do |t|
     t.text     "message"
@@ -160,31 +161,6 @@ ActiveRecord::Schema.define(version: 20160709124504) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "impressions", force: :cascade do |t|
-    t.string   "impressionable_type"
-    t.integer  "impressionable_id"
-    t.integer  "user_id"
-    t.string   "controller_name"
-    t.string   "action_name"
-    t.string   "view_name"
-    t.string   "request_hash"
-    t.string   "ip_address"
-    t.string   "session_hash"
-    t.text     "message"
-    t.text     "referrer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
-  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
-  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
-  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
-  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
-  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
-  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
-
   create_table "likes", force: :cascade do |t|
     t.string   "liker_type"
     t.integer  "liker_id"
@@ -206,6 +182,36 @@ ActiveRecord::Schema.define(version: 20160709124504) do
 
   add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables", using: :btree
   add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions", using: :btree
+
+  create_table "notable_jobs", force: :cascade do |t|
+    t.string   "note_type"
+    t.text     "note"
+    t.text     "job"
+    t.string   "job_id"
+    t.string   "queue"
+    t.decimal  "runtime"
+    t.decimal  "queued_time"
+    t.datetime "created_at"
+  end
+
+  create_table "notable_requests", force: :cascade do |t|
+    t.string   "note_type"
+    t.text     "note"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.text     "action"
+    t.integer  "status"
+    t.text     "url"
+    t.string   "request_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "params"
+    t.decimal  "request_time"
+    t.datetime "created_at"
+  end
+
+  add_index "notable_requests", ["user_id", "user_type"], name: "index_notable_requests_on_user_id_and_user_type", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "recipient_id"
@@ -316,8 +322,9 @@ ActiveRecord::Schema.define(version: 20160709124504) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
-  create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid     "visitor_id"
+  create_table "visits", force: :cascade do |t|
+    t.string   "visit_token"
+    t.string   "visitor_token"
     t.string   "ip"
     t.text     "user_agent"
     t.text     "referrer"
@@ -345,6 +352,7 @@ ActiveRecord::Schema.define(version: 20160709124504) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+  add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
 
   add_foreign_key "feed_entries", "feeds"
   add_foreign_key "feed_entry_images", "feed_entries"

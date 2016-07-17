@@ -18,7 +18,7 @@ development:
   encoding: unicode
   database: turelo_development
   pool:     5
-  username: turelo
+  username: rjevans
   password:
   template: template0
 
