@@ -1,4 +1,4 @@
-jQuery ->
+$ ->
   if $('.pagination').length
           $(window).scroll ->
                   url = $('.pagination .next_page').attr('href')
