@@ -75,6 +75,7 @@ gem 'notable_web'
 gem "skylight"
 gem 'simple_token_authentication'
 gem 'rollbar'
+gem 'goldiloader'
 
 
 group :development do

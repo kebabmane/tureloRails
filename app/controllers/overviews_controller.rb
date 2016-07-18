@@ -8,7 +8,7 @@ class OverviewsController < ApplicationController
   elsif params[:tag].present?
      @feed_entries = FeedEntry.tagged_with(params[:tag]).order("published DESC").page(params[:page]).per_page(9)
   else
-     @feed_entries = FeedEntry.where(feed_id: current_user.followees(Feed)).order("published DESC").includes(:feed, :feed_entry_images, :impressions).page(params[:page]).per_page(9)
+     @feed_entries = FeedEntry.where(feed_id: current_user.followees(Feed)).order("published DESC").includes(:feed, :feed_entry_images).page(params[:page]).per_page(9)
   end
 
   respond_to do |format|

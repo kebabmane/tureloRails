@@ -11,5 +11,6 @@ class Feed < ActiveRecord::Base
   validates :feed_name, :slug, presence: true
 
   has_many :feed_entries, dependent: :destroy
+  has_many :feed_entry_images, :through => :feed_entries
 
 end
