@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   enum role: [:user, :mod, :admin]
   after_initialize :set_default_role, :if => :new_record?
-
-
   has_many :notifications, foreign_key: :recipient_id
   is_impressionable :counter_cache => true
 
@@ -32,8 +30,8 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
-  devise :invitable, :database_authenticatable, :registerable,
-       :recoverable, :rememberable, :trackable, :async, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter],
+  devise :invitable, :database_authenticatable, :registerable, :omniauthable,
+       :recoverable, :rememberable, :trackable, :async, :validatable, :omniauth_providers => [:facebook, :twitter],
        :authentication_keys => [:login]
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update

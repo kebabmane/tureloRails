@@ -5,7 +5,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries
   # GET /feed_entries.json
   def index
-    @feed_entries = @feed.feed_entries.order("published DESC").includes(:feed_entry_images).paginate(:page => params[:page], :per_page => 9).explain
+    @feed_entries = @feed.feed_entries.order("published DESC").includes(:feed_entry_images).paginate(:page => params[:page], :per_page => 9)
     respond_to do |format|
       format.html
       format.js
@@ -32,7 +32,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries/1
   # GET /feed_entries/1.json
   def show
-    @feed_entry = FeedEntry.find(params[:id]).includes(:feed_entry_images)
+    @feed_entry = FeedEntry.find(params[:id])
     @recent_feed = FeedEntry.includes(:feed_entry_images).all.order("published DESC").limit(5)
   end
 
