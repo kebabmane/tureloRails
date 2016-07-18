@@ -5,19 +5,16 @@ module Api
 
   respond_to :json
 
-  api!
+
   def index
 	   @users = User.where(id: current_user.id)
-   end
+  end
 
-   api!
-   def show
-     @wuser = Weight.find(params[:id])
-   end
+  def show
+     render :json => {:user => current_user}, :status => 200
+     #@user = User.where(user_id: current_user.id)
+  end
 
-
-
-protected
 
   end
  end
