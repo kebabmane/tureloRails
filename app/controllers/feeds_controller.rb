@@ -7,9 +7,9 @@ class FeedsController < ApplicationController
   def index
     @feed  = Feed.new
     if params[:search].present?
-      @feeds = Feed.all.includs(:follows, :feed_entry_images).order("updated_at DESC").search(params[:search], suggest: true, page: params[:page], per_page: 10)
+      @feeds = Feed.all.order("updated_at DESC").search(params[:search], suggest: true, page: params[:page], per_page: 10)
    else
-      @feeds = Feed.all.includs(:follows, :feed_entry_images).order("updated_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @feeds = Feed.includes(:feed_entries).all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 10)
    end
    respond_to do |format|
      format.html
