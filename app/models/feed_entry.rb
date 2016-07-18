@@ -3,6 +3,7 @@ class FeedEntry < ActiveRecord::Base
   acts_as_taggable
   acts_as_likeable
   belongs_to :feed, :counter_cache => true
+  is_impressionable :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true

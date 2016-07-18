@@ -5,12 +5,11 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_filter :authenticate_user!
   around_filter :user_time_zone, if: :current_user
-  #around_filter :with_timezone
+  around_filter :with_timezone
   before_filter :set_last_seen_at, if: proc { user_signed_in? }
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  after_filter :track_action
 
 
   def after_sign_in_path_for(resource)
@@ -47,10 +46,6 @@ class ApplicationController < ActionController::Base
     def user_not_authorized
       flash[:error] = "well that was naughty, dont worry we wont tell anyone"
       redirect_to request.headers["Referer"] || overviews_path
-    end
-
-    def track_action
-      ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
     end
 
 end

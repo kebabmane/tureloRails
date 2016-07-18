@@ -1,6 +1,7 @@
 class CreateVisits < ActiveRecord::Migration
   def change
-    drop_table :impressions
+    add_column :feed_entries, :visit_id, :integer
+    add_column :feeds, :visit_id, :integer
     drop_table :visits
     create_table :visits do |t|
       t.string :visit_token
@@ -17,7 +18,9 @@ class CreateVisits < ActiveRecord::Migration
 
       # user
       t.integer :user_id
-      # add t.string :user_type if polymorphic
+      t.string :user_type
+      t.integer :feed_entry_id
+      t.integer :feed_id
 
       # traffic source
       t.string :referring_domain

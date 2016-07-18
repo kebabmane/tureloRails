@@ -58,7 +58,7 @@ gem 'newrelic_rpm'
 gem 'turbolinks', '~> 5.0.0'
 gem 'whenever', :require => false
 gem 'gaffe'
-gem 'ahoy_matey'
+gem 'impressionist'
 gem 'apipie-rails'
 gem 'rpush'
 gem 'api-pagination'

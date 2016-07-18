@@ -5,6 +5,7 @@ class Feed < ActiveRecord::Base
   acts_as_paranoid
   acts_as_taggable
   acts_as_followable
+  is_impressionable :counter_cache => true
 
   validates :feed_url, presence: true, uniqueness: true
   validates :feed_name, :slug, presence: true

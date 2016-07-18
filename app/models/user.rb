@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
 
   has_many :notifications, foreign_key: :recipient_id
+  is_impressionable :counter_cache => true
 
   acts_as_follower
   acts_as_liker

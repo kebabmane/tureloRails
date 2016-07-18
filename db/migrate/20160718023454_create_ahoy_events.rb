@@ -6,10 +6,10 @@ class CreateAhoyEvents < ActiveRecord::Migration
 
       # user
       t.integer :user_id
-      # add t.string :user_type if polymorphic
+      t.string :user_type
 
       t.string :name
-      t.json :properties
+      t.jsonb :properties
       t.timestamp :time
     end
 

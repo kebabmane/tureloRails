@@ -8,7 +8,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ahoy
 //= require twitter/bootstrap
 //= require nprogress
 //= require nprogress-turbolinks
@@ -18,7 +17,5 @@
 
 $(function () {
   NProgress.configure({ showSpinner: false });
-
-  ahoy.trackAll();
 
 });
