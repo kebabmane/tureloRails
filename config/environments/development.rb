@@ -43,11 +43,6 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  config.cache_store = :readthis_store, {
-    expires_in: 1.weeks.to_i,
-    namespace: 'cache',
-    redis: { url: 'localhost', driver: :hiredis }
-  }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
