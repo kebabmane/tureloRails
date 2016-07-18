@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :invitable, :database_authenticatable, :registerable, :omniauthable,
-       :recoverable, :rememberable, :trackable, :async, :validatable, :omniauth_providers => [:facebook, :twitter],
-       :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :async, :validatable,
+         :authentication_keys => [:login]
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
