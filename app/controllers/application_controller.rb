@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_last_seen_at, if: proc { user_signed_in? }
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
+  acts_as_token_authentication_handler_for User, fallback_to_devise: false
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
 

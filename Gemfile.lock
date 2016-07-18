@@ -506,6 +506,10 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simple_token_authentication (1.14.0)
+      actionmailer (>= 3.2.6, < 6)
+      actionpack (>= 3.2.6, < 6)
+      devise (>= 3.2, < 6)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -661,6 +665,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-cron
   simple_form
+  simple_token_authentication
   sinatra
   skylight
   socialization

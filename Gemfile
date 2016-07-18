@@ -73,6 +73,7 @@ gem 'sanitize'
 gem 'notable'
 gem 'notable_web'
 gem "skylight"
+gem 'simple_token_authentication'
 
 
 group :development do
