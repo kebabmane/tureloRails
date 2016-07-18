@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_liker
 
+
+    # Include default devise modules. Others available are:
+    # :lockable, :timeoutable
+    devise :invitable, :database_authenticatable, :registerable, :omniauthable,
+         :recoverable, :rememberable, :trackable, :async, :validatable, :omniauth_providers => [:facebook, :twitter],
+         :authentication_keys => [:login]
+
   attr_accessor :login
 
   validates :email, :presence => true, :uniqueness => true
@@ -28,11 +35,6 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
-  devise :invitable, :database_authenticatable, :registerable, :omniauthable,
-       :recoverable, :rememberable, :trackable, :async, :validatable, :omniauth_providers => [:facebook, :twitter],
-       :authentication_keys => [:login]
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
