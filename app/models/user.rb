@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
-  devise :invitable, :database_authenticatable, :registerable, :omniauthable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :async, :validatable,
          :authentication_keys => [:login]
 
