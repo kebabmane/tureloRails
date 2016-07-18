@@ -23,7 +23,6 @@ gem 'bootstrap_form', :git => 'git://github.com/bootstrap-ruby/rails-bootstrap-f
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem "therubyracer"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch =>'master'
 gem 'acts-as-taggable-on'
 gem 'gravatarify'
 gem 'friendly_id'
@@ -76,6 +75,7 @@ gem "skylight"
 gem 'simple_token_authentication'
 gem 'rollbar'
 gem 'goldiloader'
+gem 'masonry-rails'
 
 
 group :development do

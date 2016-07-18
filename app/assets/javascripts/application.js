@@ -8,7 +8,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require masonry/jquery.masonry
 //= require nprogress
 //= require nprogress-turbolinks
 //= require bootstrap-typeahead-rails
