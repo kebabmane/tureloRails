@@ -27,6 +27,9 @@ set :sidekiq_role, :app
 set :sidekiq_env, 'production'
 set :sidekiq_config,  "#{release_path}/config/sidekiq.yml"
 set :sidekiq_pid,     "#{shared_path}/tmp/pids/sidekiq.pid"
+set :rollbar_token, '0ef79b79ddf149c990636dd0d9ece0a5'
+set :rollbar_env, Proc.new { fetch :stage }
+set :rollbar_role, Proc.new { :app }
 
 ## Defaults:
 # set :scm,           :git
