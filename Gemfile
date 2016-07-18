@@ -76,6 +76,8 @@ gem 'simple_token_authentication'
 gem 'rollbar'
 gem 'goldiloader'
 gem 'masonry-rails'
+gem 'readthis'
+gem 'hiredis'
 
 
 group :development do

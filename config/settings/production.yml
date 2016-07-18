@@ -10,3 +10,4 @@
   rds_username: "turelo_db"
   rds_password: "ZaFR55DOYf6n"
   rds_hostname: "10.128.36.188"
+  REDIS_URL: "10.128.36.222"

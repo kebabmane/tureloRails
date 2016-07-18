@@ -7,7 +7,6 @@ production:
 :queues:
   - default
   - emails
-  - ahoy
   - mailers
   - searchkick
   - default_images

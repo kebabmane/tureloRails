@@ -75,6 +75,12 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.cache_store = :readthis_store, {
+    expires_in: 1.weeks.to_i,
+    namespace: 'cache',
+    redis: { url: '10.128.36.222', driver: :hiredis }
+  }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
