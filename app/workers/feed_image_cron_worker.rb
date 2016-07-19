@@ -3,7 +3,7 @@ class FeedImageCronWorker
 
   def perform()
 
-FeedEntry.find_each do |feed_entry|
+FeedEntry.find_each(batch_size: 20) do |feed_entry|
 
 if feed_entry.present?
   @feed_entry = FeedEntry.find(feed_entry.id)
