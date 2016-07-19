@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :categories
   root to: 'landings#index'
 
   get 'tags/:tag', to: 'overviews#index', as: :tag
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
+resources :categories do
   resources :feeds do
     resources :feed_entries do
       resources :feed_entry_images
     end
     post 'refresh_feed', :to=>"feeds#refresh_feed"
   end
+end
 
   resources :overviews
   resources :first_signup
@@ -42,6 +45,7 @@ Rails.application.routes.draw do
     resources :users
     resources :devices
     resources :announcements
+    resources :categories
   end
 
 

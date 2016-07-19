@@ -1,0 +1,32 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>categories admin</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
+
+<div class="container">
+
+  <%= simple_form_for(@category, :url => turelo_admin_category_path) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :category_name %>
+      <%= f.input :category_description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :category_image_url %><br>
+      <%= f.file_field :category_image_url %>
+    </div>
+
+  <br><br><br>
+    <div class="form-actions">
+      <%= f.button :submit, :class=>"btn btn-primary" %>
+    </div>
+  <% end %>
+
+
+</div>
+<br><br><br>

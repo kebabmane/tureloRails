@@ -1,21 +1,21 @@
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :index]
   impressionist
 
   # GET /feeds
   # GET /feeds.json
   def index
-    @feed  = Feed.new
     if params[:search].present?
       @feeds = Feed.all.order("updated_at DESC").search(params[:search], suggest: true, page: params[:page], per_page: 10)
    else
-      @feeds = Feed.includes(:feed_entries).all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @feeds = @category.feeds.includes(:feed_entries).all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 10)
    end
    respond_to do |format|
      format.html
      format.js
    end
   end
+
 
   def follow
     @feed = Feed.find(params[:feed])
@@ -48,6 +48,10 @@ class FeedsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
       @feed = Feed.friendly.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.friendly.find(params[:category_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

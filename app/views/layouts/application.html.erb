@@ -32,7 +32,7 @@
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
             <li><%= link_to 'timeline', overviews_path %></li>
-            <li><%= link_to 'feeds', feeds_path %></li>
+            <li><%= link_to 'feeds', categories_path %></li>
             <% if current_user.admin? %>
               <li><%= link_to 'admins', turelo_admin_admins_path %></li>
             <% end %>

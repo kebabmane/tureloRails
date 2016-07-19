@@ -76,7 +76,7 @@ gem 'simple_token_authentication'
 gem 'rollbar'
 gem 'goldiloader'
 gem 'masonry-rails'
-
+gem 'bootstrap-select-rails'
 
 group :development do
   gem 'better_errors'

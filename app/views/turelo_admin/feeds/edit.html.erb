@@ -4,7 +4,7 @@
 			<h3>
         editing - <%= @feed.feed_name%>
         <div class="pull-right">
-          <%= link_to 'back', admin_feeds_path, :class=>"btn btn-primary" %>
+          <%= link_to 'back', turelo_admin_feeds_path, :class=>"btn btn-primary" %>
         </div>
       </h3>
 		</div><!-- /row -->
@@ -13,6 +13,18 @@
 
 <div class="container">
 
-<%= render 'form' %>
+	<%= bootstrap_form_for(@feed, :url => turelo_admin_feed_path) do |f| %>
+
+
+		<%= f.text_field :feed_url, label: "Feed URL" %>
+		<%= f.text_field :tag_list, label: "tag list" %>
+	  <%= f.collection_select :category_id, Category.order(:category_name),:id,:category_name, { label: "select category" } %>
+
+	  <%= f.hidden_field :user_id %>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, :class=>"btn btn-primary" %>
+	  </div>
+	<% end %>
 
 </div>

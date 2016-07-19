@@ -16,7 +16,6 @@
 
 	 <! -- SINGLE POST -->
 	 <div class="col-lg-8">
-
      hey here is stuff hey
 
 
@@ -31,6 +30,13 @@
             <a class="btn btn-theme" href="#" role="button"><%= tag %></a>
          <% end %>
        </p>
+			 <br>
+			 <h4>category</h4>
+	     <div class="hline"></div>
+	       <p>
+	          <a class="btn btn-theme" href="#" role="button"><%= @feed.category.category_name rescue nil%></a>
+	       </p>
+
    </div>
 
    </div>

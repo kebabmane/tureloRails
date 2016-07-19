@@ -1,0 +1,6 @@
+<tr>
+       <td> <%= link_to category.category_name, turelo_admin_category_path(category) %></td>
+       <td><%= category.created_at.strftime("%d %b. %Y") %></td>
+       <td><%= link_to 'edit', edit_turelo_admin_category_path(category), { :class=>"btn btn-primary" } %>
+       <%= link_to 'destroy', turelo_admin_category_path(category), :class => 'btn btn-danger', method: :delete, data: { confirm: 'are you sure?' } %></td>
+</tr>

@@ -1,5 +1,6 @@
 class FeedEntriesController < ApplicationController
   before_action :set_feed, only: [:index, :show]
+  before_action :set_category, only: [:show, :index]
   impressionist
 
   # GET /feed_entries
@@ -44,4 +45,7 @@ class FeedEntriesController < ApplicationController
       @feed = Feed.friendly.find(params[:feed_id])
     end
 
+    def set_category
+      @category = Category.friendly.find(params[:category_id])
+    end
 end

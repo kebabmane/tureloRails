@@ -11,6 +11,10 @@
     <%= f.input :tag_list, label: false %>
   </div>
 
+  <div class="field">
+     <%= f.collection_select :category, Category.order(:category_name),:id,:category_name, include_blank: true %>
+  </div>
+
   <%= f.hidden_field :user_id %>
 
   <div class="form-actions">

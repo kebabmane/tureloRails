@@ -3,7 +3,7 @@
 		<div class="row">
 			<h3>admin - all feeds
 			<div class="pull-right">
- 			<%= pluralize(@feeds.count, 'feed') %> <%= link_to 'new feed', new_turelo_admin_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
+ 			<%= pluralize(@feeds.count, 'feeds') %> <%= link_to 'new feed', new_turelo_admin_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
       </div>
 		  </h3>
 		</div><!-- /row -->
@@ -19,6 +19,7 @@
       <th>feed url</th>
       <th>created at</th>
       <th>entries</th>
+			<th>category</th>
       <th colspan="2">actions</th>
     </tr>
   </thead>

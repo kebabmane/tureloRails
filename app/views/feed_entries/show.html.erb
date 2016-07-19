@@ -11,7 +11,7 @@
 					<% if @feed_entry.author? %>
 	     		| By:	<%= @feed_entry.author %>
 					<% end %>
-						 | In: <%= link_to @feed_entry.feed.feed_name, feed_feed_entries_path(@feed_entry.feed.id) %></h5>
+						 | In: <%= link_to @feed_entry.feed.feed_name, category_feed_feed_entries_path(@category, @feed_entry.feed.id) %></h5>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue -->
@@ -93,7 +93,7 @@
 							<% else %>
 								<%= image_tag("newspaper.png", :size => "100x60", :class => "img-responsive") %>
 							<% end %>
-								<p><a href="#"><%= link_to recent_feed.title, feed_feed_entry_path(@feed.id, recent_feed.id) %></a></p>
+								<p><a href="#"><%= link_to recent_feed.title, category_feed_feed_entry_path(@category.id, @feed.id, recent_feed.id) %></a></p>
 								<em>Posted <%= time_ago_in_words(recent_feed.published) %> ago</em>
 						</li>
 					<% end %>

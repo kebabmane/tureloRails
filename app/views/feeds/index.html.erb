@@ -1,7 +1,7 @@
 <div id="blue">
 		<div class="container">
 		<div class="row">
-			<h3>all feeds</h3>
+			<h3><%= @category.category_name %></h3>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue -->
@@ -12,7 +12,7 @@
 	</div>
 <div class="col-lg-6">
 <div id="custom-search-input">
-	<%= form_tag feeds_path, method: :get do %>
+	<%= form_tag category_feeds_path, method: :get do %>
 		<div class="input-group col-md-12">
 <%= text_field_tag :search, params[:query], class: "form-control input-lg", :placeholder => "search for feeds", id: "feeds_typeahead" %>
 	<span class="input-group-btn">

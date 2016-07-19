@@ -1,0 +1,50 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>categories admin
+        <div class="pull-right">
+   			<%= pluralize(@categories.count, 'categories') %> <%= link_to 'new cateogry', new_turelo_admin_category_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_category_modal", :class=>"btn btn-primary" %>
+        </div>
+      </h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
+
+<div class="container">
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead>
+ <tr>
+  <th>category</th>
+  <th>created at</th>
+  <th colspan="2">Actions</th>
+ </tr>
+</thead>
+<tbody>
+  <% @categories.each do |category| %>
+  	<%= render partial: 'table_row', locals: {category: category} %>
+  <% end %>
+</tbody>
+</table>
+</div>
+<div class="text-center">
+	<%= will_paginate @categories, :renderer => BootstrapPagination::Rails  %>
+</div>
+</div>
+
+<br><br><br><br>
+
+<div class="modal fade" id="new_category_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">add new category</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'form', modal: true %>
+      </div>
+    </div>
+  </div>
+</div>

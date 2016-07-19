@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718052658) do
+ActiveRecord::Schema.define(version: 20160719073233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,18 @@ ActiveRecord::Schema.define(version: 20160718052658) do
     t.datetime "updated_at"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "category_name"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "category_image_url"
+    t.string   "category_description"
+    t.integer  "feeds_count"
+    t.string   "slug"
+  end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+
   create_table "feed_entries", force: :cascade do |t|
     t.integer  "feed_id"
     t.string   "title"
@@ -114,7 +126,6 @@ ActiveRecord::Schema.define(version: 20160718052658) do
     t.integer  "feed_entries_count"
     t.integer  "followers_count",     default: 0
     t.integer  "followees_count",     default: 0
-    t.string   "description"
     t.string   "favicon_url"
     t.string   "slug"
     t.integer  "impressions_count"
@@ -122,6 +133,9 @@ ActiveRecord::Schema.define(version: 20160718052658) do
     t.integer  "mentionees",          default: 0
     t.integer  "likers_count",        default: 0
     t.integer  "visit_id"
+    t.string   "feed_description"
+    t.string   "feed_image_url"
+    t.integer  "category_id"
   end
 
   add_index "feeds", ["deleted_at"], name: "index_feeds_on_deleted_at", using: :btree
