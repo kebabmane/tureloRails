@@ -1,7 +1,7 @@
 class FeedEntryImageWorker
   include Sidekiq::Worker
 
-  def perform(feed_entry_id)
+  def perform(feed_entry_id, feed_id)
 
     if feed_entry_id
      @feed_entry = FeedEntry.find(feed_entry_id)
@@ -24,6 +24,7 @@ class FeedEntryImageWorker
            :feed_entry_id        => @feed_entry.id,
         )
      end
+
    end
   end
 

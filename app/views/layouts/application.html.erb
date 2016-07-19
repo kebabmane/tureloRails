@@ -52,6 +52,7 @@
 
   <div class="message in" id="flash">
       <%= flash_messages %>
+       <%= render 'layouts/google_analytics' %>
   </div>
 
   <% Announcement.current(cookies.signed[:hidden_announcement_ids]).each do |announcement| %>
