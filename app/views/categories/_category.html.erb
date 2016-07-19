@@ -1,0 +1,20 @@
+<article class="post col-md-4 col-sm-6 col-xs-12">
+              <div class="post-inner">
+                  <figure class="post-thumb">
+                    <div class="item">
+                      <% if category.category_image_url? %>
+                        <%= image_tag(category.category_image_url, :size => "400x300", :class => "img-responsive") rescue nil %>
+                      <% else %>
+                          <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
+                      <% end %>
+                    </div>
+                </figure>
+            <div class="content">
+                <h3 class="post-title"><%= link_to category.category_name, category_feeds_path(category) %></h3>
+                <div class="post-entry">
+                  <p>this feed has <%= category.feeds_count %> feeds </p>
+                  <p><%= category.category_description %></p>
+                </div>
+            </div><!--//content-->
+        </div><!--//post-inner-->
+        </article>
