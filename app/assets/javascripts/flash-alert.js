@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
 
   function fadeAlert(){
     $('.flash-alert').removeClass('in');

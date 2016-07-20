@@ -5,6 +5,11 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all.paginate(:page => params[:page], :per_page => 9)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /categories/1
