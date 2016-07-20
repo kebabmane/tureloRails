@@ -1,9 +1,7 @@
-$post = $('<%= j render(@categories) %>)');
-
-
-
+$('#my-entries').append('<%= j render @categories %>');
 <% if @categories.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@categories) %>');
+  $('.pagination').replaceWith('<%= j will_paginate @categories %>');
 <% else %>
+  $(window).off('scroll');
   $('.pagination').remove();
 <% end %>

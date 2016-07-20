@@ -1,9 +1,7 @@
-$post = $('<%= j render(@feeds) %>)');
-
-
-
+$('#blog-mansonry').append('<%= j render @feeds %>');
 <% if @feeds.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@feeds) %>');
+  $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
 <% else %>
+  $(window).off('scroll');
   $('.pagination').remove();
 <% end %>
