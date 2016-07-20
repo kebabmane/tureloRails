@@ -46,13 +46,6 @@
     </div>
 
 
-    <% if user_signed_in? %>
-      <li><%= link_to 'Head to Munch', overviews_path, :class=>"btn btn-inverse btn-bordered navbar-btn" %></li>
-    <% else %>
-      <li><%= link_to 'Login', new_user_session_path %></li>
-      <li><%= link_to 'Signup', new_user_registration_path, :class=>"btn btn-inverse btn-bordered navbar-btn" %></li>
-    <% end %>
-
 
 	<%= yield %>
 
