@@ -10,7 +10,7 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  config.middleware.use Rack::SslEnforcer
+  #config.middleware.use Rack::SslEnforcer
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -26,7 +26,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  config.action_controller.asset_host = "d3a245gyk5qkyh.cloudfront.net"
+  c#onfig.action_controller.asset_host = "d3a245gyk5qkyh.cloudfront.net"
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -46,7 +46,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
