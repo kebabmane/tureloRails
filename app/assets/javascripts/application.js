@@ -18,5 +18,5 @@
 
 $(function () {
   NProgress.configure({ showSpinner: false });
-
+  $('[data-toggle="tooltip"]').tooltip()
 });

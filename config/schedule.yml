@@ -12,3 +12,8 @@ update_feed_cover_job:
   cron: "*/30 * * * *"
   class: "FeedCoverImageCronWorker"
   queue: default
+
+update_counter_cache_job:
+  cron: "0 0 * * * *"
+  class: "CounterCacheCronWorker"
+  queue: default

@@ -628,6 +628,9 @@ GEM
       redis-namespace (>= 1.5.2)
       rufus-scheduler (>= 2.0.24)
       sidekiq (>= 4.0.0)
+    sidekiq-unique-jobs (4.0.17)
+      sidekiq (>= 2.6)
+      thor
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -796,6 +799,7 @@ DEPENDENCIES
   share_meow_client
   sidekiq
   sidekiq-cron
+  sidekiq-unique-jobs
   simple_form
   simple_token_authentication
   sinatra

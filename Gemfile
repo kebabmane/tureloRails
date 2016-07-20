@@ -78,6 +78,7 @@ gem 'rollbar'
 gem 'goldiloader'
 gem 'masonry-rails'
 gem 'bootstrap-select-rails'
+gem 'sidekiq-unique-jobs'
 
 group :development do
   gem 'better_errors'
