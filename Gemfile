@@ -44,6 +44,7 @@ gem 'pghero'
 gem 'jquery-turbolinks'
 gem 'carrierwave-aws'
 gem "mini_magick"
+gem "fog"
 gem 'rack-ssl-enforcer'
 gem 'metamagic'
 gem "paranoia"
