@@ -79,6 +79,7 @@ gem 'goldiloader'
 gem 'masonry-rails'
 gem 'bootstrap-select-rails'
 gem 'sidekiq-unique-jobs'
+gem "figaro"
 
 group :development do
   gem 'better_errors'

@@ -194,6 +194,8 @@ GEM
       loofah (~> 2.0)
       sax-machine (~> 1.0)
     ffi (1.9.14)
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     flamegraph (0.9.5)
@@ -739,6 +741,7 @@ DEPENDENCIES
   factory_girl_rails
   feedbag
   feedjira
+  figaro
   flamegraph
   fog
   font-awesome-rails
