@@ -1,4 +1,4 @@
-class FeedEntryCronWorker
+class CounterCacheCronWorker
   include Sidekiq::Worker
 
   def perform
@@ -6,5 +6,5 @@ class FeedEntryCronWorker
     FeedEntry.find_each { |feed_entry| FeedEntry.reset_counters(feed_entry.id, :feed_entry_images) }
     Feed.find_each { |feed| Feed.reset_counters(feed.id, :feed_entries) }
   end
-  
+
 end

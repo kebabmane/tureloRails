@@ -16,5 +16,4 @@ $(document).on('turbolinks:load', function() {
         });
 
         $('#back-to-top').tooltip('show');
-
 });

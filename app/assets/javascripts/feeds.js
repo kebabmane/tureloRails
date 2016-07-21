@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
   // layout Isotope after each image loads
   $grid.imagesLoaded().progress( function() {
     $grid.masonry();
-    console.log('masonry success!')
+    console.log('msuccess!')
   });
 
   var ready;

@@ -31,8 +31,6 @@ gem 'groupdate'
 gem 'redis'
 gem 'sidekiq'
 gem "searchkick"
-gem 'aws-sdk'
-gem 'aws-sdk-rails'
 gem 'momentjs-rails'
 gem 'devise-async'
 gem 'lazy_high_charts'
