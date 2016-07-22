@@ -1,7 +1,6 @@
 module Api
   class BaseController < ApplicationController
-    #protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
-    before_action :set_resource, only: [:destroy, :show, :update]
+    acts_as_token_authentication_handler_for User
     respond_to :json
 
 

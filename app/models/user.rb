@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_liker
 
+  has_many :devices
+
     # Include default devise modules. Others available are:
     # :lockable, :timeoutable
     devise :invitable, :database_authenticatable, :registerable, :omniauthable,

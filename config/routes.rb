@@ -58,7 +58,6 @@ end
 
   namespace :api do
    namespace :v1 do
-     devise_for :users, skip: :omniauth_callbacks, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registration"}
        resources :feeds do
         collection do
          get :autocomplete
@@ -66,6 +65,13 @@ end
        end
        resources :users
        resources :feed_search
+       resources :devices
+       resource :user
+       devise_scope :user do
+         post 'registrations' => 'registrations#create', :as => 'register'
+         post 'sessions' => 'sessions#create', :as => 'login'
+         delete 'sessions' => 'sessions#destroy', :as => 'logout'
+       end
    end
 end
 

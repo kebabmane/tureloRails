@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_filter :authenticate_user!
   around_filter :user_time_zone, if: :current_user
-  around_filter :with_timezone
+  #around_filter :with_timezone
   before_filter :set_last_seen_at, if: proc { user_signed_in? }
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
