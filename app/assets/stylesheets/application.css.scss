@@ -14,11 +14,11 @@
  *= require bootstrap-typeahead-rails
  *= require nprogress
  *= require nprogress-bootstrap
+ *= require 'masonry/transitions'
  *= require_tree .
  *= require_self
  */
 
-@import "masonry/fluid";
 
 html,
 body {
