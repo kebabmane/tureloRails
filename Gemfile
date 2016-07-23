@@ -78,6 +78,7 @@ gem 'masonry-rails'
 gem 'bootstrap-select-rails'
 gem 'sidekiq-unique-jobs'
 gem "figaro"
+gem 'api-pagination'
 
 group :development do
   gem 'better_errors'

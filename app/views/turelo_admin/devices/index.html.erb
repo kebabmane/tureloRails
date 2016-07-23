@@ -1,4 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>turelo admin</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br>
+
+<div class="container">
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
@@ -23,9 +31,9 @@
         <td><%= device.osVersion %></td>
         <td><%= device.sdkVersion %></td>
         <td>
-          <%= link_to 'Show', munch_admin_device_path(device), { :class=>"btn btn-primary" } %>
-          <%= link_to 'edit', edit_munch_admin_device_path(device), { :class=>"btn btn-primary" } %>
-          <%= link_to 'Destroy', munch_admin_devices_path(device), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', turelo_admin_device_path(device), { :class=>"btn btn-primary" } %>
+          <%= link_to 'edit', edit_turelo_admin_device_path(device), { :class=>"btn btn-primary" } %>
+          <%= link_to 'Destroy', turelo_admin_devices_path(device), method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
@@ -36,5 +44,6 @@
 
 <%= will_paginate @devices, renderer: BootstrapPagination::Rails %>
 
+</div>
 </div>
 </div>
