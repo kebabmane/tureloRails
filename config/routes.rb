@@ -66,6 +66,7 @@ end
        resources :users
        resources :feed_search
        resources :devices
+       resources :timelines
        resource :user
        devise_scope :user do
          post 'registrations' => 'registrations#create', :as => 'register'

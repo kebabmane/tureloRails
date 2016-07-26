@@ -10,6 +10,7 @@ module Api
     @device = Device.new
     @device.registration_id = params[:registration_id]
     @device.save
+    render :json => {:device => @device}, :status => 200
   end
 
 
