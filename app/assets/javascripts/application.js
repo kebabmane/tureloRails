@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function () {
+document.addEventListener("turbolinks:load", function() {
   NProgress.configure({ showSpinner: false });
   $('[data-toggle="tooltip"]').tooltip()
 });

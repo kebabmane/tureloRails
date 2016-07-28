@@ -10,7 +10,7 @@
                     </div>
                 </figure>
             <div class="content">
-                <h3 class="post-title"><%= link_to category.category_name, category_feeds_path(category) %></h3>
+                <h3 class="post-title"><%= link_to category.category_name, category_feeds_path(category.friendly_id) %></h3>
                 <div class="post-entry">
                   <p>this category has <%= category.feeds_count %> feeds </p>
                   <p><%= category.category_description %></p>
