@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
 
   // init Masonry
   var $grid = $('#blog-mansonry').masonry({

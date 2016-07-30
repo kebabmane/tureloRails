@@ -11,12 +11,11 @@
 //= require masonry/jquery.masonry
 //= require masonry/jquery.imagesloaded.min
 //= require nprogress
-//= require nprogress-turbolinks
 //= require bootstrap-typeahead-rails
-//= require turbolinks
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
+
+$(function() {
   NProgress.configure({ showSpinner: false });
-  $('[data-toggle="tooltip"]').tooltip()
+  $('.has-tooltip').tooltip();
 });
