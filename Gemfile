@@ -53,7 +53,6 @@ gem 'font-awesome-rails'
 gem "socialization"
 gem 'puma', '~> 3.0'
 gem 'newrelic_rpm'
-gem 'turbolinks', '~> 5.0.0'
 gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
