@@ -29,9 +29,9 @@ before_filter :configure_permitted_parameters
   end
 
   def configure_permitted_parameters
-   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :nickname, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache) }
-   devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :nickname, :email, :password, :remember_me) }
-   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:slug, :date_of_birth, :home_page, :user_description, :first_name, :last_name, :nickname, :current_password, :password, :password_confirmation, :time_zone, :is_female, :user_height, :description, :avatar, :avatar_cache) }
+   devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :nickname, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache) }
+   devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:login, :nickname, :email, :password, :remember_me) }
+   devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:slug, :date_of_birth, :home_page, :user_description, :first_name, :last_name, :nickname, :current_password, :password, :password_confirmation, :time_zone, :is_female, :user_height, :description, :avatar, :avatar_cache) }
   end
 
   def update_resource(resource, params)
