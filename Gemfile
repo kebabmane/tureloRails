@@ -52,7 +52,6 @@ gem 'feedbag'
 gem 'font-awesome-rails'
 gem "socialization"
 gem 'puma', '~> 3.0'
-gem 'newrelic_rpm'
 gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
