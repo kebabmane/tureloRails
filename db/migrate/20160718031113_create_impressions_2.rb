@@ -1,7 +1,5 @@
 class CreateImpressions2 < ActiveRecord::Migration
   def self.up
-    drop_table :ahoy_events
-    drop_table :visits
     create_table :impressions, :force => true do |t|
       t.string :impressionable_type
       t.integer :impressionable_id
