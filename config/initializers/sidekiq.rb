@@ -5,10 +5,10 @@ if File.exists?(schedule_file) && Sidekiq.server?
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = { url: ENV["REDIS_URL"], namespace: :resque }
+  config.redis = { url: ENV["REDIS_URL"], namespace: :resque, :size => 1 }
 end
 
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: ENV["REDIS_URL"], namespace: :resque }
+  config.redis = { url: ENV["REDIS_URL"], namespace: :resque, :size => 7 }
 end
