@@ -80,6 +80,7 @@ gem 'lazyload-rails'
 gem 'rails_12factor'
 gem 'tunemygc'
 gem 'newrelic_rpm'
+gem 'librato-rails'
 
 group :development do
   gem 'better_errors'
