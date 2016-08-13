@@ -78,7 +78,6 @@ gem 'sidekiq-unique-jobs'
 gem "figaro"
 gem 'lazyload-rails'
 gem 'rails_12factor'
-gem 'clockwork'
 
 group :development do
   gem 'better_errors'
