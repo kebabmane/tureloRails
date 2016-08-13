@@ -79,6 +79,7 @@ gem "figaro"
 gem 'lazyload-rails'
 gem 'rails_12factor'
 gem 'tunemygc'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'better_errors'
