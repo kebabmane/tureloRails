@@ -46,7 +46,6 @@ GEM
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
     addressable (2.4.0)
-    aggregate (0.2.2)
     airbrussh (1.1.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ansi (1.5.0)
@@ -361,7 +360,6 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hash-deep-merge (0.1.1)
     hashie (3.4.4)
-    hetchy (1.0.0)
     high_voltage (3.0.0)
     highscore (1.2.0)
       bloomfilter-rb (>= 2.1.1)
@@ -397,17 +395,6 @@ GEM
       hash-deep-merge
     lazyload-rails (0.3.1)
       nokogiri (~> 1.5)
-    librato-metrics (1.6.1)
-      aggregate (~> 0.2.2)
-      faraday (~> 0.7)
-      multi_json
-    librato-rack (1.0.1)
-      hetchy (~> 1.0)
-      librato-metrics (~> 1.6)
-    librato-rails (1.4.1)
-      activesupport (>= 3.0)
-      librato-rack (~> 1.0.1)
-      railties (>= 3.0)
     libv8 (3.16.14.15)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -779,7 +766,6 @@ DEPENDENCIES
   launchy
   lazy_high_charts
   lazyload-rails
-  librato-rails
   masonry-rails
   metamagic
   mini_magick
