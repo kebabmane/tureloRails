@@ -1,4 +1,4 @@
-$('#my-entries').append('<%= j render @categories %>');
+$('#pins').append('<%= j render @categories %>');
 <% if @categories.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @categories %>');
 <% else %>

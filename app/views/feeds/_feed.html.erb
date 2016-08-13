@@ -1,12 +1,12 @@
-<article class="post col-md-4 col-sm-6 col-xs-12">
+<div class="post col-md-4">
               <div class="post-inner">
                   <figure class="post-thumb">
                     <div class="item">
                       <% if feed.feed_image_url? %>
-                        <%= link_to image_tag(feed.feed_image_url, :class => "img-responsive"), category_feed_feed_entries_path(@category, feed.friendly_id) %>
+                        <%= link_to image_tag(feed.feed_image_url, :size => "400x300", :class => "img-responsive"), category_feed_feed_entries_path(@category, feed.friendly_id) %>
                       <% else %>
-                        <%= link_to image_tag("newspaper.png", :size => "400x300", :class => "img-responsive"), category_feed_feed_entries_path(@category, feed.friendly_id) %>
-                      <% end %>  
+                        <%= link_to image_tag("newspaper.png", :size => "400x300"), category_feed_feed_entries_path(@category, feed.friendly_id) %>
+                      <% end %>
                     </div>
                 </figure>
             <div class="content">
@@ -28,4 +28,4 @@
                 </div><!--meta-->
             </div><!--//content-->
         </div><!--//post-inner-->
-        </article>
+</div>

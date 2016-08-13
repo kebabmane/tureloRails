@@ -1,4 +1,4 @@
-class CounterCacheCronWorker
+class CounterCacheWorker
   include Sidekiq::Worker
 
   def perform

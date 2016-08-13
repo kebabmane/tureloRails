@@ -1,4 +1,4 @@
-$('#blog-mansonry').append('<%= j render @feeds %>');
+$('#pins').append('<%= j render @feeds %>');
 <% if @feeds.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
 <% else %>

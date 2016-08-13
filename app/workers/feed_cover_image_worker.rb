@@ -1,4 +1,4 @@
-class FeedCoverImageCronWorker
+class FeedCoverImageWorker
   include Sidekiq::Worker
 
   def perform

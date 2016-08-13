@@ -1,1 +1,1 @@
-Searchkick.client = Elasticsearch::Client.new url: Settings.elasticsearch_url
+Searchkick.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_SSL_URL']

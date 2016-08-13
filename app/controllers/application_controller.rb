@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :nickname, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache) }
-     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :nickname, :email, :password, :remember_me) }
-     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:slug, :date_of_birth, :home_page, :user_description, :first_name, :last_name, :nickname, :current_password, :password, :password_confirmation, :time_zone, :is_female, :user_height, :avatar, :avatar_cache) }
-     devise_parameter_sanitizer.for(:accept_invitation) do |u| u.permit(:first_name, :last_name, :phone, :password, :password_confirmation, :invitation_token)
+     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :nickname, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache) }
+     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:login, :nickname, :email, :password, :remember_me) }
+     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:slug, :date_of_birth, :home_page, :user_description, :first_name, :last_name, :nickname, :current_password, :password, :password_confirmation, :time_zone, :is_female, :user_height, :avatar, :avatar_cache) }
+     devise_parameter_sanitizer.permit(:accept_invitation) do |u| u.permit(:first_name, :last_name, :phone, :password, :password_confirmation, :invitation_token)
     end
     end
 

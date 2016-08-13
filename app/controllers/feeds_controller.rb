@@ -36,7 +36,7 @@ class FeedsController < ApplicationController
 
 
   def refresh_feed
-    FeedEntryFirstRunWorker.perform_async(params[:feed_id])
+    FeedFirstRunWorker.perform_async(params[:feed_id])
     respond_to do |format|
       format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
       format.js { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }

@@ -1,15 +1,5 @@
 $(function() {
 
-  // init Masonry
-  var $grid = $('#blog-mansonry').masonry({
-    itemSelector: '.post',
-    percentPosition: true
-  });
-  // layout Isotope after each image loads
-  $grid.imagesLoaded().progress( function() {
-    $grid.masonry();
-    console.log('msuccess!')
-  });
 
   var ready;
   ready = function() {

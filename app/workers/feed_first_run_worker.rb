@@ -1,4 +1,4 @@
-class FeedEntryFirstRunWorker
+class FeedFirstRunWorker
   include Sidekiq::Worker
 
   def perform(feed_id)
