@@ -3,11 +3,6 @@ update_feed_entries_job:
   class: "FeedEntryCronWorker"
   queue: default
 
-update_feed_images_job:
-  cron: "*/5 * * * *"
-  class: "FeedImageCronWorker"
-  queue: default_images
-
 update_feed_cover_job:
   cron: "*/30 * * * *"
   class: "FeedCoverImageWorker"
