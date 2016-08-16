@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20160812230959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "announcements", force: :cascade do |t|
     t.text     "message"
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160812230959) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "category_name"
+    t.integer  "feed_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "category_image_url"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20160812230959) do
     t.integer  "mentionees",                   default: 0
     t.integer  "likers_count",                 default: 0
     t.integer  "feed_entry_images_count",      default: 0
-    t.integer  "visit_id"
     t.text     "summary_sanitized"
     t.text     "feed_entry_content_sanitized"
   end
@@ -142,13 +141,13 @@ ActiveRecord::Schema.define(version: 20160812230959) do
     t.integer  "feed_entries_count"
     t.integer  "followers_count",     default: 0
     t.integer  "followees_count",     default: 0
+    t.string   "description"
     t.string   "favicon_url"
     t.string   "slug"
     t.integer  "impressions_count"
     t.integer  "mentioners_count",    default: 0
     t.integer  "mentionees",          default: 0
     t.integer  "likers_count",        default: 0
-    t.integer  "visit_id"
     t.string   "feed_description"
     t.string   "feed_image_url"
     t.integer  "category_id"
