@@ -66,8 +66,6 @@ gem 'stemmer'
 gem 'share_meow_client'
 gem 'rack-mini-profiler'
 gem 'sanitize'
-gem 'notable'
-gem 'notable_web'
 gem "skylight"
 gem 'simple_token_authentication'
 gem 'rollbar'

@@ -88,6 +88,5 @@ end
      mount Sidekiq::Web,      at: 'admins/sidekiq'
      mount Searchjoy::Engine, at: "admins/searchjoy"
      mount PgHero::Engine,    at: "admins/pghero"
-     mount NotableWeb::Engine, at: "admins/notable"
     end
 end
