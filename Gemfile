@@ -79,7 +79,7 @@ gem 'rails_12factor'
 gem 'tunemygc'
 gem 'newrelic_rpm'
 gem 'stream_rails'
-gem 'heroku-deflater', :group => :production
+
 
 group :development do
   gem 'better_errors'
