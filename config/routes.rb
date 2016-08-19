@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :categories
   root to: 'landings#index'
 
+
   get 'tags/:tag', to: 'overviews#index', as: :tag
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 

@@ -6,6 +6,8 @@ class FeedEntryImageWorker
     if feed_entry
      @feed_entry = FeedEntry.find(feed_entry)
 
+     if @feed_entry.feed_entry_images.first.nil?
+
         doc = Nokogiri::HTML(@feed_entry.summary)
         img_srcs = doc.css('img').map{ |i| i['src'] }
         img_srcs.each_with_index do |url, index|
@@ -30,7 +32,8 @@ class FeedEntryImageWorker
           else
          end
        end
-
+    else
+    end
    end
   end
 

@@ -79,7 +79,7 @@ gem 'rails_12factor'
 gem 'tunemygc'
 gem 'newrelic_rpm'
 gem 'stream_rails'
-
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem 'better_errors'
