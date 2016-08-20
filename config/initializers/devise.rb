@@ -296,7 +296,7 @@ Devise.setup do |config|
 
   config.omniauth :facebook, "1625983964302205", "8239921a69ee53c1e7ee8186b4d201d3", setup: true
   config.omniauth :twitter, ENV["twitter_access_key"], ENV["twitter_secret_key"], setup: true
-  config.omniauth :google_oauth2, ENV["google_access_key"], ENV["google_secret_key"], scope: "profile"
+  config.omniauth :google_oauth2, "827397842478-suns8lj9gvge9qp9ugonf7388c7sn0k4.apps.googleusercontent.com", "xMQE8Hn64qyjf1aOoB3aPS4_", scope: "profile"
  # ==> Warden configuration
 
   # ==> Mountable engine configurations
