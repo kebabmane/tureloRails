@@ -18,6 +18,10 @@ class UserPolicy < ApplicationPolicy
     @current_user == @user
   end
 
+  def finish_signup?
+    @current_user == @user
+  end
+
   def update?
     @current_user.admin?
   end

@@ -80,6 +80,7 @@ gem 'tunemygc'
 gem 'newrelic_rpm'
 gem 'stream_rails'
 gem 'rack-cors', :require => 'rack/cors'
+gem "omniauth-google-oauth2"
 
 group :development do
   gem 'better_errors'

@@ -3,7 +3,7 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#default" data-toggle="tab">info</a></li>
   <li><a href="#password" data-toggle="tab">change password</a></li>
-  <li><a href="#messages" data-toggle="tab"">messages</a></li>
+  <li><a href="#messages" data-toggle="tab">messages</a></li>
 </ul>
 
 <br>
@@ -21,15 +21,15 @@
     <%= f.text_field :last_name %>
     <%= f.text_field :home_page %>
     <%= f.date_field :date_of_birth %>
-  
-  
+
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
- 
+
     <%= f.submit "update", class: "btn btn-primary" %>
- 
+
 <% end %>
 </div>
 
@@ -40,7 +40,7 @@
     <%= f.password_field :password %>
     <%= f.password_field :password_confirmation %>
     <%= f.submit "change password", class: "btn btn-primary" %>
-    <% end %>   
+    <% end %>
  </div>
 
  <div class="tab-pane" id="messages">
@@ -49,5 +49,3 @@
  </div>
 
 </div>
-
-

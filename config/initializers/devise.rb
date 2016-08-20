@@ -294,6 +294,11 @@ Devise.setup do |config|
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
 
+  config.omniauth :facebook, "1625983964302205", "8239921a69ee53c1e7ee8186b4d201d3", setup: true
+  config.omniauth :twitter, ENV["twitter_access_key"], ENV["twitter_secret_key"], setup: true
+  config.omniauth :google_oauth2, ENV["google_access_key"], ENV["google_secret_key"], scope: "profile"
+ # ==> Warden configuration
+
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.

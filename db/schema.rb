@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817102301) do
+ActiveRecord::Schema.define(version: 20160820020020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,22 @@ ActiveRecord::Schema.define(version: 20160817102301) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "identities", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "provider"
+    t.string  "accesstoken"
+    t.string  "refreshtoken"
+    t.string  "uid"
+    t.string  "name"
+    t.string  "email"
+    t.string  "nickname"
+    t.string  "image"
+    t.string  "phone"
+    t.string  "urls"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"
     t.integer  "impressionable_id"
@@ -317,6 +333,7 @@ ActiveRecord::Schema.define(version: 20160817102301) do
     t.datetime "last_seen_at"
     t.string   "time_zone"
     t.string   "authentication_token",   limit: 30
+    t.boolean  "social_signup_done"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
@@ -340,4 +357,5 @@ ActiveRecord::Schema.define(version: 20160817102301) do
 
   add_foreign_key "feed_entries", "feeds"
   add_foreign_key "feed_entry_images", "feed_entries"
+  add_foreign_key "identities", "users"
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'overviews#index', as: :tag
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 resources :categories do
   resources :feeds do
@@ -80,7 +81,7 @@ end
    devise_scope :user do
     	get '/login' => 'devise/sessions#new'
     	get '/logout' => 'devise/sessions#destroy'
-    end
+   end
 
     authenticate :user, lambda { |u| u.admin? } do
      require 'sidekiq/web'

@@ -2,42 +2,79 @@
   <div class="omb_login">
     	<h2 class="text-center">sign up</h2>
       <h3 class="text-center">i mean, if you feel like it</h3><br><br>
-    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
 
-
-<br>
-      <div class="row omb_row-sm-offset-3">
-		<div class="col-xs-12 col-sm-6">
-		 <form class="omb_loginForm" action="" autocomplete="off" method="POST">
-		    <div class="input-group">
-		 	<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-		    <%= f.email_field :email, class: "input-lg", hide_label: :true, placeholder:  "email address", required: true %>
-		    </div>
-		    <span class="help-block"></span>
-		    <div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-      			<%= f.text_field :nickname, class: "input-lg", hide_label: :true, placeholder:  "nickname", required: true %>
-      		</div>
-      		<span class="help-block"></span>
-      	    <div class="input-group">
-      	    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-      		<%= f.password_field :password, class: "input-lg", hide_label: :true, placeholder:  "password", required: true %>
-      		</div>
-      		<span class="help-block"></span>
-      		<div class="input-group">
-      	    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-      		<%= f.password_field :password_confirmation, class: "input-lg", hide_label: :true, placeholder:  "password confirmation", required: true %>
-      		</div>
-      		<span class="help-block"></span><br>
-      		<span class="help-block text-center">by clicking sign up, you agree to our terms and that you have read our data use policy, including our cookie use.</span>
-          <br>
-          <%= f.button "sign up", class: "btn btn-lg btn-primary btn-block" %>
-
-          </form>
-           </div>
+      <div class="row omb_row-sm-offset-3 omb_socialButtons">
+            <div class="col-xs-4 col-sm-2">
+              <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-lg btn-block omb_btn-facebook" %>
+                <i class="fa fa-facebook visible-xs"></i>
+                <span class="hidden-xs"></span>
+              </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+              <a href="#" class="btn btn-lg btn-block omb_btn-twitter-na" data-toggle="tooltip" data-placement="top" title="Coming soon!">
+                <i class="fa fa-twitter visible-xs"></i>
+                <span class="hidden-xs">Twitter</span>
+              </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+              <%= link_to "Google+", user_google_oauth2_omniauth_authorize_path, class: "btn btn-lg btn-block omb_btn-google" %>
+                <i class="fa fa-google-plus visible-xs"></i>
+                <span class="hidden-xs"></span>
+              </a>
+            </div>
       </div>
-   <% end %>
+
+      <div class="row omb_row-sm-offset-3 omb_loginOr">
+        <div class="col-xs-12 col-sm-6">
+          <hr class="omb_hrOr">
+          <span class="omb_spanOr">or</span>
+        </div>
+      </div>
+
+
+
+<div class="container">
+      <div class="omb_login">
+        <div class="row omb_row-sm-offset-3">
+    			<div class="col-md-6">
+  <%= form_for(resource, as: resource_name, :url => registration_path(resource_name), :html => { role: 'form'}) do |f| %>
+    <% if @show_errors && current_user.errors.any? %>
+      <div id="error_explanation">
+        <% current_user.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'email' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.text_field :nickname, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'nickname' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.password_field :password, :value => '', class: 'form-control input-lg', placeholder: 'password' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :value => '', class: 'form-control input-lg', placeholder: 'password again' %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit 'sign up', :class => 'btn btn-lg btn-primary btn-block' %>
+    </div>
+  <% end %>
+
+  <br>
+  <div class="text-center">
+    <%= render "devise/shared/links" %>
   </div>
 </div>
-<br>
+</div>
+</div>
+</div>

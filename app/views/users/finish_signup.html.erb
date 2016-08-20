@@ -1,0 +1,42 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>update your details</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue --><br><br><br><br>
+
+
+<div class="container">
+      <div class="omb_login">
+        <div class="row omb_row-sm-offset-3">
+    			<div class="col-md-6">
+  <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
+    <% if @show_errors && current_user.errors.any? %>
+      <div id="error_explanation">
+        <% current_user.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: email@me.com' %>
+        <p class="help-block">Please confirm your email address. No spam.</p>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.text_field :nickname, :value => '', class: 'form-control input-lg', placeholder: 'Example: bruce23' %>
+        <p class="help-block">Please select a nickname</p>
+      </div>
+    </div><br>
+    <div class="actions">
+      <%= f.submit 'Continue', :class => 'btn btn-lg btn-primary btn-block' %>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
