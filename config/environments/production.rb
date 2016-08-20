@@ -12,7 +12,7 @@ Rails.application.configure do
 
   #config.middleware.use Rack::SslEnforcer
 
-  config.action_controller.asset_host = "d3a245gyk5qkyh.cloudfront.net"
+  config.action_controller.asset_host = "dn4irq2usb5q2.cloudfront.net"
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
