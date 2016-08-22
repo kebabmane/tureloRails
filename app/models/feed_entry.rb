@@ -22,10 +22,14 @@ class FeedEntry < ActiveRecord::Base
          feed_entry.author             = entry.author
          feed_entry.feed_entry_content = entry.content
          feed_entry.published          = entry.published
-         summary_san = entry.summary.gsub(/<p>\s*(&nbsp;\s*)+/, "<p>") rescue nil
-         content_san = entry.feed_entry_content.gsub(/<p>\s*(&nbsp;\s*)+/, "<p>") rescue nil
-         feed_entry.summary_sanitized = ActionView::Base.full_sanitizer.sanitize(summary_san).lstrip rescue nil
-         feed_entry.feed_entry_content_sanitized = ActionView::Base.full_sanitizer.sanitize(content_san).lstrip rescue nil
+
+         if entry.summary.blank?
+           content_san = feed_entry.feed_entry_content.gsub(/<p>\s*(&nbsp;\s*)+/, "<p>")
+           feed_entry.feed_entry_content_sanitized = ActionView::Base.full_sanitizer.sanitize(content_san).lstrip
+         else
+           summary_san = feed_entry.summary.gsub(/<p>\s*(&nbsp;\s*)+/, "<p>")
+           feed_entry.summary_sanitized = ActionView::Base.full_sanitizer.sanitize(summary_san).lstrip
+         end
 
          if entry.categories.blank?
            blacklist = Highscore::Blacklist.load %w{https http href com span nbsp the that them and can this real with span src feeds for its span> class= div> div nbsp; www. com/ content 2016/ http: https: href= }

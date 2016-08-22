@@ -1,0 +1,22 @@
+<div id="blue">
+		<div class="container">
+		<div class="row">
+			<h3>popular tags</h3>
+		</div><!-- /row -->
+		</div> <!-- /container -->
+</div><!-- /blue -->
+
+<br><br><br><br>
+<div class="row">
+<div class="col-sm-2">
+</div>
+<div class="col-sm-8">
+
+<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+  <%= link_to tag, tag_path(tag.name), :class => css_class %>
+<% end %>
+
+</div>
+<div class="col-sm-2">
+</div>
+</div>

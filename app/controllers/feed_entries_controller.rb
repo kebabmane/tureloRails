@@ -37,6 +37,9 @@ class FeedEntriesController < ApplicationController
     @recent_feed = FeedEntry.includes(:feed_entry_images).all.order("published DESC").limit(5)
   end
 
+  def popular_tags
+    @tags = FeedEntry.tag_counts_on(:tags)
+  end
 
 
   private

@@ -8,7 +8,7 @@ module Api
   # GET /feeds
   # GET /feeds.json
   def index
-      @feed_entries = FeedEntry.where(feed_id: current_user.followees(Feed)).order("published DESC").includes(:feed, :feed_entry_images).limit(10)
+      @feed_entries = FeedEntry.where(feed_id: current_user.followees(Feed)).order("published DESC").includes(:feed, :feed_entry_images).limit(30)
   end
 
   end

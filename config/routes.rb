@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 
   get 'tags/:tag', to: 'overviews#index', as: :tag
+  get 'popular_tags', to: 'feed_entries#popular_tags'
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
