@@ -105,6 +105,7 @@ group :development do
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-sidekiq', require: false
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'

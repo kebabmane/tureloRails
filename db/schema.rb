@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820020020) do
+ActiveRecord::Schema.define(version: 20160823104850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,12 @@ ActiveRecord::Schema.define(version: 20160820020020) do
     t.integer  "feed_entry_images_count",      default: 0
     t.text     "summary_sanitized"
     t.text     "feed_entry_content_sanitized"
+    t.boolean  "disabled"
+    t.integer  "comments_count",               default: 0, null: false
+    t.integer  "upvotes_count",                default: 0, null: false
+    t.integer  "downvotes_count",              default: 0, null: false
+    t.integer  "score",                        default: 0, null: false
+    t.integer  "rank",                         default: 0, null: false
   end
 
   add_index "feed_entries", ["feed_entry_images_count"], name: "index_feed_entries_on_feed_entry_images_count", using: :btree
@@ -354,6 +360,16 @@ ActiveRecord::Schema.define(version: 20160820020020) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id",      null: false
+    t.integer  "votable_id",   null: false
+    t.string   "votable_type", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "votes", ["user_id", "votable_id", "votable_type"], name: "index_votes_on_user_id_and_votable_id_and_votable_type", unique: true, using: :btree
 
   add_foreign_key "feed_entries", "feeds"
   add_foreign_key "feed_entry_images", "feed_entries"

@@ -1,7 +1,7 @@
 class FeedEntry < ActiveRecord::Base
   searchkick match: :word_start, searchable: [:title], callbacks: :async, track: true, conversions: "conversions"
   acts_as_taggable
-  acts_as_likeable
+  has_many :votes, as: :votable
   belongs_to :feed, :counter_cache => true
   is_impressionable :counter_cache => true
   has_many :feed_entry_images, dependent: :destroy
@@ -78,6 +78,10 @@ class FeedEntry < ActiveRecord::Base
         end
        end
      end
+
+     scope :active, -> { where(disabled: false) }
+     scope :disabled, -> { where(disabled: true) }
+     scope :newest, -> { order(score: :desc) }
 
      private
 

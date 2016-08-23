@@ -59,11 +59,8 @@
 	<br><br>
 	This post has been liked <%= @feed_entry.likers_count %> times
 	<br><br>
-<% if current_user.likes?(@feed_entry) %>
-	<%= button_to "unlike", unlike_path(feed_entry: @feed_entry), remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
-<% else %>
-	<%= button_to "like", like_path(feed_entry: @feed_entry), remote: true, method: :get , :class => 'btn btn-primary btn-sm' %>
-<% end %>
+
+<%= @votes.inspect %>
 
 </div>
 <br>
