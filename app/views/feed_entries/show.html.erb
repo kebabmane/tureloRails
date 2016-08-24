@@ -57,10 +57,12 @@
 <div class="social_feed_entry">
 	This post has been viewed <%= @feed_entry.impressions.count %> times
 	<br><br>
-	This post has been liked <%= @feed_entry.likers_count %> times
+	This post has been upvoted <%= @feed_entry.upvotes_count %> times
+	<br><br>
+	This post has been downvoted <%= @feed_entry.downvotes_count %> times
 	<br><br>
 
-<%= @votes.inspect %>
+	<%= render_votes_for_feed_entry(@feed_entry) %>
 
 </div>
 <br>

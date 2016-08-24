@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'popular_tags', to: 'feed_entries#popular_tags'
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  post :vote, :to=>'user_feed_entry_votes#create'
+  delete :vote, :to=>'user_feed_entry_votes#destroy'
 
 resources :categories do
   resources :feeds do
@@ -17,6 +19,7 @@ resources :categories do
     post 'refresh_feed', :to=>"feeds#refresh_feed"
   end
 end
+
 
   resources :overviews
   resources :first_signup
@@ -38,8 +41,6 @@ end
 
   get '/follow'     => 'feeds#follow'
   get '/unfollow'   => 'feeds#unfollow'
-  get '/like'       => 'feed_entries#like'
-  get '/unlike'     => 'feed_entries#unlike'
 
 
   namespace :turelo_admin do
@@ -50,8 +51,6 @@ end
     resources :announcements
     resources :categories
   end
-
-
 
   resources :notifications do
     collection do

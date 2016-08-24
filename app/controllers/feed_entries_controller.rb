@@ -20,21 +20,6 @@ class FeedEntriesController < ApplicationController
     end
   end
 
-  def like
-      @likeable = FeedEntry.find(params[:feed_entry])
-	    current_user.like!(@likeable)
-      @likeable.feed.followers(User).each do |user|
-        Notification.create(recipient: user, actor: user, action: "like", notifiable: @likeable)
-      end
-  end
-
-  def unlike
-       @likeable = FeedEntry.find(params[:feed_entry])
-	     current_user.unlike!(@likeable)
-       @likeable.feed.followers(User).each do |user|
-         Notification.create(recipient: user, actor: user, action: "unlike", notifiable: @likeable)
-       end
-  end
 
   # GET /feed_entries/1
   # GET /feed_entries/1.json

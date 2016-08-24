@@ -1,5 +1,5 @@
 class UserFeedEntryVotesController < ApplicationController
-  before_action :set_item, :require_login
+  before_action :set_item
 
   def create
     if current_user.votes.build(vote_params).save
@@ -22,16 +22,16 @@ class UserFeedEntryVotesController < ApplicationController
 
   private
   def set_item
-    @item = Item.find(params[:id])
-    unless @item
-      return redirect_to :back, notice: "Could not find item with #{params[:id]}"
+    @feed_entry = FeedEntry.find(params[:id])
+    unless @feed_entry
+      return redirect_to :back, notice: "Could not find feed entry with #{params[:id]}"
     end
   end
 
   def vote_params
     {
-      votable_id: @item.id,
-      votable_type: @item.class.to_s
+      votable_id: @feed_entry.id,
+      votable_type: @feed_entry.class.to_s
     }
   end
 end

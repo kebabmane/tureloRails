@@ -1,17 +1,18 @@
 module UserFeedEntryVotesHelper
+
   def link_to_upvote(object)
-    link_to 'like!', vote_feed_entry_path(object), method: :post, class: 'text-danger'
+    button_to 'like!', vote_path(object), method: :post, class: 'btn btn-primary btn-sm top-buffer'
   end
 
   def link_to_downvote(object)
-    link_to 'unlike!', vote_feed_entry_path(object), method: :delete, class: 'text-muted'
+    button_to 'unlike!', vote_path(object), method: :delete, class: 'btn btn-danger btn-sm top-buffer'
   end
 
-  def render_votes_for_feed_entry(feed_entry=nil)
-    if current_user && @votes[feed_entry].include?(current_user.id)
+  def render_votes_for_feed_entry(feed_entry)
+    if current_user && @votes[feed_entry.id].include?(current_user.id)
       link_to_downvote(feed_entry)
     else
-      link_to_upvote(feed_entry)
+      link_to_upvote(feed_entry.id)
     end
   end
 
