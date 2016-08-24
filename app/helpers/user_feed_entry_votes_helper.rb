@@ -8,7 +8,7 @@ module UserFeedEntryVotesHelper
     button_to 'unlike!', vote_path(object), method: :delete, class: 'btn btn-danger btn-sm top-buffer'
   end
 
-  def render_votes_for_feed_entry(feed_entry)
+  def render_votes_for_feed_entry(feed_entry=nil)
     if current_user && @votes[feed_entry.id].include?(current_user.id)
       link_to_downvote(feed_entry)
     else
