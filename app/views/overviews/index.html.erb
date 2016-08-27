@@ -14,10 +14,10 @@
 
 <% if @feed_entries.any? %>
 
-<div class="container">
-   <ul class="timeline" id="my-entries">
+<div class="blog container">
+   <div id="pins" class="blog-list">
 			<%= render @feed_entries %>
-   </ul>
+   </div>
 
   <div id="infinite-scrolling">
 		<%= will_paginate @feed_entries %>
@@ -25,6 +25,7 @@
 
 	<br><br><br><br><br><br>
 </div>
+
 
 
 <% else %>

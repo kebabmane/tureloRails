@@ -16,4 +16,5 @@ $(function() {
         });
 
         $('#back-to-top').tooltip('show');
+        
 });

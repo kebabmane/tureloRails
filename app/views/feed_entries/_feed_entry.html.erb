@@ -1,33 +1,41 @@
-<li>
-   <div class="timeline-panel">
-   <div class="row">
-   <div class="col-md-3">
-     <% if feed_entry.feed_entry_images.any? %>
-        <% if feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
-          <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
-        <% else %>
-          <%= image_tag(feed_entry.feed_entry_images.first.img_url, :class => "img-responsive") rescue nil %>
-        <% end %>
-     <% else %>
-       <%= image_tag("newspaper.png", :class => "img-responsive") %>
-     <% end %>
-   </div>
+<div class="post col-md-4">
+              <div class="post-inner">
+                <div class="content">
+                    <h3 class="post-title"><%= link_to feed_entry.title, category_feed_feed_entry_path(feed_entry.feed.category.id, feed_entry.feed.friendly_id, feed_entry.id) %></h3>
+                </div>
 
-<div class="col-md-9">
-           <div class="timeline-heading">
-             <h4 class="timeline-title"><%= link_to feed_entry.title, category_feed_feed_entry_path(feed_entry.feed.category.id, feed_entry.feed.friendly_id, feed_entry.id) %></h4>
-             <p><%= feed_entry.score %> score | <%= feed_entry.impressions.count %> views | published <%= distance_of_time_in_words(Time.now, feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, category_feed_feed_entries_path(feed_entry.feed.category_id, feed_entry.feed.id) %> by <%= feed_entry.author %></p>
-           </div>
-           <div class="timeline-body">
-             <p>
-               <% if feed_entry.summary.blank? %>
-                 <%= strip_tags(feed_entry.feed_entry_content).truncate(300) %>
-               <% else %>
-                 <%= strip_tags(feed_entry.summary).truncate(300) %>
-               <% end %>
-             </p>
-           </div>
-         </div>
-    </div>
-         </div>
-</li>
+                  <figure class="post-thumb">
+                    <div class="item">
+                      <% if feed_entry.feed_entry_images.any? %>
+                         <% if feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
+                           <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
+                         <% else %>
+                           <%= image_tag(feed_entry.feed_entry_images.first.img_url, :class => "img-responsive") rescue nil %>
+                         <% end %>
+                      <% else %>
+                        <%= image_tag("newspaper.png", :class => "img-responsive") %>
+                      <% end %>
+                    </div>
+                </figure>
+            <div class="content">
+                  <div class="post-entry">
+                    <p>
+                      <% if feed_entry.summary.blank? %>
+                        <%= strip_tags(feed_entry.feed_entry_content).truncate(300) %>
+                      <% else %>
+                        <%= strip_tags(feed_entry.summary).truncate(300) %>
+                      <% end %>
+                      <%= link_to 'read more', category_feed_feed_entry_path(feed_entry.feed.category.id, feed_entry.feed.friendly_id, feed_entry.id) %>
+                    </p>
+                  </div>
+                <div class="meta">
+                    <ul class="meta-list list-inline">
+                      <li class="post-time post_date date updated"><%= feed_entry.score %> score | <%= feed_entry.impressions.count %> views | published <%= distance_of_time_in_words(Time.now, feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, category_feed_feed_entries_path(feed_entry.feed.category_id, feed_entry.feed.id) %> by <%= feed_entry.author %></li>
+                    </ul><!--//meta-list-->
+                    <div class="feed-<%= feed_entry.id %>">
+                      <%= render_votes_for_feed_entry(feed_entry) %>
+                    </div>
+                </div><!--meta-->
+            </div><!--//content-->
+        </div><!--//post-inner-->
+</div>
