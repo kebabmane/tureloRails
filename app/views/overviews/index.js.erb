@@ -1,7 +1,6 @@
 $boxes = $('<%= j render(@feed_entries) %>')
 
 $('#pins').append( $boxes ).imagesLoaded( function(){
-  $('#pins').masonry( 'reload' );
 
 <% if @feed_entries.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate(@feed_entries) %>');

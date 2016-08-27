@@ -1,7 +1,14 @@
-$('#pins').append('<%= j render @feeds %>');
+$boxes = $('<%= j render(@feeds) %>')
+
+$('#pins').append( $boxes ).imagesLoaded( function(){
+
 <% if @feeds.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@feeds) %>');
 <% else %>
   $(window).off('scroll');
   $('.pagination').remove();
 <% end %>
+
+$('#pins').masonry( 'appended', $boxes, true)
+
+});
