@@ -12,7 +12,6 @@
 //= require bootstrap-typeahead-rails
 //= require_tree .
 
-
 $(function() {
   NProgress.configure({ showSpinner: false });
   $('.has-tooltip').tooltip();

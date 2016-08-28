@@ -17,7 +17,6 @@ class UserFeedEntryVotesController < ApplicationController
     else
       message = 'No vote to remove.'
     end
-    redirect_to :back, notice: message
   end
 
   private

@@ -32,8 +32,12 @@
                     <ul class="meta-list list-inline">
                       <li class="post-time post_date date updated"><%= feed_entry.score %> score | <%= feed_entry.impressions.count %> views | published <%= distance_of_time_in_words(Time.now, feed_entry.published) %> ago in <%= link_to feed_entry.feed.feed_name, category_feed_feed_entries_path(feed_entry.feed.category_id, feed_entry.feed.id) %> by <%= feed_entry.author %></li>
                     </ul><!--//meta-list-->
-                    <div class="feed-<%= feed_entry.id %>">
-                      <%= render_votes_for_feed_entry(feed_entry) %>
+                    <div class="feed_entry-<%= feed_entry.id %>">
+                      <% if current_user && @votes[feed_entry.id].include?(current_user.id) %>
+                        <%= button_to 'downvote', vote_path(:id => feed_entry.id), remote: true, method: :delete, class: 'btn btn-danger btn-sm top-buffer' %>
+                      <% else %>
+                        <%= button_to 'upvote', vote_path(:id => feed_entry.id), remote: true, method: :post, class: 'btn btn-primary btn-sm top-buffer' %>
+                      <% end %>
                     </div>
                 </div><!--meta-->
             </div><!--//content-->

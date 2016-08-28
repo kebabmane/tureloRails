@@ -1,53 +1,55 @@
-<!-- *****************************************************************************************************************
-	 HEADERWRAP
-	 ***************************************************************************************************************** -->
-	<div id="headerwrap">
-	    <div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<br><br><br>
-					<h1>turelo</h1>
-					<h3>just a simple rss reader</h3>
-				</div>
-				<div class="col-lg-8 col-lg-offset-2 himg">
-				 <br><%= image_tag("newspaper.png", :size => "200x200", :class => "img-responsive") %>
-				</div>
-			</div><!-- /row -->
-	    </div> <!-- /container -->
-	</div><!-- /headerwrap -->
 
-	<!-- *****************************************************************************************************************
-	 SERVICE LOGOS
-	 ***************************************************************************************************************** -->
-	 <div id="service">
-	 	<div class="container">
- 			<div class="row centered">
- 				<div class="col-md-4">
- 					<i class="fa fa-fighter-jet"></i>
- 					<h4>fast</h4>
- 					<p>all we wanted was a basic, fast rss reader that was easy to use and gets to the articles fast.</p>
- 				</div>
- 				<div class="col-md-4">
- 					<i class="fa fa-user"></i>
- 					<h4>for the user</h4>
- 					<p>everything we do is about giving a simple user experience, we havent focused on power features or anything like that, just a simple and easy to use format.</p>
- 				</div>
- 				<div class="col-md-4">
- 					<i class="fa fa-money"></i>
- 					<h4>free</h4>
- 					<p>we dont aim complicate things with pro plans, always free (perhaps an add or two every once in a while).</p>
- 				</div>
-	 		</div>
-	 	</div><! --/container -->
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- tupelo-homepage -->
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-7846556991474735"
-		     data-ad-slot="5906634000"
-		     data-ad-format="auto"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+    <div id="h">
+      <div class="logo">turelo</div>
+      <div class="social hidden-xs">
+        <a href="#"><i class="ion-social-twitter"></i></a>
+        <a href="#"><i class="ion-social-facebook"></i></a>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 centered">
+						<br>
+            <h1>turelo - fast, simple, rss</h1>
+						<h3>click below to start reading</h3>
+            <div class="mtb">
+								<% if user_signed_in? %>
+									<%= link_to 'head to turelo', overviews_path, :class=>"btn btn-conf btn-green" %>
+								<% else %>
+								  <%= link_to 'sign in', overviews_path, :class=>"btn btn-conf btn-green"  %>
+									<%= link_to 'sign up', new_user_registration_path, :class=>"btn btn-conf btn-primary" %>
+								<% end %>
+            </div><!--/mt-->
+          </div>
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!-- /H -->
 
-	 </div><! --/service -->
+    <div class="container ptb">
+      <div class="row">
+        <div class="col-md-6"><br><br><br>
+          <h2>Add, read and vote on your feeds.</h2>
+          <p class="mt">Look I really wanted a fast and basic rss reader - I couldn't find one
+					so I decided to make turelo. Fast, easy to use with some useful features turelo is the google reader replacement you have been missing</p>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
+        </div>
+      </div><!--/row-->
+    </div><!--/container-->
+
+
+
+    <div id="f">
+      <div class="container">
+        <div class="row centered">
+          <h2>You Can Contact Us</h2>
+          <h5>hello@turelo.me</h5>
+          <p class="mt">
+            <a href="#"><i class="ion-social-twitter"></i></a>
+            <a href="#"><i class="ion-social-facebook"></i></a>
+          </p>
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!--/F-->
+
+  </body>
