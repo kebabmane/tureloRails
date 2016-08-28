@@ -6,4 +6,3 @@
    $('#pins').imagesLoaded ->
      $('#pins').masonry
        itemSelector: '.post'
-       fitWidth: true

@@ -1,11 +1,11 @@
 module UserFeedEntryVotesHelper
 
   def link_to_upvote(object)
-    link_to 'like', vote_path(:id => object.id), method: :post, class: 'btn btn-primary btn-sm top-buffer'
+    link_to 'like', vote_path(:id => object.id), remote: true, method: :post, class: 'btn btn-primary btn-sm top-buffer'
   end
 
   def link_to_downvote(object)
-    link_to 'unlike', vote_path(:id => object.id), method: :delete, class: 'btn btn-danger btn-sm top-buffer'
+    link_to 'unlike', vote_path(:id => object.id), remote: true, method: :delete, class: 'btn btn-danger btn-sm top-buffer'
   end
 
   def render_votes_for_feed_entry(feed_entry=nil)
@@ -23,4 +23,6 @@ module UserFeedEntryVotesHelper
       link_to user.username, user, options
     end
   end
+
+
 end
