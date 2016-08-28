@@ -31,13 +31,14 @@
   <div class="menu-wrap">
   <div class="menu-sidebar">
     <ul class="menu">
+      <% if user_signed_in? %>
       <li><%= link_to 'timeline', overviews_path %></li>
       <li class="menu-item-has-children"><a href="#">your feeds</a>
         <span class="sidebar-menu-arrow"></span>
           <ul class="sub-menu">
-            <li><a href="#">Alignment</a></li>
-            <li><a href="#">Markup</a></li>
-            <li><a href="#">Comments</a></li>
+            <% followed_feeds.each do |feed| %>
+              <li><%= link_to feed.feed_name, category_feed_feed_entries_path(feed.category_id, feed.friendly_id) rescue nil %></li>
+            <% end %>
           </ul>
       </li>
       <li><%= link_to 'discover', categories_path %></li>
@@ -47,6 +48,9 @@
       <li><%= link_to 'profile', users_profile_path(current_user) %></li>
       <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
     </ul>
+    <% else %>
+      <li><a href="#">sign up or in buddy</a></li>
+    <% end %>
   </div>
 </div>
   </header>
