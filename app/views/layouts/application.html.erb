@@ -2,8 +2,8 @@
 <html>
 <head>
   <%= favicon_link_tag 'favicon.ico' %>
-  <title>turelo</title>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+  <title>turelo - simple, fast, rss</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -18,38 +18,40 @@
   <meta name="google-site-verification" content="8gNheUW89iRh88p3CbuVqXrLWA9fAvBn1-IwcwO6O8k" />
 </head>
 <body>
-
+<header>
   <div id="wrap">
+    <span class="toggle-button">
+      <div class="menu-bar menu-bar-top"></div>
+      <div class="menu-bar menu-bar-middle"></div>
+      <div class="menu-bar menu-bar-bottom"></div>
+   </span>
       <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          </button>
-          <%= link_to 'turelo', overviews_path, :class=>"navbar-brand" %>
-        </div>
 
-        <% if user_signed_in? %>
-        <div class="navbar-collapse collapse navbar-right">
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'timeline', overviews_path %></li>
-            <li><%= link_to 'feeds', categories_path %></li>
-            <% if current_user.admin? %>
-              <li><%= link_to 'admins', turelo_admin_admins_path %></li>
-            <% end %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
-              <ul class="dropdown-menu arrow">
-         	   	 <li><%= link_to 'profile', users_profile_path(current_user) %></li>
-       		     <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </li>
+  </div>
+  <div class="menu-wrap">
+  <div class="menu-sidebar">
+    <ul class="menu">
+      <li><%= link_to 'timeline', overviews_path %></li>
+      <li class="menu-item-has-children"><a href="#">your feeds</a>
+        <span class="sidebar-menu-arrow"></span>
+          <ul class="sub-menu">
+            <li><a href="#">Alignment</a></li>
+            <li><a href="#">Markup</a></li>
+            <li><a href="#">Comments</a></li>
           </ul>
+      </li>
+      <li><%= link_to 'discover', categories_path %></li>
+      <% if current_user.admin? %>
+        <li><%= link_to 'admins', turelo_admin_admins_path %></li>
+      <% end %>
+      <li><%= link_to 'profile', users_profile_path(current_user) %></li>
+      <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </div>
+</div>
+  </header>
 
-        </div><!--/.nav-collapse -->
-<% end %>
-      </div>
-    </div>
+
 
   <div class="message in" id="flash">
       <%= flash_messages %>
@@ -73,39 +75,6 @@
 <a id="back-to-top" href="#" class="btn btn-primary back-to-top" rel="tooltip" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
 
-   <!-- *****************************************************************************************************************
- 	 FOOTER
- 	 ***************************************************************************************************************** -->
- 	 <div id="footerwrap" class="footer">
- 	 	<div class="container">
- 		 	<div class="row">
-        <div class="col-lg-2">
-        </div>
- 		 		<div class="col-lg-4">
- 		 			<h4>About</h4>
- 		 			<div class="hline-w"></div>
- 		 			<p>look rss is still a thing, all I wanted was a fast, basic rss reader - couldn't find one so I made it</p>
- 		 		</div>
- 		 		<div class="col-lg-4">
- 		 			<h4>Social Links</h4>
- 		 			<div class="hline-w"></div>
- 		 			<p>
- 		 				<a href="#"><i class="fa fa-facebook"></i></a>
- 		 				<a href="#"><i class="fa fa-twitter"></i></a>
- 		 			</p>
- 		 		</div>
-        <div class="col-lg-2">
-        </div>
-
-
- 		 	</div><! --/row -->
- 	 	</div><! --/container -->
- 	 </div><! --/footerwrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      $("div.navbar-fixed-top").autoHidingNavbar();
-    </script>
-
-
 </body>
 </html>
