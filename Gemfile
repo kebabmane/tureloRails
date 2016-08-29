@@ -32,7 +32,6 @@ gem 'redis'
 gem 'sidekiq'
 gem "searchkick"
 gem 'momentjs-rails'
-gem 'devise-async'
 gem 'lazy_high_charts'
 gem 'delayed_paperclip'
 gem 'ionicons-rails'
@@ -44,8 +43,6 @@ gem 'carrierwave-aws'
 gem "mini_magick"
 gem "fog"
 gem 'rack-ssl-enforcer'
-gem 'metamagic'
-gem "paranoia"
 gem 'feedjira'
 gem "sidekiq-cron"
 gem 'feedbag'
@@ -56,11 +53,9 @@ gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
 gem 'apipie-rails'
-gem 'rpush'
 gem 'api-pagination'
 gem 'nprogress-rails'
 gem 'bootstrap-typeahead-rails'
-gem 'twitter-typeahead-rails'
 gem 'highscore'
 gem 'stemmer'
 gem 'share_meow_client'
