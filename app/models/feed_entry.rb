@@ -7,9 +7,13 @@ class FeedEntry < ActiveRecord::Base
   has_many :feed_entry_images, dependent: :destroy
   after_save :extract_images
 
-
   validates :title, presence: true, uniqueness: true
   validates :entry_id, presence: true, uniqueness: true
+
+  scope :active, -> { where(disabled: false) }
+  scope :disabled, -> { where(disabled: true) }
+  scope :newest, -> { order(score: :desc) }
+
 
   def self.add_entries(entries, feed)
      entries.each do |entry|
@@ -79,9 +83,6 @@ class FeedEntry < ActiveRecord::Base
        end
      end
 
-     scope :active, -> { where(disabled: false) }
-     scope :disabled, -> { where(disabled: true) }
-     scope :newest, -> { order(score: :desc) }
 
      private
 

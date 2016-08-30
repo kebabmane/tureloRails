@@ -1,7 +1,17 @@
 <div id="blue">
 		<div class="container">
 		<div class="row">
-			<h3><%= @feed.feed_name %></h3>
+			<h3><%= @feed.feed_name %>
+				<% if params[:newest].present? %>
+				<div class="pull-right">
+					<%= link_to 'popular first', category_feed_feed_entries_path(@category, @feed.friendly_id), :class=>"btn btn-primary" %>
+				</div>
+				<% else %>
+					<div class="pull-right">
+						<%= link_to 'newest first', category_feed_feed_entries_path(@category, @feed.friendly_id, :newest => true), :class=>"btn btn-primary" %>
+					</div>
+				<% end %>
+			</h3>
 		</div><!-- /row -->
 		</div> <!-- /container -->
 </div><!-- /blue --><br><br>

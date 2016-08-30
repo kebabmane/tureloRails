@@ -3,9 +3,9 @@ class Vote < ActiveRecord::Base
   belongs_to :user
 
   after_save :update_votes
+  after_touch :update_votes
 
   validates_uniqueness_of :votable_id, scope: [:user_id, :votable_type]
-
 
   def get_object
     return @object if @object && @object.valid?
