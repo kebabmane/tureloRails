@@ -7,7 +7,7 @@ class FeedEntriesController < ApplicationController
   # GET /feed_entries
   # GET /feed_entries.json
   def index
-    order = params[:newest] ? {created_at: :desc} : {rank: :desc}
+    order = params[:newest] ? {rank: :desc} : {created_at: :desc}
 
     @feed_entries = @feed.feed_entries.order(order).includes(:feed_entry_images).paginate(:page => params[:page], :per_page => 9)
     @votes = @feed_entries.includes(:votes).each_with_object({}) do |feed_entry, object|

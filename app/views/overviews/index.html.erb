@@ -5,14 +5,16 @@
 				<% if params[:tag].present? %>
 				|	<%= params[:tag] %>
 				<% end %>
+			<% if current_user.admin? %>
 			<% if params[:newest].present? %>
+			<div class="pull-right">
+				<%= link_to 'newest first', overviews_path(:newest => true), :class=>"btn btn-primary" %>
+			</div>
+			<% else %>
 			<div class="pull-right">
 				<%= link_to 'popular first', overviews_path, :class=>"btn btn-primary" %>
 			</div>
-			<% else %>
-				<div class="pull-right">
-					<%= link_to 'newest first', overviews_path(:newest => true), :class=>"btn btn-primary" %>
-				</div>
+			<% end %>
 			<% end %>
 			</h3>
 		</div><!-- /row -->

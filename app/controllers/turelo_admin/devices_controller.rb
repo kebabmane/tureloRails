@@ -5,20 +5,24 @@ class TureloAdmin::DevicesController < ApplicationController
   respond_to :html
 
   def index
+    authorize current_user
     @devices = Device.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     respond_with(@devices)
   end
 
   def show
+    authorize current_user
     respond_with(@device)
   end
 
   def new
+    authorize current_user
     @device = Device.new
     respond_with(@device)
   end
 
   def create
+    authorize current_user
     @device = Device.new(device_params)
     #we allow the id to be sent as a parameter when model created
     if device_params[:id]
@@ -30,6 +34,7 @@ class TureloAdmin::DevicesController < ApplicationController
   end
 
   def destroy
+    authorize current_user
     @device.destroy
     respond_with(@device)
   end

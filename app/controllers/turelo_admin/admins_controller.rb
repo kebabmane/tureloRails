@@ -4,7 +4,7 @@ class TureloAdmin::AdminsController < ApplicationController
   # GET /admins
   # GET /admins.json
   def index
-    #authorize Admin
+    authorize current_user
 		@users = User.all.order("sign_in_count DESC").paginate(:page => params[:page], :per_page => 10)
 		@user_count = User.count(:all)
     @feed_count = Feed.count(:all)
@@ -14,6 +14,7 @@ class TureloAdmin::AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    authorize current_user
   	@user = User.friendly.find(params[:id])
   end
 

@@ -1,4 +1,5 @@
 class AdminPolicy < ApplicationPolicy
+  attr_reader :current_user, :model
 
   def initialize(current_user, model)
     @current_user = current_user
@@ -11,6 +12,10 @@ class AdminPolicy < ApplicationPolicy
 
   def show?
     @current_user.admin?
+  end
+
+  def edit?
+      @current_user.admin?
   end
 
   def update?

@@ -4,6 +4,7 @@ class TureloAdmin::CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    authorize current_user
     @categories = Category.all.paginate(:page => params[:page], :per_page => 10)
     @category  = Category.new
   end
@@ -15,6 +16,7 @@ class TureloAdmin::CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    authorize current_user
     @category = Category.new
   end
 
@@ -25,6 +27,7 @@ class TureloAdmin::CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
+    authorize current_user
     @category = Category.new(category_params)
 
     respond_to do |format|
@@ -41,6 +44,7 @@ class TureloAdmin::CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    authorize current_user
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to turelo_admin_categories_path, notice: 'Category was successfully updated.' }
@@ -54,6 +58,7 @@ class TureloAdmin::CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    authorize current_user
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
