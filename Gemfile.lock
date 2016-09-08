@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bootstrap-ruby/rails-bootstrap-forms
-  revision: 749286197fb969bba25d3dc6021e1ab187212af1
+  revision: 572b03844f08d4e775914c04c445558e4d213a8c
   specs:
     bootstrap_form (2.5.0)
 
@@ -48,17 +48,20 @@ GEM
     addressable (2.4.0)
     airbrussh (1.1.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
     api-pagination (4.3.0)
     apipie-rails (0.3.6)
       json
     arel (6.0.3)
     ast (2.3.0)
-    aws-sdk (2.5.8)
-      aws-sdk-resources (= 2.5.8)
-    aws-sdk-core (2.5.8)
+    aws-sdk (2.5.10)
+      aws-sdk-resources (= 2.5.10)
+    aws-sdk-core (2.5.10)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.8)
-      aws-sdk-core (= 2.5.8)
+    aws-sdk-resources (2.5.10)
+      aws-sdk-core (= 2.5.10)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -66,7 +69,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    blazer (1.6.2)
+    blazer (1.7.0)
       chartkick
       rails
       safely_block (>= 0.1.1)
@@ -262,7 +265,7 @@ GEM
       multi_json (~> 1.10)
     fog-local (0.3.0)
       fog-core (~> 1.27)
-    fog-openstack (0.1.11)
+    fog-openstack (0.1.12)
       fog-core (>= 1.40)
       fog-json (>= 1.0)
       ipaddress (>= 0.8)
@@ -322,7 +325,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    gaffe (1.1.0)
+    gaffe (1.2.0)
       rails (>= 4.0.0)
     get_process_mem (0.2.1)
     globalid (0.3.7)
@@ -468,7 +471,7 @@ GEM
     parser (2.3.1.2)
       ast (~> 2.2)
     pg (0.18.4)
-    pghero (1.4.1)
+    pghero (1.4.2)
       activerecord
     pkg-config (1.1.7)
     powerpack (0.1.1)
@@ -520,7 +523,7 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_layout (1.0.29)
+    rails_layout (1.0.31)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     railties (4.2.7.1)
@@ -551,7 +554,7 @@ GEM
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.2)
+    rspec-core (3.5.3)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -676,7 +679,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
-    unicode-display_width (1.1.0)
+    unicode-display_width (1.1.1)
     uniform_notifier (1.10.0)
     warden (1.2.6)
       rack (>= 1.0)
@@ -701,6 +704,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  annotate
   api-pagination
   apipie-rails
   better_errors

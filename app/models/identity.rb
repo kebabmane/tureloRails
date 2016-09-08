@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: identities
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  provider     :string
+#  accesstoken  :string
+#  refreshtoken :string
+#  uid          :string
+#  name         :string
+#  email        :string
+#  nickname     :string
+#  image        :string
+#  phone        :string
+#  urls         :string
+#
+
 class Identity < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :uid, :provider

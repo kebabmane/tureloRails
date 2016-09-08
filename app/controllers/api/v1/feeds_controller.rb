@@ -1,13 +1,14 @@
 module Api
  module V1
-class FeedsController < Api::BaseController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+   class FeedsController < Api::BaseController
+   before_filter :authenticate_user!
+
+  respond_to :json
 
   # GET /feeds
   # GET /feeds.json
   def index
-    @feed  = Feed.new
-      @feeds = Feed.all.order("updated_at DESC").paginate(:page => params[:page], :per_page => 9)
+      @feeds = Feed.all.order("updated_at DESC")
   end
 
   def autocomplete
@@ -21,14 +22,6 @@ class FeedsController < Api::BaseController
   def show
   end
 
-  # GET /feeds/new
-  def new
-    @feed = Feed.new
-  end
-
-  # GET /feeds/1/edit
-  def edit
-  end
 
   def follow
     @feed = Feed.find(params[:feed])
@@ -40,54 +33,6 @@ class FeedsController < Api::BaseController
     current_user.unfollow!(@feed)
   end
 
-  # POST /feeds
-  # POST /feeds.json
-  def create
-    @feed = Feed.new(feed_params)
-    respond_to do |format|
-      if @feed.save
-        FeedWorker.perform_async(@feed.id)
-        format.html { redirect_to feeds_path, notice: 'Feed was successfully created, please wait whilst we populate data' }
-        format.json { render :show, status: :created, location: @feed }
-      else
-        format.html { render :new }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /feeds/1
-  # PATCH/PUT /feeds/1.json
-  def update
-    respond_to do |format|
-      if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
-        format.json { render :show, status: :ok, location: @feed }
-      else
-        format.html { render :edit }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /feeds/1
-  # DELETE /feeds/1.json
-  def destroy
-    @feed.destroy
-    respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  def refresh_feed
-    FeedFirstRunWorker.perform_async(params[:feed_id])
-
-    respond_to do |format|
-      format.html { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
-      format.js { redirect_to feed_feed_entries_path, notice: 'Feed was successfully created.' }
-    end
-  end
 
 
   private

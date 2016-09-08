@@ -3,7 +3,7 @@ class OverviewsController < ApplicationController
   impressionist
 
  def index
-  order = params[:newest] ? {rank: :desc} : {created_at: :desc}
+  order = params[:newest] ? {rank: :desc} : {published: :desc}
 
   if params[:search].present?
      @feed_entries = FeedEntry.includes(:feed, :feed_entry_images, :impressions).all.order("published DESC").search(params[:search], suggest: true, track: true, page: params[:page], per_page: 9)
