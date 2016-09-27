@@ -2,7 +2,7 @@ module Api
  module V1
    class SessionsController < Devise::SessionsController
   prepend_before_filter :require_no_authentication, :only => [:create ]
-  before_filter :ensure_params_exist
+  before_action :ensure_params_exist
 
   respond_to :json
   skip_before_filter :verify_authenticity_token

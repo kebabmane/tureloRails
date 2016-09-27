@@ -1,6 +1,6 @@
 class TureloAdmin::FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /feeds
   # GET /feeds.json

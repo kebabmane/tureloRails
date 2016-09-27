@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include Pundit
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   around_filter :user_time_zone, if: :current_user
   #around_filter :with_timezone
-  before_filter :set_last_seen_at, if: proc { user_signed_in? }
+  before_action :set_last_seen_at, if: proc { user_signed_in? }
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
   acts_as_token_authentication_handler_for User, fallback_to_devise: false
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
 
   def after_sign_in_path_for(resource)

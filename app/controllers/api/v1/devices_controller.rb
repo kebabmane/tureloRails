@@ -2,7 +2,7 @@ module Api
  module V1
   class DevicesController < Api::BaseController
     #protect_from_forgery with: :null_session
-    before_filter :authenticate_user!, :except => [:create]
+    before_action :authenticate_user!, :except => [:create]
   	respond_to :json
 
 
