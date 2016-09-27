@@ -51,7 +51,7 @@ gem "socialization"
 gem 'puma', '~> 3.0'
 gem 'whenever', :require => false
 gem 'gaffe'
-gem 'impressionist', '1.5.1'
+gem 'impressionist'
 gem 'apipie-rails'
 gem 'api-pagination'
 gem 'nprogress-rails'
