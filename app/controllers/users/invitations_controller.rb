@@ -1,5 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
-  skip_before_filter :require_no_authentication, :only => [:edit, :update]
+  skip_before_action :require_no_authentication, :only => [:edit, :update]
 
 
 

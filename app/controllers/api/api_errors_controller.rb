@@ -2,7 +2,7 @@ class Api::ApiErrorsController < ApplicationController
   include Gaffe::Errors
 
   # Make sure anonymous users can see the page
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
 
   # Disable layout (your `API::ApplicationController` probably does this already)
   layout false
