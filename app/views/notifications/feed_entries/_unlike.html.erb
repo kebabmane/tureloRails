@@ -1,10 +1,8 @@
 <li class="notification">
     <div class="media">
-      <div class="media-left">
-        <div class="media-object">
-          <img src="http://placehold.it/50x50" class="img-circle" alt="Name">
-        </div>
-      </div>
+      <a class="pull-left" href="#">
+ 				<%= image_tag '50x50.png', :class => "media-object img-circle" %>
+ 	   </a>
       <div class="media-body">
         <strong class="notification-title"><a href="#"><%= notification.actor.nickname %></a> unliked <%= link_to FeedEntry.find(notification.notifiable_id).title, category_feed_feed_entries_path(FeedEntry.find(notification.notifiable_id).feed.friendly_id, FeedEntry.find(notification.notifiable_id).id) %></strong>
         <div class="notification-meta">
