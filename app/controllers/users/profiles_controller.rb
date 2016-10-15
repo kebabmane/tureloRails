@@ -10,6 +10,7 @@ class Users::ProfilesController < ApplicationController
   def show
     @current_age = current_age
     @user = User.friendly.find(params[:id])
+    @followed_feeds = current_user.followees(Feed)
     authorize @user
   end
 

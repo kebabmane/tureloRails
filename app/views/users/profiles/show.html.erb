@@ -22,4 +22,27 @@
 			</div>
 	<br><br>
 </div>
+
+
+<% if @followed_feeds.any? %>
+
+<div class="blog container">
+   <div id="pins" class="blog-list">
+			<% @followed_feeds.each do |feed| %>
+				<%= render partial: "feeds/feed", locals: {feed: feed} %>
+			<% end %>
+   </div>
+
+
+	<br><br><br><br><br><br>
+</div>
+
+
+
+<% else %>
+
+ <%= render 'layouts/no_data' %>
+
+<% end %>
+
 </div>

@@ -633,18 +633,18 @@ csmall2 {
 	top: 2px;
 }
 
-
 /*Hamburger Button*/
 .toggle-button {
 	position: fixed;
 	width: 44px;
 	height: 40px;
-	top: 45px;
+	top: 47px;
 	left: 20px;
 	padding: 4px;
 	transition: .25s;
 	z-index: 15;
 }
+
 .toggle-button:hover {
 	cursor: pointer;
 }

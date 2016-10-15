@@ -3,9 +3,6 @@
 		<div class="row">
 			<h3>
 				<%= current_user.nickname %>'s notifications | <%= @notifications.count %> unread notifications
-        <div class="pull-right">
-         <%= link_to 'clear all notifications', new_turelo_admin_feed_path, :remote => true, :class=>"btn btn-primary" %>
-        </div>
 			</h3>
 		</div><!-- /row -->
 		</div> <!-- /container -->
