@@ -1,7 +1,7 @@
 <div class="post col-md-4">
               <div class="post-inner">
                 <div class="content">
-                    <h3 class="post-title"><%= link_to feed_entry.title, category_feed_feed_entry_path(feed_entry.feed.category.id, feed_entry.feed.friendly_id, feed_entry.id) %></h3>
+                    <h3 class="post-title"><%= link_to feed_entry.title, category_feed_feed_entry_path(feed_entry.feed.category.friendly_id, feed_entry.feed.friendly_id, feed_entry.id) %></h3>
                 </div>
 
                   <figure class="post-thumb">
