@@ -19,4 +19,6 @@ class Notification < ActiveRecord::Base
   belongs_to :notifiable, polymorphic: true
 
   scope :unread, ->{ where(read_at: nil) }
+
+  after_create_commit { NotificationBroadcastJob.perform_later(Notification.count)}
 end

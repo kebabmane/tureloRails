@@ -10,6 +10,7 @@
 //= require jquery_ujs
 //= require nprogress
 //= require bootstrap-typeahead-rails
+//= require jquery.transit.min
 //= require_tree .
 
 $(function() {

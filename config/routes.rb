@@ -52,11 +52,8 @@ end
     resources :categories
   end
 
-  resources :notifications do
-    collection do
-      post :mark_as_read
-    end
-  end
+  resources :notifications
+  mount ActionCable.server => '/cable'
 
   namespace :api do
    namespace :v1 do

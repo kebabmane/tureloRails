@@ -43,6 +43,7 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
+  config.action_cable.allowed_request_origins = ['http://localhost:5000']
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

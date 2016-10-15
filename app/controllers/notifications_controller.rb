@@ -3,11 +3,6 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = Notification.order("created_at DESC").where(recipient: current_user).page(params[:page]).per_page(10)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def mark_as_read
