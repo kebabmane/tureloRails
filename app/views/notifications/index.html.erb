@@ -14,19 +14,13 @@
 <% if @notifications.any? %>
 
 <div class="container">
-<div id="my-entries">
-  <% @notifications.each do |notification| %>
-        <%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html] %>
-  <% end %>
-</div>
 
-<div id="infinite-scrolling">
-  <%= will_paginate @notifications %>
-</div>
+	<% @notifications.each do |notification| %>
+			<%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html] %>
+	<% end %>
 
 <br><br><br><br><br><br>
 </div>
-
 
 <% else %>
 

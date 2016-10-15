@@ -1,4 +1,29 @@
-<div class="notification-item">
- <h4 class="item-title"><%= notification.action %></h4>
- <p class="item-info"><%= notification.actor.nickname %> <%= notification.inspect %></p>
-</div>
+<li class="notification">
+    <div class="media">
+      <div class="media-left">
+        <div class="media-object">
+          <img src="http://placehold.it/50x50" class="img-circle" alt="Name">
+        </div>
+      </div>
+      <div class="media-body">
+        <strong class="notification-title"><a href="#"><%= notification.actor.nickname %></a> unliked <%= link_to FeedEntry.find(notification.notifiable_id).title, category_feed_feed_entries_path(FeedEntry.find(notification.notifiable_id).feed.friendly_id, FeedEntry.find(notification.notifiable_id).id) %></strong>
+        <div class="notification-meta">
+          <p class="notification-desc">
+            <% if FeedEntry.find(notification.notifiable_id).summary.blank? %>
+              <%= strip_tags(FeedEntry.find(notification.notifiable_id).feed_entry_content).truncate(300) %>
+            <% else %>
+              <%= strip_tags(FeedEntry.find(notification.notifiable_id).summary).truncate(300) %>
+            <% end %>
+          </p>
+
+          <small class="timestamp"><br>
+            <% if notification.created_at > Time.now.beginning_of_day %>
+               <%="#{time_ago_in_words(notification.created_att)} ago"%>
+            <% else %>
+               <%= notification.created_at.strftime("%b %d, %Y") %>
+            <% end %>
+          </small>
+        </div>
+      </div>
+    </div>
+</li>

@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notifications = Notification.order("created_at DESC").where(recipient: current_user).page(params[:page]).per_page(10)
+    @notifications = Notification.order("created_at DESC").where(recipient: current_user)
   end
 
   def mark_as_read

@@ -20,5 +20,5 @@ class Notification < ActiveRecord::Base
 
   scope :unread, ->{ where(read_at: nil) }
 
-  after_create_commit { NotificationBroadcastJob.perform_later(Notification.count)}
+  after_commit -> { NotificationRelayJob.perform_later(self) }
 end

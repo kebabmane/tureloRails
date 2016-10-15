@@ -6,26 +6,35 @@
 				|	<%= params[:tag] %>
 				<% end %>
 
-				<li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-		 		<a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			 <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
-		 </a>
-		 <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+<div class="pull-right">
+	<div class="btn-group dropdown dropdown-notifications sw-open">
+	  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	    <i data-count="3" class="glyphicon glyphicon-bell notification-icon"></i>
+	    <span class="caret"></span>
+	  </button>
 
-		 </div>
-	 </li>
+	  <div class="dropdown-container dropdown-position-bottomright">
+	   <div class="dropdown-toolbar">
+	      <div class="dropdown-toolbar-actions">
+						<a href="#">Mark all as read</a>
+	      </div>
+	      <h3 class="dropdown-toolbar-title black">Recent Notifications (<%= @notifications.count %>)</h3>
+	    </div><!-- /dropdown-toolbar -->
 
-			<% if current_user.admin? %>
-			<% if params[:newest].present? %>
-			<div class="pull-right">
-				<%= link_to 'newest first', overviews_path(:newest => true), :class=>"btn btn-primary" %>
-			</div>
-			<% else %>
-			<div class="pull-right">
-				<%= link_to 'popular first', overviews_path, :class=>"btn btn-primary" %>
-			</div>
-			<% end %>
-			<% end %>
+	    <ul class="dropdown-menu notifications">
+				<% @notifications.each do |notification| %>
+						<%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html] %>
+				<% end %>
+	    </ul>
+			<div class="dropdown-footer text-center">
+					<%= link_to 'View All', notifications_path  %>
+			</div><!-- /dropdown-footer -->
+	  </div>
+	</div>
+</div>
+
+
+
 			</h3>
 		</div><!-- /row -->
 		</div> <!-- /container -->

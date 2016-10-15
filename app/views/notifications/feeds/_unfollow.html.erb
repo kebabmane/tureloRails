@@ -1,4 +1,24 @@
-<div class="notification-item">
- <h4 class="item-title"><%= notification.action %></h4>
- <p class="item-info"><%= notification.actor.nickname %> <%= notification.inspect %></p>
-</div>
+<li class="notification">
+    <div class="media">
+      <div class="media-left">
+        <div class="media-object">
+          <img src="http://placehold.it/50x50" class="img-circle" alt="Name">
+        </div>
+      </div>
+      <div class="media-body">
+        <strong class="notification-title"><a href="#"><%= notification.actor.nickname %></a> unfollowed <%= link_to Feed.find(notification.notifiable_id).feed_name, category_feed_path(Feed.find(notification.notifiable_id).friendly_id, Feed.find(notification.notifiable_id).id) %></strong>
+        <div class="notification-meta">
+          <p class="notification-desc">
+            <%= strip_tags(Feed.find(notification.notifiable_id).description) %>
+          </p>
+          <small class="timestamp"><br>
+            <% if notification.created_at > Time.now.beginning_of_day %>
+               <%="#{time_ago_in_words(notification.created_att)} ago"%>
+            <% else %>
+               <%= notification.created_at.strftime("%b %d, %Y") %>
+            <% end %>
+          </small>
+        </div>
+      </div>
+    </div>
+</li>
