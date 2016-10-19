@@ -42,8 +42,6 @@ end
   get '/follow'     => 'feeds#follow'
   get '/unfollow'   => 'feeds#unfollow'
 
-  # required for lets encrypt automation
-  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
 
   namespace :turelo_admin do
     resources :admins
