@@ -9,7 +9,7 @@
 <div class="pull-right">
 	<div class="btn-group dropdown dropdown-notifications sw-open">
 	  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-	    <i data-count="3" class="glyphicon glyphicon-bell notification-icon"></i>
+	    <i data-count="<%=@notifications.count%>" class="glyphicon glyphicon-bell notification-icon"></i>
 	    <span class="caret"></span>
 	  </button>
 
@@ -40,6 +40,9 @@
 
 
 <% if @feed_entries.any? %>
+
+<div id="notifications">
+</div>
 
 <div class="blog container">
    <div id="pins" class="blog-list">
