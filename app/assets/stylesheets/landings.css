@@ -12,8 +12,6 @@
 	1. GENERAL STRUCTURES
 ################################################################# */
 
-/* Import fonts */
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 
 * {
 	margin: 0;
@@ -175,8 +173,10 @@ input {
 }
 
 /* HEADER SECTION */
-#h {
-	background: #00b3fe;
+#h {	
+	background: #283048; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #283048 , #00b3fe); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #283048 , #00b3fe); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	padding-top: 180px;
 	text-align:center;
 	background-attachment: relative;
