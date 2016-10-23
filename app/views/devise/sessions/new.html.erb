@@ -54,7 +54,7 @@
       </div>
     </div><br>
     <div class="actions">
-      <%= f.submit 'login', :class => 'btn btn-lg btn-primary btn-block' %>
+      <%= f.button 'login', :class => 'btn btn-lg btn-primary btn-block', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing in..."} %>
     </div>
   <% end %>
 
