@@ -1,22 +1,8 @@
-<div id="blue">
-		<div class="container">
-		<div class="row">
-			<h3><%= @feed.feed_name %>
-		  	<% if current_user.admin? %>
-				<% if params[:newest].present? %>
-				<div class="pull-right">
-					<%= link_to 'newest first', category_feed_feed_entries_path(@category, @feed.friendly_id, :newest => true), :class=>"btn btn-primary" %>
-				</div>
-				<% else %>
-				<div class="pull-right">
-					<%= link_to 'popular first', category_feed_feed_entries_path(@category, @feed.friendly_id), :class=>"btn btn-primary" %>
-				</div>
-				<% end %>
-				<% end %>
-			</h3>
-		</div><!-- /row -->
-		</div> <!-- /container -->
-</div><!-- /blue --><br><br>
+<%= content_for :page_title do %>
+
+ | <%= (@feed.feed_name).downcase %>
+
+<% end %>
 
 
 <% if @feed_entries.any? %>

@@ -1,16 +1,8 @@
-<div id="blue">
-		<div class="container">
-		<div class="row">
-			<h3><%= @user.nickname %>
-        <div class="pull-right">
-					<% if user_signed_in? %>
-						<%= link_to 'edit your profile', edit_users_profile_path(@user), :class=>"btn btn-primary"  %>
-					<% end %>
-        </div>
-      </h3>
-		</div><!-- /row -->
-		</div> <!-- /container -->
-</div><!-- /blue --><br><br>
+<%= content_for :page_title do %>
+
+ | <%= (@user.nickname).downcase %>
+
+<% end %>
 
 <div class="container">
 

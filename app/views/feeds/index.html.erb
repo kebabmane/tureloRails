@@ -1,10 +1,8 @@
-<div id="blue">
-		<div class="container">
-		<div class="row">
-			<h3><%= @category.category_name %></h3>
-		</div><!-- /row -->
-		</div> <!-- /container -->
-</div><!-- /blue -->
+<%= content_for :page_title do %>
+
+ | <%= (@category.category_name).downcase %>
+
+<% end %>
 
 <% if @feeds.any? %>
 
