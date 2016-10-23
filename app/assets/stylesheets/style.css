@@ -106,21 +106,21 @@ a:focus {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-	color: #00b3fe;
+	color: #757575;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: #00b3fe;
+	color: #757575;
 	background-color: transparent;
 }
 
 .navbar-default {
-	background-color: #384452;
+	background-color: #00b3fe;
 	border-color: transparent;
 }
 
 .dropdown-menu {
-	background: #384452;
+	background: #00b3fe;
 }
 
 .dropdown-menu > li > a {
@@ -800,4 +800,8 @@ ul #notificationList
   padding: 8px;
   font-size: 12px;
   border-top: 1px solid #dddddd;
+}
+
+.body-padding {
+	padding-top: 140px;
 }

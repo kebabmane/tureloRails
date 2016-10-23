@@ -17,7 +17,6 @@ class OverviewsController < ApplicationController
     object[feed_entry.id] = feed_entry.votes.map(&:user_id)
   end
 
-  @notifications = Notification.order("created_at DESC").where(recipient: current_user)
 
   respond_to do |format|
     format.html

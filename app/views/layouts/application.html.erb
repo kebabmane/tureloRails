@@ -17,44 +17,61 @@
   <meta name="google-site-verification" content="8gNheUW89iRh88p3CbuVqXrLWA9fAvBn1-IwcwO6O8k" />
 </head>
 <body>
-<header>
-  <div id="wrap">
-    <span class="toggle-button">
-      <div class="menu-bar menu-bar-top"></div>
-      <div class="menu-bar menu-bar-middle"></div>
-      <div class="menu-bar menu-bar-bottom"></div>
-   </span>
-      <!-- Fixed navbar -->
 
-  </div>
-  <div class="menu-wrap">
-  <div class="menu-sidebar">
-    <ul class="menu">
-      <% if user_signed_in? %>
-      <li><%= link_to 'timeline', overviews_path %></li>
-      <li class="menu-item-has-children"><a href="#">your feeds</a>
-        <span class="sidebar-menu-arrow"></span>
-          <ul class="sub-menu">
-            <% followed_feeds.each do |feed| %>
-              <li><%= link_to feed.feed_name, category_feed_feed_entries_path(feed.category_id, feed.friendly_id) rescue nil %></li>
-            <% end %>
-          </ul>
-      </li>
-      <li><%= link_to 'discover', categories_path %></li>
-      <% if current_user.admin? %>
-        <li><%= link_to 'admins', turelo_admin_admins_path %></li>
-      <% end %>
-      <li><%= link_to 'profile', users_profile_path(current_user) %></li>
-      <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-    </ul>
-    <% else %>
-      <li><a href="#">sign up or in buddy</a></li>
-    <% end %>
-  </div>
-</div>
-  </header>
+  <!-- Fixed navbar -->
+ <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+   <div class="container">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+       </button>
+       <%= link_to 'turelo', overviews_path, :class=>"navbar-brand" %>
+     </div>
 
+     <% if user_signed_in? %>
+     <div class="navbar-collapse collapse navbar-right">
+       <ul class="nav navbar-nav">
+         <li><%= link_to 'timeline', overviews_path %></li>
+         <li><%= link_to 'feeds', categories_path %></li>
+         <% if current_user.admin? %>
+           <li><%= link_to 'admins', turelo_admin_admins_path %></li>
 
+            <li class="dropdown dropdown-notifications">
+              <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
+                <i data-count="<%=@notifications.count%>" class="glyphicon glyphicon-bell notification-icon"></i>
+              </a>
+
+         	  <div class="dropdown-container dropdown-position-bottomright">
+         	   <div class="dropdown-toolbar">
+         	      <div class="dropdown-toolbar-actions">
+         						<a href="#">Mark all as read</a>
+         	      </div>
+         	      <h3 class="dropdown-toolbar-title black">Recent Notifications (<%= @notifications.count %>)</h3>
+         	    </div><!-- /dropdown-toolbar -->
+
+         	    <ul class="dropdown-menu notifications">
+         				<% @notifications.each do |notification| %>
+         						<%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html] %>
+         				<% end %>
+         	    </ul>
+         			<div class="dropdown-footer text-center">
+         					<%= link_to 'View All', notifications_path  %>
+         			</div><!-- /dropdown-footer -->
+         	  </div>
+          </li>
+         <% end %>
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
+           <ul class="dropdown-menu arrow">
+            <li><%= link_to 'profile', users_profile_path(current_user) %></li>
+            <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+           </ul>
+         </li>
+       </ul>
+
+     </div><!--/.nav-collapse -->
+<% end %>
+   </div>
+ </div>
 
   <div class="message in" id="flash">
       <%= flash_messages %>
@@ -69,16 +86,19 @@
     <% end %>
   <% end %>
 
+<div class="body-padding">
 	 <%= yield %>
 
-
 </div>
 
 
-</div>
 <a id="back-to-top" href="#" class="btn btn-primary back-to-top" rel="tooltip" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $("div.navbar-fixed-top").autoHidingNavbar();
+  </script>
+
 </body>
 </html>
