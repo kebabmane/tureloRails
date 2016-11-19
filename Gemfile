@@ -78,6 +78,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem "omniauth-google-oauth2"
 gem 'puma_worker_killer'
 gem 'annotate'
+gem 'derailed'
 
 
 group :development do
