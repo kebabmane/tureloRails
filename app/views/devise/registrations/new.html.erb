@@ -1,80 +1,35 @@
-<div class="container">
-  <div class="omb_login">
-    	<h2 class="text-center">sign up</h2>
-      <h3 class="text-center">i mean, if you feel like it</h3><br><br>
-
-      <div class="row omb_row-sm-offset-3 omb_socialButtons">
-            <div class="col-xs-4 col-sm-2">
-              <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-lg btn-block omb_btn-facebook" %>
-                <i class="fa fa-facebook visible-xs"></i>
-                <span class="hidden-xs"></span>
-              </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-              <a href="#" class="btn btn-lg btn-block omb_btn-twitter-na" data-toggle="tooltip" data-placement="top" title="Coming soon!">
-                <i class="fa fa-twitter visible-xs"></i>
-                <span class="hidden-xs">Twitter</span>
-              </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-              <%= link_to "Google+", user_google_oauth2_omniauth_authorize_path, class: "btn btn-lg btn-block omb_btn-google" %>
-                <i class="fa fa-google-plus visible-xs"></i>
-                <span class="hidden-xs"></span>
-              </a>
-            </div>
-      </div>
-
-      <div class="row omb_row-sm-offset-3 omb_loginOr">
-        <div class="col-xs-12 col-sm-6">
-          <hr class="omb_hrOr">
-          <span class="omb_spanOr">or</span>
-        </div>
-      </div>
-
-
-
-<div class="container">
-      <div class="omb_login">
-        <div class="row omb_row-sm-offset-3">
-    			<div class="col-md-6">
-  <%= form_for(resource, as: resource_name, :url => registration_path(resource_name), :html => { role: 'form'}) do |f| %>
-    <% if @show_errors && current_user.errors.any? %>
-      <div id="error_explanation">
-        <% current_user.errors.full_messages.each do |msg| %>
-          <%= msg %><br>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="form-group">
-      <div class="controls">
-        <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'email' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="controls">
-        <%= f.text_field :nickname, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'nickname' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="controls">
-        <%= f.password_field :password, :value => '', class: 'form-control input-lg', placeholder: 'password' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="controls">
-        <%= f.password_field :password_confirmation, :value => '', class: 'form-control input-lg', placeholder: 'password again' %>
-      </div>
-    </div>
-    <div class="actions">
-      <%= f.button 'sign up', :class => 'btn btn-lg btn-primary btn-block', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing up..."} %>
-    </div>
-  <% end %>
-
-  <br>
+<div class="mdl-layout mdl-layout-login mdl-js-layout mdl-color--grey-100">
+	<main class="mdl-layout__content">
+		<div class="mdl-card mdl-shadow--6dp">
+			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+				<h2 class="mdl-card__title-text">turelo</h2>
+			</div>
+      <%= form_for(resource, as: resource_name, :url => registration_path(resource_name)) do |f| %>
+	  	<div class="mdl-card__supporting-text">
+					<div class="mdl-textfield mdl-js-textfield">
+            <%= f.text_field :email, :autofocus => true, :value => '', class: 'mdl-textfield__input' %>
+						<label class="mdl-textfield__label" for="email">Email</label>
+					</div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <%= f.text_field :nickname, :autofocus => true, :value => '', class: 'mdl-textfield__input' %>
+            <label class="mdl-textfield__label" for="username">Nickname</label>
+          </div>
+					<div class="mdl-textfield mdl-js-textfield">
+            <%= f.password_field :password, class: 'mdl-textfield__input' %>
+						<label class="mdl-textfield__label" for="userpass">Password</label>
+					</div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <%= f.password_field :password_confirmation, class: 'mdl-textfield__input' %>
+            <label class="mdl-textfield__label" for="userpass">Confirm Password</label>
+          </div>
+			</div>
+			<div class="mdl-card__actions mdl-card--border">
+        <%= f.button 'sign up', :class => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' %>
+			</div>
+      <% end %>
+		</div>
+	</main><br>
   <div class="text-center">
     <%= render "devise/shared/links" %>
   </div>
-</div>
-</div>
-</div>
 </div>
