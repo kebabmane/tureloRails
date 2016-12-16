@@ -7,16 +7,13 @@
 
 <% if @feed_entries.any? %>
 
-<div class="blog container">
-   <div id="pins" class="blog-list">
-						<%= render @feed_entries %>
+   <div class="quizzle-card-container mdl-grid">
+			<%= render @feed_entries %>
    </div>
   <div id="infinite-scrolling">
 		<%= will_paginate @feed_entries %>
   </div>
-</div>
 
-<br><br><br><br><br><br>
 
 <% else %>
 

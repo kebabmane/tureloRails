@@ -1,107 +1,17 @@
-<div id="blue">
-		<div class="container">
-		<div class="row">
-			<h3>
-				<%= @feed_entry.title %>
-				<div class="pull-right">
-	 				<%= link_to 'origional article', @feed_entry.feed_entry_url, :class=>"btn btn-primary", :target => "_blank" %>
-	      </div>
-			</h3>
-			<h5>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago
+<div class="feed-entry-ribbon"></div>
+<main class="feed-entry-main mdl-layout__content">
+        <div class="feed-entry-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="feed-entry-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <h3><%= @feed_entry.title %></h3>
+						<h6>Posted: <%= time_ago_in_words(@feed_entry.published) %> ago
 					<% if @feed_entry.author? %>
 	     		| By:	<%= @feed_entry.author %>
 					<% end %>
-						 | In: <%= link_to @feed_entry.feed.feed_name, category_feed_feed_entries_path(@category, @feed_entry.feed.id) %></h5>
-		</div><!-- /row -->
-		</div> <!-- /container -->
-</div><!-- /blue -->
-
-
-<div class="container mtb">
- <div class="row">
-
-	 <! -- SINGLE POST -->
-	 <div class="col-lg-8">
-
-
-  <% if @feed_entry.summary.blank? %>
-    <p><%= @feed_entry.feed_entry_content.html_safe %></p>
-
-  <% else %>
-
-	<p>
-	<% if @feed_entry.feed_entry_images.any? %>
-		<% if @feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
-			<%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
-		<% else %>
-			<%= image_tag(@feed_entry.feed_entry_images.first.img_url, :size => "400x300", :class => "img-responsive") rescue nil %>
-  	<% end %>
-	<% else %>
-		<%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
-	<% end %>
-</p>
-
-<br>
-    <p><%= strip_tags(@feed_entry.summary) %></p>
-  <% end %>
-
-
-</div><! --/col-lg-8 -->
-
-<! -- SIDEBAR -->
-<div class="col-lg-4">
-
-<h4>Social</h4>
-<div class="hline"></div>
-<br>
-<div class="social_feed_entry">
-	This post has been viewed <%= @feed_entry.impressions.count %> times
-	<br><br>
-	This post has been upvoted <%= @feed_entry.upvotes_count %> times
-	<br><br>
-	This post has been downvoted <%= @feed_entry.downvotes_count %> times
-	<br><br>
-
-	<%= render_votes_for_feed_entry(@feed_entry) %>
-</div>
-<br>
-
-
-<h4>Tags</h4>
-<div class="hline"></div>
-<br>
-
-	<% @feed_entry.tag_list.each do |tag| %>
-		<%= link_to tag, tag_path(tag), :class => 'btn btn-primary btn-sm top-buffer' %>
-	<% end %>
-
-<br><br><br>
-
-
-				<h4>Recent Posts</h4>
-			<div class="hline"></div>
-				<ul class="popular-posts">
-					<% @recent_feed.each do |recent_feed| %>
-						<li>
-							<% if recent_feed.feed_entry_images.any? %>
-								<% if recent_feed.feed_entry_images.first.img_url =~ /(twitter)|(hsdu)|(facebook).*/i %>
-									<%= image_tag("newspaper.png", :size => "100x60", :class => "img-responsive") %>
-								<% else %>
-					  			<%= image_tag(recent_feed.feed_entry_images.first.img_url, :size => "100x60", :class => "img-responsive") rescue nil %>
-				  			<% end %>
-							<% else %>
-								<%= image_tag("newspaper.png", :size => "100x60", :class => "img-responsive") %>
-							<% end %>
-								<p><a href="#"><%= link_to recent_feed.title, category_feed_feed_entry_path(@category.id, @feed.id, recent_feed.id) %></a></p>
-								<em>Posted <%= time_ago_in_words(recent_feed.published) %> ago</em>
-						</li>
-					<% end %>
-					</ul>
-
-
-
-	</div><! --/row -->
- </div><! --/container -->
-</div>
-
-<br><br><br><br>
+						 | In: <%= link_to @feed_entry.feed.feed_name, category_feed_feed_entries_path(@category, @feed_entry.feed.id) %></h6>
+              <p>
+              iquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
+              </p>
+          </div>
+        </div>
+</main>

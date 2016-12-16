@@ -3,79 +3,49 @@
 <head>
   <%= favicon_link_tag 'favicon.ico' %>
   <title>turelo - simple, fast, rss</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Introducing Lollipop, a sweet new take on quizzle.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+<!-- Page styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-deep_purple.min.css" />
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <meta name="google-site-verification" content="8gNheUW89iRh88p3CbuVqXrLWA9fAvBn1-IwcwO6O8k" />
 </head>
 <body>
-
-  <!-- Fixed navbar -->
- <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-   <div class="container">
-     <div class="navbar-header">
-       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-       </button>
-       <div class="navbar-brand">
-         turelo
-         <%= yield(:page_title) %>
-     </div>
-     </div>
-<div class="navbar-default">
-     <% if user_signed_in? %>
-     <div class="navbar-collapse collapse navbar-right">
-       <ul class="nav navbar-nav">
-         <li><%= link_to 'timeline', overviews_path %></li>
-         <li><%= link_to 'feeds', categories_path %></li>
-         <% if current_user.admin? %>
-           <li><%= link_to 'admins', turelo_admin_admins_path %></li>
-
-            <li class="dropdown dropdown-notifications">
-              <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
-                <i data-count="<%=@notifications.count%>" class="glyphicon glyphicon-bell notification-icon"></i>
-              </a>
-
-         	  <div class="dropdown-container dropdown-position-bottomright">
-         	   <div class="dropdown-toolbar">
-         	      <div class="dropdown-toolbar-actions">
-         						<a href="#">Mark all as read</a>
-         	      </div>
-         	      <h3 class="dropdown-toolbar-title black">Recent Notifications (<%= @notifications.count %>)</h3>
-         	    </div><!-- /dropdown-toolbar -->
-
-         	    <ul class="dropdown-menu notifications">
-         				<% @notifications.each do |notification| %>
-         						<%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html] %>
-         				<% end %>
-         	    </ul>
-         			<div class="dropdown-footer text-center">
-         					<%= link_to 'View All', notifications_path  %>
-         			</div><!-- /dropdown-footer -->
-         	  </div>
-          </li>
-         <% end %>
-         <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">profile <b class="caret"></b></a>
-           <ul class="dropdown-menu arrow">
-            <li><%= link_to 'profile', users_profile_path(current_user) %></li>
-            <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-           </ul>
-         </li>
-       </ul>
-     </div>
-     </div><!--/.nav-collapse -->
+<% if user_signed_in? %>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="quizzle-header mdl-layout__header mdl-layout__header--waterfall">
+      <div class="mdl-layout__header-row">
+        <span class="quizzle-title mdl-layout-title">
+          turelo
+          <%= yield(:page_title) %>
+        </span>
+        <!-- Add spacer, to align navigation to the right in desktop -->
+        <div class="quizzle-header-spacer mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <div class="quizzle-navigation-container">
+          <nav class="quizzle-navigation mdl-navigation">
+            <%= link_to 'timeline', overviews_path, class: "mdl-navigation__link mdl-typography" %>
+            <%= link_to 'feeds', categories_path, class: "mdl-navigation__link mdl-typography" %>
+          </nav>
+        </div>
+        <button class="quizzle-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+          <li class="mdl-menu__item"><%= link_to 'profile', users_profile_path(current_user) %></li>
+          <li class="mdl-menu__item"><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    </div>
 <% end %>
-   </div>
- </div>
-
   <div class="message in" id="flash">
       <%= flash_messages %>
   </div>
@@ -89,19 +59,10 @@
     <% end %>
   <% end %>
 
-<div class="body-padding">
-	 <%= yield %>
 
-</div>
+  <%= yield %>
 
-
-<a id="back-to-top" href="#" class="btn btn-primary back-to-top" rel="tooltip" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
-
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    $("div.navbar-fixed-top").autoHidingNavbar();
-  </script>
+  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
 </body>
 </html>
