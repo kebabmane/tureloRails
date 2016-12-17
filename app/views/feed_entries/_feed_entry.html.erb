@@ -18,11 +18,11 @@
   </div>
 
   <div class="mdl-card__supporting-text">
-    <% if feed_entry.summary.blank? %>
+    <p><% if feed_entry.summary.blank? %>
       <%= strip_tags(feed_entry.feed_entry_content).truncate(200) %>
     <% else %>
       <%= strip_tags(feed_entry.summary).truncate(200) %>
-    <% end %>
+    <% end %></p>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <%= link_to 'view article', category_feed_feed_entry_path(feed_entry.feed.category.friendly_id, feed_entry.feed.friendly_id, feed_entry.id), class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' %>

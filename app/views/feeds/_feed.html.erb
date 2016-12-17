@@ -1,5 +1,10 @@
-<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
 <div class="feed-entry-card-wide">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">
+      <%= feed.feed_name %>
+    </h2>
+  </div>
   <div class="mdl-card__media">
     <% if feed.feed_image_url? %>
       <%= link_to image_tag(feed.feed_image_url), category_feed_feed_entries_path(feed.category.friendly_id, feed.friendly_id) rescue nil %>
@@ -8,23 +13,16 @@
     <% end %>
   </div>
   <div class="mdl-card__supporting-text">
-    <h5><%= link_to feed.feed_name, category_feed_feed_entries_path(feed.category.friendly_id, feed.friendly_id) rescue nil %></h5>
     <p>this feed has <%= feed.feed_entries_count %> entries & <%= feed.followers_count %> followers
     Updated <%= time_ago_in_words(feed.feed_entries.last.published) rescue nil %> ago</p>
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+    <%= link_to 'view feed', category_feed_feed_entries_path(feed.category.friendly_id, feed.friendly_id), class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' %>
       <% if current_user.follows?(feed) %>
-        <%= link_to "unfollow", unfollow_path(feed: feed) , remote: true, method: :get %>
+        <%= link_to "unfollow", unfollow_path(feed: feed), class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', remote: true, method: :get %>
       <% else %>
-        <%= link_to "follow", follow_path(feed: feed) , remote: true, method: :get %>
+        <%= link_to "follow", follow_path(feed: feed), class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', remote: true, method: :get %>
       <% end %>
-    </a>
-  </div>
-  <div class="mdl-card__menu">
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-      <i class="material-icons black">share</i>
-    </button>
   </div>
 </div>
 </div>
