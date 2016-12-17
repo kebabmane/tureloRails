@@ -9,9 +9,17 @@
 	     		| By:	<%= @feed_entry.author %>
 					<% end %>
 						 | In: <%= link_to @feed_entry.feed.feed_name, category_feed_feed_entries_path(@category, @feed_entry.feed.id) %></h6>
-              <p>
-              iquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
-              </p>
+          <p>
+						<% if @feed_entry.summary.blank? %>
+						<div class="feed_entry_container">
+    <p><%= @feed_entry.feed_entry_content.html_safe %></p>
+
+  	<% else %>
+
+    <p><%= strip_tags(@feed_entry.summary) %></p>
+  <% end %>
+</div>
+          </p>
           </div>
         </div>
 </main>
