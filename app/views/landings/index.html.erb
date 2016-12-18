@@ -13,43 +13,13 @@
 						<h3>click below to start reading</h3>
             <div class="mtb">
 								<% if user_signed_in? %>
-									<%= link_to 'head to turelo', overviews_path, :class=>"btn btn-conf btn-green" %>
+									<%= link_to 'head to turelo', overviews_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--accent" %>
 								<% else %>
-								  <%= link_to 'sign in', overviews_path, :class=>"btn btn-conf btn-green"  %>
-									<%= link_to 'sign up', new_user_registration_path, :class=>"btn btn-conf btn-primary" %>
+								  <%= link_to 'sign in', overviews_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"  %>
+									<%= link_to 'sign up', new_user_registration_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--accent" %>
 								<% end %>
             </div><!--/mt-->
           </div>
         </div><!--/row-->
       </div><!--/container-->
     </div><!-- /H -->
-
-    <div class="container ptb">
-      <div class="row">
-        <div class="col-md-6"><br><br><br>
-          <h2>Add, read and vote on your feeds.</h2>
-          <p class="mt">Look I really wanted a fast and basic rss reader - I couldn't find one
-					so I decided to make turelo. Fast, easy to use with some useful features turelo is the google reader replacement you have been missing</p>
-        </div>
-        <div class="col-md-6">
-          <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
-        </div>
-      </div><!--/row-->
-    </div><!--/container-->
-
-
-
-    <div id="f">
-      <div class="container">
-        <div class="row centered">
-          <h2>You Can Contact Us</h2>
-          <h5>hello@turelo.me</h5>
-          <p class="mt">
-            <a href="#"><i class="ion-social-twitter"></i></a>
-            <a href="#"><i class="ion-social-facebook"></i></a>
-          </p>
-        </div><!--/row-->
-      </div><!--/container-->
-    </div><!--/F-->
-
-  </body>
