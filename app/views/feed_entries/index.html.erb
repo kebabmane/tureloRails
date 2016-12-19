@@ -1,3 +1,4 @@
+<div class="body-padding">
 <%= content_for :page_title do %>
 
  | <%= (@feed.feed_name).downcase %>
@@ -8,7 +9,11 @@
 <% if @feed_entries.any? %>
 
    <div class="quizzle-card-container mdl-grid">
-			<%= render @feed_entries %>
+     <% @feed_entries.each do |feed_entries| %>
+       <% cache feed_entries do %>
+         <%= render feed_entries %>
+       <% end %>
+     <% end %>
    </div>
   <div id="infinite-scrolling">
 		<%= will_paginate @feed_entries %>
@@ -20,3 +25,4 @@
  <%= render 'layouts/no_data' %>
 
 <% end %>
+</div>
