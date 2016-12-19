@@ -7,7 +7,11 @@
 </div>
 
    <div class="quizzle-card-container mdl-grid">
-			<%= render @feed_entries %>
+      <% @feed_entries.each do |feed_entries| %>
+        <% cache feed_entries do %>
+          <%= render feed_entries %>
+        <% end %>
+      <% end %>
    </div>
 
   <div id="infinite-scrolling">

@@ -35,23 +35,26 @@
       <nav class="mdl-navigation">
         <%= link_to 'timeline', overviews_path, class: "mdl-navigation__link mdl-typography" %>
         <%= link_to 'feeds', categories_path, class: "mdl-navigation__link mdl-typography" %>
-        <button class="quizzle-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
-          <i class="material-icons">more_vert</i>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-          <li class="mdl-menu__item"><%= link_to 'profile', users_profile_path(current_user) %></li>
-          <li class="mdl-menu__item"><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-        </ul>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
+    <span class="mdl-layout-title">turelo</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
+    <% if user_signed_in? %>
+      <% followed_feeds.each do |feed| %>
+        <%= link_to feed.feed_name, category_feed_feed_entries_path(feed.category_id, feed.friendly_id), :class=>"mdl-navigation__link"%></li>
+      <% end %>
+      <div class="turelo-drawer-separator"></div>
+        <%= link_to 'profile', users_profile_path(current_user), :class=>"mdl-navigation__link" %>
+        <%= link_to "logout", destroy_user_session_path, :class=>"mdl-navigation__link", method: :delete %>
+      <div class="turelo-drawer-separator"></div>
+      <% if current_user.admin? %>
+        <%= link_to 'admins', turelo_admin_admins_path, :class=>"mdl-navigation__link" %>
+      <% end %>
+      <% else %>
+      <a href="#">sign up or in buddy</a>
+    <% end %>
     </nav>
   </div>
   <% end %>
