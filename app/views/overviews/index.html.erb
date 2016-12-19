@@ -1,3 +1,4 @@
+<div class="body-padding">
 <%= content_for(:page_title, " | overviews") %>
 
 <% if @feed_entries.any? %>
@@ -5,8 +6,7 @@
 <div id="notifications">
 </div>
 
-<div class="blog container">
-   <div id="pins" class="blog-list">
+   <div class="quizzle-card-container mdl-grid">
 			<%= render @feed_entries %>
    </div>
 
@@ -24,3 +24,4 @@
  <%= render 'layouts/no_data' %>
 
 <% end %>
+</div>
