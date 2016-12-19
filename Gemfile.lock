@@ -53,15 +53,6 @@ GEM
       json
     arel (7.1.4)
     ast (2.3.0)
-<<<<<<< HEAD
-    aws-sdk (2.6.36)
-      aws-sdk-resources (= 2.6.36)
-    aws-sdk-core (2.6.36)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.6.36)
-      aws-sdk-core (= 2.6.36)
-=======
     autoprefixer-rails (6.5.4)
       execjs
     aws-sdk (2.6.38)
@@ -71,7 +62,6 @@ GEM
       jmespath (~> 1.0)
     aws-sdk-resources (2.6.38)
       aws-sdk-core (= 2.6.38)
->>>>>>> d8e4e26faf9374417f83e1b4331e70d6bf253bb2
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     benchmark-ips (2.7.2)

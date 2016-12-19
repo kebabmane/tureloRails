@@ -14,11 +14,11 @@
 #
 development:
   adapter:  postgresql
-  host:     localhost
+  host:     db
   encoding: unicode
   database: turelo_development
   pool:     5
-  username: rjevans
+  username: postgres
   password:
   template: template0
 
