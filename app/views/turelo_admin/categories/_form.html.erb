@@ -1,4 +1,4 @@
-<%= form_for(@category, :url => turelo_admin_categories_path) do |f| %>
+<%= form_for @category, :url => turelo_admin_categories_path do |f| %>
 <dialog class="mdl-dialog">
 <h4 class="mdl-dialog__title">Add new category</h4>
 <div class="mdl-dialog__content">
@@ -18,7 +18,7 @@
   </div>
 </div>
 <div class="mdl-dialog__actions">
-    <%= f.button :submit, :class=>"mdl-button" %>
+    <%= f.submit "submit", :action => :create, :class=>"mdl-button" %>
     <button type="button" class="mdl-button close">Close</button>
 </div>
 </dialog>
