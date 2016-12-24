@@ -20,6 +20,8 @@ Rails.application.configure do
     config.web_console.whitelisted_ips = ENV['DOCKER_HOST_IP']
   end
 
+  config.web_console.whitelisted_ips = '172.18.0.1'
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
