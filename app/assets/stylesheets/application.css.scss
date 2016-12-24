@@ -16,6 +16,9 @@
  *= require_self
  */
 
+.text-center {
+  text-align: center;
+}
 
 
 .quizzle-card-container {
@@ -36,7 +39,7 @@
   }
 
   .quizzle-card-container .mdl-card__title-text {
-    color: black;
+    //color: black;
     height: auto;
   }
 
@@ -145,4 +148,23 @@
 
 .feed_entry_container img {
    max-width: 100%;
+}
+
+.mdl-card-stat > .mdl-card__title {
+  color: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: #7c4dff;
+  /*
+  background: #3F51B5 url("images/mastercard.jpg") center;
+  background-size: cover;
+  */
+}
+
+.mdl-card-stat > .mdl-card__supporting-text {
+  padding-bottom: 0px;
+}
+
+.mdl-grid.center-items {
+  justify-content: center;
 }

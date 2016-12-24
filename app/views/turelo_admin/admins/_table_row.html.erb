@@ -10,10 +10,10 @@
   <td><%= user.sign_in_count if user.sign_in_count %></td>
   <td><%= user.last_sign_in_at.to_date if user.last_sign_in_at %> & <%= user.current_sign_in_ip if user.current_sign_in_ip %> </td>
   <td>
-    <%= bootstrap_form_for(user, url: users_profile_path(user)) do |f| %>
-      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, hide_label: true) %>
-      <%= f.submit 'change Role', :class => 'btn btn-primary btn-sm' %>
-      <%= link_to("delete user", users_profile_path(user), :data => { :confirm => "are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-sm') unless user == current_user %>
+    <%= form_for(user, url: users_profile_path(user)) do |f| %>
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, hide_label: true, class: 'mdl-select__input') %>
+      <%= f.submit 'change Role', :class => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' %>
+      <%= button_to("delete user", users_profile_path(user), :data => { :confirm => "are you sure?" }, :method => :delete, :class => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent') unless user == current_user %>
     <% end %>
   </td>
 </tr>

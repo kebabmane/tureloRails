@@ -4,15 +4,9 @@
 
 <% end %>
 
-<div class="container">
 
-<div class="row">
-	<div class="col-xs-4 col-sm-1">
-
-	</div>
-  <div class="col-xs-4 col-sm-2">
 	  <%= link_to 'DB Analytics', '/admins/pghero', :class=>"btn btn-lg btn-primary btn-block", :target => "_blank" %>
-	</div>
+
     <div class="col-xs-4 col-sm-2">
 			<%= link_to 'blazer - db info', '/admins/blazer', :class=>"btn btn-lg btn-primary btn-block", :target => "_blank" %>
 	</div>
@@ -51,53 +45,47 @@
 <br>
 </div>
 
-<div class="container">
+<div class="quizzle-card-container mdl-grid">
 
-    <div class="row"><br>
-        <div class="col-xs-6 col-md-4">
-
-						 		<div class="panel-alt"><br>
-                    <h1 class="panel-title text-center"><%= @feed_count %></h1>
-
-                <div class="panel-body text-center">
-                    <strong>feeds</strong>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-xs-6 col-md-4">
-
-								<div class="panel-alt"><br>
-                    <h1 class="panel-title text-center"><%= @feed_entry_count %></h1>
-
-                <div class="panel-body text-center">
-                    <strong>total feed entries</strong>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-xs-6 col-md-4">
-
-					<div class="panel-alt"><br>
-                    <h1 class="panel-title text-center"><%= @user_count %></h1>
-
-                <div class="panel-body text-center">
-                    <strong>total users</strong>
-                </div>
-            </div>
-
-
-        </div>
-
+<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-card-stat mdl-shadow--3dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">
+      <%= @feed_count %>
+    </h2>
+  </div>
+    <div class="mdl-card__supporting-text">
+      <p>number of feeds</p>
     </div>
+  </div>
 
+<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-card-stat mdl-shadow--3dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">
+      <%= @feed_entry_count %>
+    </h2>
+  </div>
+    <div class="mdl-card__supporting-text">
+      <p>number of feed entries</p>
+    </div>
 </div>
+
+<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-card-stat mdl-shadow--3dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">
+      <%= @user_count %>
+    </h2>
+  </div>
+    <div class="mdl-card__supporting-text">
+      <p>number of users</p>
+    </div>
+  </div>
+</div>
+
 <br><br>
 
-<div class="container">
-<div class="table-responsive">
-<table class="table table-bordered">
-<thead>
+<div class="mdl-grid center-items">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
  <tr>
   <th>username or email</th>
   <th>Joined</th>
@@ -112,10 +100,8 @@
   <% end %>
 </tbody>
 </table>
-</div>
 <div class="text-center">
-	<%= will_paginate @users, :renderer => BootstrapPagination::Rails  %>
+	<%= will_paginate @users %>
 </div>
 </div>
-
 <br><br><br><br>
