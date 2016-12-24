@@ -22,7 +22,6 @@ gem 'sinatra', :require => nil
 #gem 'bootstrap_form', :git => 'git://github.com/bootstrap-ruby/rails-bootstrap-forms'
 gem 'material_design_lite-sass'
 gem 'will_paginate'
-#gem 'will_paginate-bootstrap'
 gem "therubyracer"
 gem 'acts-as-taggable-on'
 gem 'gravatarify'
@@ -40,9 +39,9 @@ gem "searchjoy"
 gem 'blazer'
 gem 'pghero'
 gem 'jquery-turbolinks'
-gem 'carrierwave-aws'
 gem "mini_magick"
-gem "fog"
+gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-aws'
 gem 'rack-ssl-enforcer'
 gem 'feedjira'
 gem "sidekiq-cron"

@@ -1,15 +1,25 @@
 <%= form_for(@category, :url => turelo_admin_categories_path) do |f| %>
-
+<dialog class="mdl-dialog">
 <h4 class="mdl-dialog__title">Add new category</h4>
 <div class="mdl-dialog__content">
   <div class="mdl-textfield mdl-js-textfield">
     <%= f.text_field :category_name, class: 'mdl-textfield__input' %>
+    <label class="mdl-textfield__label" for="category_name">Category Name</label>
   </div>
-    <%= f.text_field :category_description %>
-    <%= f.label :category_image_url %><br>
-    <%= f.file_field :category_image_url %>
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= f.text_field :category_description, class: 'mdl-textfield__input' %>
+    <label class="mdl-textfield__label" for="category_description">Category Description</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+    <%= f.file_field :category_image_url, class: 'mdl-textfield__input' %>
+    <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+      <i class="material-icons">attach_file</i><input type="file" id="uploadBtn">
+    </div>
+  </div>
 </div>
 <div class="mdl-dialog__actions">
     <%= f.button :submit, :class=>"mdl-button" %>
+    <button type="button" class="mdl-button close">Close</button>
 </div>
+</dialog>
 <% end %>

@@ -12,9 +12,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def bootstrap_class_for flash_type
-      { success: "alert-success", error: "alert-error", alert: "alert-warning", notice: "alert-info" }[flash_type.to_sym] || flash_type.to_s
-  end
 
   def followed_feeds
     @followed_feeds = current_user.followees(Feed)
@@ -32,7 +29,6 @@ module ApplicationHelper
     end
     nil
   end
-
 
   def remove_images(string)
     f = Nokogiri::XML.fragment(string)

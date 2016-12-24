@@ -9,7 +9,7 @@ class MediaUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  storage :fog
+  storage :aws
   process :fix_exif_rotation
 
   # Override the directory where uploaded files will be stored.

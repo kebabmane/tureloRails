@@ -70,9 +70,7 @@
   </div>
   <% end %>
 
-     <%= flash_messages %>
-
-     <%= render 'layouts/google_analytics' %>
+   <%= render 'layouts/google_analytics' %>
 
       <% Announcement.current(cookies.signed[:hidden_announcement_ids]).each do |announcement| %>
         <%= div_for announcement do %>

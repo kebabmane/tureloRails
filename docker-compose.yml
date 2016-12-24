@@ -35,4 +35,7 @@ services:
       - elasticsearch
     volumes:
       - .:/myapp
-
+    environment:
+       - DOCKERIZED=true
+    env_file:
+       - ".env"  
