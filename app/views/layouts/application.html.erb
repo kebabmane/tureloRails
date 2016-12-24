@@ -35,6 +35,17 @@
       <nav class="mdl-navigation">
         <%= link_to 'timeline', overviews_path, class: "mdl-navigation__link mdl-typography" %>
         <%= link_to 'feeds', categories_path, class: "mdl-navigation__link mdl-typography" %>
+        <% if user_signed_in? && current_user.admin? %>
+        <button class="quizzle-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+           <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+          <li class="mdl-menu__item"><%= link_to 'feeds admin', turelo_admin_feeds_path %></li>
+          <li class="mdl-menu__item"><%= link_to 'categories admin', turelo_admin_categories_path %></li>
+          <li class="mdl-menu__item"><%= link_to 'announcements', turelo_admin_announcements_path %></li>
+          <li class="mdl-menu__item"><%= link_to 'devices admin', turelo_admin_devices_path %></li>
+        </ul>
+        <% end %>
       </nav>
     </div>
   </header>

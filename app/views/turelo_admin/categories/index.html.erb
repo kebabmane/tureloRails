@@ -1,18 +1,9 @@
-<div id="blue">
-		<div class="container">
-		<div class="row">
-			<h3>categories admin
-        <div class="pull-right">
-   			<%= pluralize(@categories.count, 'categories') %> <%= link_to 'new cateogry', new_turelo_admin_category_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_category_modal", :class=>"btn btn-primary" %>
-        </div>
-      </h3>
-		</div><!-- /row -->
-		</div> <!-- /container -->
-</div><!-- /blue --><br><br>
+<%= content_for :page_title do %> | categories admin <% end %>
 
-<div class="container">
-<div class="table-responsive">
-<table class="table table-bordered">
+<br><br>
+
+<div class="mdl-grid center-items">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
 <thead>
  <tr>
   <th>category</th>
@@ -28,23 +19,30 @@
 </table>
 </div>
 <div class="text-center">
-	<%= will_paginate @categories, :renderer => BootstrapPagination::Rails  %>
-</div>
+	<%= will_paginate @categories %>
 </div>
 
-<br><br><br><br>
-
-<div class="modal fade" id="new_category_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">add new category</h4>
-      </div>
-      <div class="modal-body">
-        <%# Render the new person form (passing modal => true to enable remote => true) %>
-        <%= render 'form', modal: true %>
-      </div>
-    </div>
-  </div>
+<!-- Colored FAB button with ripple -->
+<div class="fab">
+<button id="show-form" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+  <i class="material-icons">add</i>
+</button>
 </div>
+
+<dialog class="mdl-dialog">
+	<%= render 'form', modal: true %>
+</dialog>
+
+<script>
+	var dialog = document.querySelector('dialog');
+	var showDialogButton = document.querySelector('#show-form');
+	if (! dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+	showDialogButton.addEventListener('click', function() {
+		dialog.showModal();
+	});
+	dialog.querySelector('.close').addEventListener('click', function() {
+		dialog.close();
+	});
+</script>

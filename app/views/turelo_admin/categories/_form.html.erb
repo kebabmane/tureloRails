@@ -1,18 +1,15 @@
-<%= simple_form_for(@category, :url => turelo_admin_categories_path) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@category, :url => turelo_admin_categories_path) do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :category_name %>
-    <%= f.input :category_description %>
+<h4 class="mdl-dialog__title">Add new category</h4>
+<div class="mdl-dialog__content">
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= f.text_field :category_name, class: 'mdl-textfield__input' %>
   </div>
-
-  <div class="field">
+    <%= f.text_field :category_description %>
     <%= f.label :category_image_url %><br>
     <%= f.file_field :category_image_url %>
-  </div>
-
-<br><br><br>
-  <div class="form-actions">
-    <%= f.button :submit, :class=>"btn btn-primary" %>
-  </div>
+</div>
+<div class="mdl-dialog__actions">
+    <%= f.button :submit, :class=>"mdl-button" %>
+</div>
 <% end %>
