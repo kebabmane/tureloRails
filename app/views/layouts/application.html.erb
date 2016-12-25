@@ -44,6 +44,8 @@
           <li class="mdl-menu__item"><%= link_to 'categories admin', turelo_admin_categories_path %></li>
           <li class="mdl-menu__item"><%= link_to 'announcements', turelo_admin_announcements_path %></li>
           <li class="mdl-menu__item"><%= link_to 'devices admin', turelo_admin_devices_path %></li>
+          <li class="mdl-menu__item"><%= link_to 'DB Analytics', '/admins/pghero', :target => "_blank" %></li>
+          <li class="mdl-menu__item"><%= link_to 'sidekiq web', '/admins/sidekiq', :target => "_blank" %></li>
         </ul>
         <% end %>
       </nav>
