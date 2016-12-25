@@ -31,6 +31,8 @@
 
     .quizzle-card-container .mdl-card__media img {
       width: 100%;
+      height: 300px;
+      max-height: 300px;
     }
 
   .quizzle-card-container .mdl-card__title {
@@ -201,5 +203,5 @@ width: 56px;
 
 .mdl-dialog {
   width: 580px;
-  
+  position: relative;
 }

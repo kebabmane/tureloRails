@@ -1,57 +1,52 @@
-<div id="blue">
-		<div class="container">
-		<div class="row">
-			<h3>admin - all feeds
-			<div class="pull-right">
- 			<%= pluralize(@feeds.count, 'feeds') %> <%= link_to 'new feed', new_turelo_admin_feed_path, :remote => true, "data-toggle" => "modal", "data-target" => "#new_feed_modal", :class=>"btn btn-primary" %>
-      </div>
-		  </h3>
-		</div><!-- /row -->
-		</div> <!-- /container -->
-</div><!-- /blue --><br><br>
+<%= content_for :page_title do %> | feeds admin <% end %>
 
-<div class="container">
+<br><br>
 
-<table class="table table-striped" id='feeds_table'>
-  <thead>
-    <tr>
-      <th>feed title</th>
-      <th>feed ID</th>
-      <th>created at</th>
-      <th>entries</th>
-			<th>category</th>
-      <th colspan="2">actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @feeds.each do |feed| %>
-      		<%= render partial: 'table_row', locals: {feed: feed} %>
-    <% end %>
-  </tbody>
+<div class="mdl-grid center-items">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+<thead>
+ <tr>
+	 <th>feed title</th>
+	 <th>feed ID</th>
+	 <th>created at</th>
+	 <th>entries</th>
+	 <th>category</th>
+	 <th colspan="2">actions</th>
+ </tr>
+</thead>
+<tbody>
+  <% @feeds.each do |feed| %>
+  	<%= render partial: 'table_row', locals: {feed: feed} %>
+  <% end %>
+</tbody>
 </table>
-
-<br>
-
+</div>
 <div class="text-center">
 	<%= will_paginate @feeds %>
 </div>
 
+<!-- Colored FAB button with ripple -->
+<div id="form-fab" class="fab">
+<button id="show-form" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+  <i class="material-icons">add</i>
+</button>
+</div>
+<div class="mdl-tooltip mdl-tooltip--left" for="form-fab">
+Add a new feed
 </div>
 
-<br><br><br>
+<%= render 'form' %>
 
-<div class="modal fade" id="new_feed_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">add new feed</h4>
-      </div>
-      <div class="modal-body">
-        <%# Render the new person form (passing modal => true to enable remote => true) %>
-        <%= render 'form', modal: true %>
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+	var dialog = document.querySelector('dialog');
+	var showDialogButton = document.querySelector('#show-form');
+	if (! dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+	showDialogButton.addEventListener('click', function() {
+		dialog.showModal();
+	});
+	dialog.querySelector('.close').addEventListener('click', function() {
+		dialog.close();
+	});
+</script>
