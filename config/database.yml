@@ -14,7 +14,7 @@
 #
 development:
   adapter:  postgresql
-  host:     db
+  host:     db              #just for docker
   encoding: unicode
   database: turelo_development
   pool:     5

@@ -3,9 +3,8 @@
 
 <% if @feed_entries.any? %>
 
-<div id="notifications">
-</div>
 
+<div id="entries">
    <div class="quizzle-card-container mdl-grid">
       <% @feed_entries.each do |feed_entries| %>
         <% cache feed_entries do %>
@@ -13,10 +12,11 @@
         <% end %>
       <% end %>
    </div>
+</div>
 
-  <div id="infinite-scrolling">
-		<%= will_paginate @feed_entries %>
-  </div>
+<div id="infinite-scrolling">
+  <%= will_paginate @feed_entries %>
+</div>
 
 	<br><br><br><br><br><br>
 </div>

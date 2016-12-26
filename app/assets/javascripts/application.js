@@ -9,5 +9,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require nprogress
-//= require jquery.transit.min
 //= require_tree .

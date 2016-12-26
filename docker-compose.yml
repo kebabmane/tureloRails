@@ -20,6 +20,25 @@ services:
       - "9200:9200"
     command: elasticsearch
 
+  sidekiq:
+    depends_on:
+      - 'db'
+      - 'redis'
+    build: .
+    command: sidekiq -C config/sidekiq.yml
+    env_file:
+      - '.env'
+
+  cable:
+    depends_on:
+      - 'redis'
+    build: .
+    command: puma -p 28080 cable/config.ru
+    ports:
+      - '28080:28080'
+    env_file:
+      - '.env'
+
   web:
     build: .
     command: bundle exec puma -C config/puma.rb

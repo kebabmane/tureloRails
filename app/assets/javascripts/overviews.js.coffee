@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
- $ ->
-   $('#pins').imagesLoaded ->
-     $('#pins').masonry
-       itemSelector: '.post'
+jQuery ->
+  $(window).scroll ->
+    if $(window).scrollTop() > $(document).height() - $(window).height() - 50
+      alert('near bottom')

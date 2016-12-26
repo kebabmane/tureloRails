@@ -38,7 +38,7 @@ gem 'ionicons-rails'
 gem "searchjoy"
 gem 'blazer'
 gem 'pghero'
-gem 'jquery-turbolinks'
+#gem 'jquery-turbolinks'
 gem "mini_magick"
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-aws'
