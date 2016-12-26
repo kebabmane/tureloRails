@@ -10,18 +10,14 @@ services:
   redis:
     image: redis:latest
     ports:
-      # We'll bind our host's port 6379 to redis's port 6379, so we can use
-      # Redis Desktop Manager (or other tools) with it:
-      - 6379:6379
+      - '6379:6379'
     command: redis-server
 
   # Our ES service:
   elasticsearch:
     image: elasticsearch:latest
     ports:
-      # We'll bind our host's port 6379 to redis's port 6379, so we can use
-      # Redis Desktop Manager (or other tools) with it:
-      - 9200:9200
+      - "9200:9200"
     command: elasticsearch
 
   web:
@@ -29,11 +25,15 @@ services:
     command: bundle exec puma -C config/puma.rb
     ports:
       - "3000:3000"
-    links:
-      - db
-      - redis
-      - elasticsearch
+    depends_on:
+      - 'db'
+      - 'redis'
+      - 'elasticsearch'
+    environment:
+      - REDIS_URL=redis://redis:6379
     volumes:
       - .:/myapp
     environment:
-       - DOCKERIZED=true
+      - DOCKERIZED=true
+    env_file:
+      - '.env'

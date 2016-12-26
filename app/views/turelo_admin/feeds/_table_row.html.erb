@@ -4,6 +4,6 @@
        <td><%= feed.created_at.strftime("%d %b. %Y") %></td>
        <td><%= feed.feed_entries_count %></td>
        <td><%= feed.category.category_name rescue nil %></td>
-       <td><%= link_to 'edit', edit_turelo_admin_feed_path(feed), { :class=>"btn btn-primary" } %>
-       <%= link_to 'destroy', turelo_admin_feed_path(feed), :class => 'btn btn-danger', method: :delete, data: { confirm: 'are you sure?' } %></td>
+       <td><%= link_to 'edit', edit_turelo_admin_feed_path(feed), { :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" } %>
+       <%= link_to 'destroy', turelo_admin_feed_path(feed), :class => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button', method: :delete, data: { confirm: 'are you sure?' } %></td>
 </tr>
