@@ -16,11 +16,6 @@ CarrierWave.configure do |config|
     cache_control: 'max-age=604800'
   }
 
-  config.aws_credentials = {
-    access_key_id:     'AKIAJKZ5KRRHYHE44VHA',
-    secret_access_key: 'ZSnCQbm9CWJSv7+EXwQmJKtMqGwCg5ncPyiE+bpi',
-    region:            'us-east-1' # Required
-  }
 
   # Optional: Signing of download urls, e.g. for serving private content through
   # CloudFront. Be sure you have the `cloudfront-signer` gem installed and
