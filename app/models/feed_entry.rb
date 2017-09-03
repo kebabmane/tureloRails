@@ -33,7 +33,7 @@
 #
 
 class FeedEntry < ActiveRecord::Base
-  searchkick match: :word_start, searchable: [:title], callbacks: :async, track: true, conversions: "conversions"
+  searchkick match: :word_start, searchable: [:title], callbacks: :async, conversions: "conversions"
   acts_as_taggable
   has_many :votes, as: :votable
   belongs_to :feed, :counter_cache => true

@@ -6,7 +6,7 @@ module Api
 
 
   def autocomplete
-   render json: FeedEntry.search(params[:query], fields: [{ title: :word_start }], track: true, limit: 10).map do |feed_entry|
+   render json: FeedEntry.search(params[:query], fields: [{ title: :word_start }], limit: 10).map do |feed_entry|
       { feed_entry_name: feed_entry.title, feed_entry_id: feed_entry.id }
    end
   end

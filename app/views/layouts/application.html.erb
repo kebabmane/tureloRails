@@ -3,77 +3,56 @@
 <head>
   <%= favicon_link_tag 'favicon.ico' %>
   <title>turelo - simple, fast, rss</title>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Introducing Lollipop, a sweet new take on quizzle.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Page styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-deep_purple.min.css" />
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <meta name="google-site-verification" content="8gNheUW89iRh88p3CbuVqXrLWA9fAvBn1-IwcwO6O8k" />
 </head>
 <body>
 <% if user_signed_in? %>
 
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header--scroll">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">
-        turelo <%= yield(:page_title) %>
-      </span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation -->
-      <nav class="mdl-navigation">
-        <%= link_to 'timeline', overviews_path, class: "mdl-navigation__link mdl-typography" %>
-        <%= link_to 'feeds', categories_path, class: "mdl-navigation__link mdl-typography" %>
-        <% if user_signed_in? && current_user.admin? %>
-        <button class="quizzle-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
-           <i class="material-icons">more_vert</i>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-          <li class="mdl-menu__item"><%= link_to 'feeds admin', turelo_admin_feeds_path %></li>
-          <li class="mdl-menu__item"><%= link_to 'categories admin', turelo_admin_categories_path %></li>
-          <li class="mdl-menu__item"><%= link_to 'announcements', turelo_admin_announcements_path %></li>
-          <li class="mdl-menu__item"><%= link_to 'devices admin', turelo_admin_devices_path %></li>
-          <li class="mdl-menu__item"><%= link_to 'DB Analytics', '/admins/pghero', :target => "_blank" %></li>
-          <li class="mdl-menu__item"><%= link_to 'sidekiq web', '/admins/sidekiq', :target => "_blank" %></li>
-        </ul>
-        <% end %>
-      </nav>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+<a class="navbar-brand" href="#">turelo <%= yield(:page_title) %></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <%= link_to 'timeline', overviews_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'feeds', categories_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      admin
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <%= link_to 'feeds admin', turelo_admin_feeds_path, class: "dropdown-item" %>
+      <%= link_to 'categories admin', turelo_admin_categories_path, class: "dropdown-item" %>
+      <%= link_to 'announcements', turelo_admin_announcements_path, class: "dropdown-item" %>
+      <%= link_to 'devices admin', turelo_admin_devices_path, class: "dropdown-item" %>
+      <%= link_to 'DB Analytics', '/admins/pghero', :target => "_blank", class: "dropdown-item" %>
+      <%= link_to 'sidekiq web', '/admins/sidekiq', :target => "_blank", class: "dropdown-item" %>
     </div>
+  </li>
+  </ul>
+</div>
+</nav>
+
   </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">turelo</span>
-    <nav class="mdl-navigation">
-    <% if user_signed_in? %>
-      <% followed_feeds.each do |feed| %>
-        <%= link_to feed.feed_name, category_feed_feed_entries_path(feed.category_id, feed.friendly_id), :class=>"mdl-navigation__link"%></li>
-      <% end %>
-      <div class="turelo-drawer-separator"></div>
-        <%= link_to 'profile', users_profile_path(current_user), :class=>"mdl-navigation__link" %>
-        <%= link_to "logout", destroy_user_session_path, :class=>"mdl-navigation__link", method: :delete %>
-      <div class="turelo-drawer-separator"></div>
-      <% if current_user.admin? %>
-        <%= link_to 'admins', turelo_admin_admins_path, :class=>"mdl-navigation__link" %>
-      <% end %>
-      <% else %>
-      <a href="#">sign up or in buddy</a>
-    <% end %>
-    </nav>
-  </div>
   <% end %>
 
    <%= render 'layouts/google_analytics' %>
-
+   <div class="container">
       <% Announcement.current(cookies.signed[:hidden_announcement_ids]).each do |announcement| %>
         <%= div_for announcement do %>
           <%= announcement.message %>
@@ -82,10 +61,8 @@
       <% end %>
 
       <%= yield %>
-
+    </div>
 </div>
-
-  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
 </body>
 </html>

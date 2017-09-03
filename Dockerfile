@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.4.1
 
 RUN apt-get update -qq && apt-get install -y build-essential
 
@@ -22,3 +22,4 @@ ADD Gemfile* $APP_HOME/
 RUN bundle install
 
 ADD . $APP_HOME
+

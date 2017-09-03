@@ -31,7 +31,7 @@
 class Feed < ActiveRecord::Base
   extend FriendlyId
   friendly_id :feed_name, use: [:slugged, :finders]
-  searchkick match: :word_start, searchable: [:feed_name], callbacks: :async, track: true, conversions: "conversions"
+  searchkick match: :word_start, searchable: [:feed_name], callbacks: :async, conversions: "conversions"
   acts_as_taggable
   acts_as_followable
   is_impressionable :counter_cache => true

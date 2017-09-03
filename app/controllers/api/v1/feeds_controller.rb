@@ -12,7 +12,7 @@ module Api
   end
 
   def autocomplete
-   render json: Feed.search(params[:query], fields: [{ feed_name: :word_start }], track: true, limit: 10).map do |feed|
+   render json: Feed.search(params[:query], fields: [{ feed_name: :word_start }], limit: 10).map do |feed|
       { feed_name: feed.feed_name, feed_id: feed.id }
    end
   end

@@ -22,7 +22,7 @@ end
 
 
   resources :overviews
-  resources :first_signup
+  #resources :first_signup
   resources :announcements
 
   devise_for :users, :controllers => {
