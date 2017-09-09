@@ -1,26 +1,12 @@
-<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-<div class="feed-entry-card-wide">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">
-      <%= category.category_name %>
-    </h2>
-  </div>
-  <div class="mdl-card__media">
-    <% if category.category_image_url? %>
-      <%= link_to image_tag(category.category_image_url), category_feeds_path(category) %>
-    <% else %>
-        <%= link_to image_tag("newspaper.png"), category_feeds_path(category) %>
-    <% end %>
-  </div>
-
-  <div class="mdl-card__supporting-text">
-    <p>
-      this category has <%= category.feeds_count %> feeds
-      <%= category.category_description %>
-    </p>
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <%= link_to 'view category', category_feeds_path(category.friendly_id), class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' %>
-  </div>
+<div class="card">
+  <% if category.category_image_url? %>
+    <%= link_to image_tag(category.category_image_url, class: 'card-img-top'), category_feeds_path(category) %>
+  <% else %>
+    <%= link_to image_tag("newspaper.png", class: 'card-img-top'), category_feeds_path(category) %>
+  <% end %>
+<div class="card-body">
+  <h4 class="card-title"><%= category.category_name %></h4>
+  <p class="card-text"><%= category.category_description %></p>
+  <%= link_to 'view category', category_feeds_path(category.friendly_id), class: 'btn btn-primary' %>
 </div>
 </div>

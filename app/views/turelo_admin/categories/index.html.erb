@@ -1,10 +1,13 @@
-<%= content_for :page_title do %> | categories admin <% end %>
+<br>
 
-<br><br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCategoryModal">
+  New Category
+</button>
 
-<div class="mdl-grid center-items">
-<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-<thead>
+<br><br><br>
+
+<table class="table">
+<thead class="thead-inverse">
  <tr>
   <th>category</th>
 	<th>category description</th>
@@ -23,28 +26,8 @@
 	<%= will_paginate @categories %>
 </div>
 
-<!-- Colored FAB button with ripple -->
-<div id="form-fab" class="fab">
-<button id="show-form" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-  <i class="material-icons">add</i>
-</button>
-</div>
-<div class="mdl-tooltip mdl-tooltip--left" for="form-fab">
-Add a new category
-</div>
 
-<%= render 'form' %>
-
-<script>
-	var dialog = document.querySelector('dialog');
-	var showDialogButton = document.querySelector('#show-form');
-	if (! dialog.showModal) {
-		dialogPolyfill.registerDialog(dialog);
-	}
-	showDialogButton.addEventListener('click', function() {
-		dialog.showModal();
-	});
-	dialog.querySelector('.close').addEventListener('click', function() {
-		dialog.close();
-	});
-</script>
+<!-- Modal -->
+<div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="newCategoryModalLabel" aria-hidden="true">
+	<%= render 'form' %>
+</div>

@@ -1,11 +1,9 @@
-<div class="body-padding">
-<%= content_for(:page_title, " | categories") %>
 <% if @categories.any? %>
 
-<div class="quizzle-card-container mdl-grid">
+<div class="card-columns">
 		<% @categories.each do |category| %>
 				<% cache category do %>
-	  			<%= render category %>
+	  				<%= render category %>
 				<% end %>
 		<% end %>
 </div>
@@ -20,4 +18,3 @@
  <%= render 'layouts/no_data' %>
 
 <% end %>
-</div>

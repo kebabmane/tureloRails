@@ -8,7 +8,7 @@
 
 <% if @feed_entries.any? %>
 
-   <div class="quizzle-card-container mdl-grid">
+  <div class="card-columns">
      <% @feed_entries.each do |feed_entries| %>
        <% cache feed_entries do %>
          <%= render feed_entries %>
