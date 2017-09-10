@@ -1,31 +1,23 @@
-<div class="entry mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-<div class="feed-entry-card-wide">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">
-      <%= feed_entry.title %>
-    </h2>
-  </div>
-  <div class="mdl-card__media">
-    <% if feed_entry.feed_entry_images.any? %>
-     <% if feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
-       <%= image_tag("newspaper.png", :size => "400x300", :class => "img-responsive") %>
-     <% else %>
-       <%= image_tag(feed_entry.feed_entry_images.first.img_url, :class => "img-responsive") rescue nil %>
-     <% end %>
+<div class="card">
+<% if feed_entry.feed_entry_images.any? %>
+<% if feed_entry.feed_entry_images.first.img_url =~ /(twitter)|(hsdu).*/i %>
+  <%= image_tag("newspaper.png", :size => "400x300", :class => "card-img-top") %>
+<% else %>
+  <%= image_tag(feed_entry.feed_entry_images.first.img_url, :class => "card-img-top") rescue nil %>
+<% end %>
+<% else %>
+  <%= image_tag("newspaper.png", :class => "card-img-top") %>
+<% end %>
+<div class="card-body">
+<h4 class="card-title"><%= feed_entry.title %></h4>
+<p class="card-text">    
+  <p><% if feed_entry.summary.blank? %>
+    <%= strip_tags(feed_entry.feed_entry_content).truncate(200) %>
   <% else %>
-    <%= image_tag("newspaper.png", :class => "img-responsive") %>
+    <%= strip_tags(feed_entry.summary).truncate(200) %>
   <% end %>
-  </div>
-
-  <div class="mdl-card__supporting-text">
-    <p><% if feed_entry.summary.blank? %>
-      <%= strip_tags(feed_entry.feed_entry_content).truncate(200) %>
-    <% else %>
-      <%= strip_tags(feed_entry.summary).truncate(200) %>
-    <% end %></p>
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <%= link_to 'view article', category_feed_feed_entry_path(feed_entry.feed.category.friendly_id, feed_entry.feed.friendly_id, feed_entry.id), class: 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' %>
-  </div>
+  </p>
+</p>
+<%= link_to 'view article', category_feed_feed_entry_path(feed_entry.feed.category.friendly_id, feed_entry.feed.friendly_id, feed_entry.id), class: 'btn btn-primary' %>
 </div>
 </div>

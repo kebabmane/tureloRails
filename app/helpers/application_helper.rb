@@ -12,7 +12,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-
   def followed_feeds
     @followed_feeds = current_user.followees(Feed)
   end

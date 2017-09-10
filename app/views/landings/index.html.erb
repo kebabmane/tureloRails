@@ -13,10 +13,10 @@
 						<h3>click below to start reading</h3>
             <div class="mtb">
 								<% if user_signed_in? %>
-									<%= link_to 'head to turelo', overviews_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--accent" %>
+									<%= link_to 'head to turelo', overviews_path, :class=>"btn btn-secondary" %>
 								<% else %>
-								  <%= link_to 'sign in', overviews_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"  %>
-									<%= link_to 'sign up', new_user_registration_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-button--accent" %>
+								  <%= link_to 'sign in', overviews_path, :class=>"btn btn-secondary"  %>
+									<%= link_to 'sign up', new_user_registration_path, :class=>"btn btn-secondary" %>
 								<% end %>
             </div><!--/mt-->
           </div>

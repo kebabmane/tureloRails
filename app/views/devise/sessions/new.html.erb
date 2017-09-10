@@ -1,27 +1,37 @@
-<div class="mdl-layout mdl-layout-login mdl-color--grey-100">
-	<main class="mdl-layout__content mdl-layout-login__content">
-		<div class="mdl-card mdl-shadow--6dp">
-			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-				<h2 class="mdl-card__title-text">turelo</h2>
-			</div>
-      <%= form_for(resource, as: resource_name, :url => session_path(resource_name)) do |f| %>
-	  	<div class="mdl-card__supporting-text">
-					<div class="mdl-textfield mdl-js-textfield">
-            <%= f.text_field :login, :autofocus => true, :value => '', class: 'mdl-textfield__input' %>
-						<label class="mdl-textfield__label" for="username">Username / Email</label>
-					</div>
-					<div class="mdl-textfield mdl-js-textfield">
-            <%= f.password_field :password, class: 'mdl-textfield__input' %>
-						<label class="mdl-textfield__label" for="userpass">Password</label>
-					</div>
-			</div>
-			<div class="mdl-card__actions mdl-card--border">
-        <%= f.button 'login', :class => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' %>
-			</div>
-      <% end %>
-		</div>
-	</main><br>
+<div class="container">
+<div class="omb_login">
+<h3 class="omb_authTitle">login or <%= link_to "sign up", new_user_registration_path %></h3>
+
+<div class="container">
+      <div class="omb_login">
+        <div class="row omb_row-sm-offset-3">
+    			<div class="col-md-6">
+  <%= form_for(resource, as: resource_name, :url => session_path(resource_name), :html => { role: 'form'}) do |f| %>
+    <% if @show_errors && current_user.errors.any? %>
+      <div id="error_explanation">
+        <% current_user.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.text_field :login, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'email or password' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+        <%= f.password_field :password, :value => '', class: 'form-control input-lg', placeholder: 'password' %>
+      </div>
+    </div><br>
+    <div class="actions">
+      <%= f.button 'login', :class => 'btn btn-lg btn-primary btn-block', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing in..."} %>
+    </div>
+  <% end %>
+
+  <br>
   <div class="text-center">
     <%= render "devise/shared/links" %>
   </div>
+</div>
 </div>

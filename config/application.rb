@@ -19,3 +19,5 @@ module Turelo
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 end
+
+
