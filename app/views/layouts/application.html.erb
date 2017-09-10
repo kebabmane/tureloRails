@@ -10,6 +10,7 @@
 <!-- Page styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -26,26 +27,29 @@
   <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <%= link_to 'timeline', overviews_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'feeds', categories_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      admin
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <%= link_to 'feeds admin', turelo_admin_feeds_path, class: "dropdown-item" %>
-      <%= link_to 'categories admin', turelo_admin_categories_path, class: "dropdown-item" %>
-      <%= link_to 'announcements', turelo_admin_announcements_path, class: "dropdown-item" %>
-      <%= link_to 'devices admin', turelo_admin_devices_path, class: "dropdown-item" %>
-      <%= link_to 'DB Analytics', '/admins/pghero', :target => "_blank", class: "dropdown-item" %>
-      <%= link_to 'sidekiq web', '/admins/sidekiq', :target => "_blank", class: "dropdown-item" %>
-    </div>
-  </li>
+  <ul class="navbar-nav mr-auto navbar-right">
+
+  </ul>
+  <ul class="nav navbar-nav">
+  <li class="nav-item">
+  <%= link_to 'timeline', overviews_path, class: "nav-link" %>
+</li>
+<li class="nav-item">
+  <%= link_to 'feeds', categories_path, class: "nav-link" %>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  admin
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  <%= link_to 'feeds admin', turelo_admin_feeds_path, class: "dropdown-item" %>
+  <%= link_to 'categories admin', turelo_admin_categories_path, class: "dropdown-item" %>
+  <%= link_to 'announcements', turelo_admin_announcements_path, class: "dropdown-item" %>
+  <%= link_to 'devices admin', turelo_admin_devices_path, class: "dropdown-item" %>
+  <%= link_to 'DB Analytics', '/admins/pghero', :target => "_blank", class: "dropdown-item" %>
+  <%= link_to 'sidekiq web', '/admins/sidekiq', :target => "_blank", class: "dropdown-item" %>
+</div>
+</li>
   </ul>
 </div>
 </nav>
