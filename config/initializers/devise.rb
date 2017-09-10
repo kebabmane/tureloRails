@@ -100,6 +100,8 @@ Devise.setup do |config|
   # Setup a pepper to generate the encrypted password.
   # config.pepper = '8ed6f7e8831279a19eda3a740233ce149535e5ae30aa1efd0ea6d3be6305836923f5e971fca307fb16afde92024a3b2bb7052e17d91ef11c8617fda60275b146'
 
+  config.secret_key = ENV['SECRET_KEY']
+
   # ==> Configuration for :invitable
   # The period the generated invitation token is valid, after
   # this period, the invited resource won't be able to accept the invitation.
