@@ -213,10 +213,10 @@ GEM
       tzinfo
     eventmachine (1.2.5)
     execjs (2.7.0)
-    factory_girl (4.8.2)
+    factory_girl (4.9.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.8.2)
-      factory_girl (~> 4.8.2)
+    factory_girl_rails (4.9.0)
+      factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -242,7 +242,7 @@ GEM
     gaffe (1.2.0)
       rails (>= 4.0.0)
     get_process_mem (0.2.1)
-    globalid (0.4.0)
+    globalid (0.4.1)
       activesupport (>= 4.2.0)
     goldiloader (2.0.1)
       activerecord (>= 4.2, < 5.2)
@@ -442,7 +442,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.2)
       rake
-    rake (12.1.0)
+    rake (12.2.1)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.10.2)
