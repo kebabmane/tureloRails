@@ -1,4 +1,4 @@
-class CreateImpressions2 < ActiveRecord::Migration
+class CreateImpressions2 < ActiveRecord::Migration[4.2]
   def self.up
     create_table :impressions, :force => true do |t|
       t.string :impressionable_type

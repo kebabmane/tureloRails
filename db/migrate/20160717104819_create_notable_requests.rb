@@ -1,4 +1,4 @@
-class CreateNotableRequests < ActiveRecord::Migration
+class CreateNotableRequests < ActiveRecord::Migration[4.2]
   def change
     create_table :notable_requests do |t|
       t.string :note_type

@@ -1,4 +1,4 @@
-class AddLikersToJunk < ActiveRecord::Migration
+class AddLikersToJunk < ActiveRecord::Migration[4.2]
   def change
     add_column :feeds, :mentioners_count, :integer, :default => 0
     add_column :feed_entries, :mentioners_count, :integer, :default => 0

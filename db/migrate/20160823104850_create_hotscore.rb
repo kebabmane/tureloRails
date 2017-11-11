@@ -1,4 +1,4 @@
-class CreateHotscore < ActiveRecord::Migration
+class CreateHotscore < ActiveRecord::Migration[5.1]
   # This is some sql borrowed from reddit:
   # https://github.com/reddit/reddit/blob/master/sql/functions.sql
   def up

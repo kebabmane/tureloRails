@@ -1,4 +1,4 @@
-class CreatedDevicesTable2 < ActiveRecord::Migration
+class CreatedDevicesTable2 < ActiveRecord::Migration[4.2]
   def change
     create_table :devices do |t|
       t.integer :device_id

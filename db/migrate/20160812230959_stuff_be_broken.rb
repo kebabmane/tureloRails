@@ -1,4 +1,4 @@
-class StuffBeBroken < ActiveRecord::Migration
+class StuffBeBroken < ActiveRecord::Migration[4.2]
   def change
     #rename_column :categories, :category, :category_name
   end

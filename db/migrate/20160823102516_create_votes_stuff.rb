@@ -1,4 +1,4 @@
-class CreateVotesStuff < ActiveRecord::Migration
+class CreateVotesStuff < ActiveRecord::Migration[4.2]
   def change
       add_column :feed_entries, :disabled, :boolean
       add_column :feed_entries, :comments_count, :integer, :null => false, :default => 0

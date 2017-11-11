@@ -1,4 +1,4 @@
-class AddIconToFeed < ActiveRecord::Migration
+class AddIconToFeed < ActiveRecord::Migration[4.2]
   def change
     add_column :feeds, :feed_icon, :string
   end

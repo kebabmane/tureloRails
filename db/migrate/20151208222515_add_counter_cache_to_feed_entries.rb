@@ -1,4 +1,4 @@
-class AddCounterCacheToFeedEntries < ActiveRecord::Migration
+class AddCounterCacheToFeedEntries < ActiveRecord::Migration[4.2]
   def change
     add_column  :feeds, :feed_entries_count, :integer
   end

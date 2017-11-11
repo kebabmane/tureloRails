@@ -1,4 +1,4 @@
-class CreatedDevicesTable < ActiveRecord::Migration
+class CreatedDevicesTable < ActiveRecord::Migration[4.2]
   def change
   end
 end

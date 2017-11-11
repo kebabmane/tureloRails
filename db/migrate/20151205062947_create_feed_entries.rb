@@ -1,4 +1,4 @@
-class CreateFeedEntries < ActiveRecord::Migration
+class CreateFeedEntries < ActiveRecord::Migration[4.2]
   def change
     create_table :feed_entries do |t|
       t.belongs_to :feed, index: true, foreign_key: true
