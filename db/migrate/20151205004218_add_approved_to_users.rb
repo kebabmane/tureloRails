@@ -1,4 +1,4 @@
-class AddApprovedToUsers < ActiveRecord::Migration
+class AddApprovedToUsers < ActiveRecord::Migration[4.1]
   def self.up
     add_column :users, :approved, :boolean, :default => false, :null => false
     add_index  :users, :approved
