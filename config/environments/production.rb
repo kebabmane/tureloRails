@@ -12,9 +12,6 @@ Rails.application.configure do
 
   #config.middleware.use Rack::SslEnforcer
 
-  #so something something wrong with caching so need to remove this stuff
-  #config.action_controller.asset_host = "dn4irq2usb5q2.cloudfront.net"
-
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -33,7 +30,7 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
 
-  config.action_controller.asset_host = "d1x4v8ytvfbl3i.cloudfront.net"
+  #config.action_controller.asset_host = "d1x4v8ytvfbl3i.cloudfront.net"
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
