@@ -48,7 +48,7 @@ gem "sidekiq-cron"
 gem 'feedbag'
 gem 'font-awesome-rails'
 gem "socialization"
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12'
 gem 'whenever', :require => false
 gem 'gaffe'
 gem 'impressionist'
