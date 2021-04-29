@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "19:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: loofah
+    versions:
+    - 2.9.0
+  - dependency-name: ffi
+    versions:
+    - 1.14.2
+  - dependency-name: omniauth
+    versions:
+    - 1.9.1
